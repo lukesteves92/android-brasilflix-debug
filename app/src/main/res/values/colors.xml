@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="indicatorSplash">#3E7445</color>
+    <color name="tabIndicator">#3E7445</color>
+    <color name="tabtextColor">#CACD48</color>
+    <color name="buttonColor">#CACD48</color>
+    <color name="bg">#F5F5F5</color>
+    <color name="button">#003880</color>
+    <color name="tabtextColorNEW">#FFCC00</color>
+    <color name="dotsTips1">#FFCC00</color>
+    <color name="dotsTips2">#003880</color>
+    <color name="lighter_gray">#F2F2F2</color>
+    <color name="topRatedButton">#003880</color>
+    <color name="ProgressIndicatorButton">#003880</color>
+    <color name="topMenuHome">#003880</color>
+    <color name="secondary_blue">#0C3559</color>
+    <color name="pink">#F21B42</color>
+    <color name="blue">#148BA6</color>
+
+
+</resources>

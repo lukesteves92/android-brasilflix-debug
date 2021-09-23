@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">BrasilFlix</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="nome">Nome</string>
+    <string name="cpf">CPF</string>
+    <string name="e_mail">E-mail</string>
+    <string name="telefone">Telefone</string>
+    <string name="senha">Senha</string>
+    <string name="helper_required">Obrigatório</string>
+    <string name="modoescuro">Modo Escuro</string>
+    <string name="loginsuccessfully">Login Efetuado</string>
+    <string name="alreadyloggedin">Usuário já logado</string>
+    <string name="cadastrar2">Cadastro Realizado com sucesso</string>
+    <string name="home">Home</string>
+    <string name="addFV">Adicionar Favorito</string>
+    <string name="filmes">Filmes</string>
+    <string name="buttonTips">Ir para Home</string>
+    <string name="filmestoprated">Filmes Top-Rated</string>
+    <string name="filmsTopRated">Top-Rated</string>
+    <string name="page_home">Filmes e Séries</string>
+    <string name="favorite">Favoritos</string>
+    <string name="search">Busca</string>
+    <string name="more">Mais</string>
+    <string name="profileMenu">Perfil</string>
+    <string name="configMenu">Configurações</string>
+    <string name="homeBottom">Home</string>
+    <string name="filmsBottom">Populares</string>
+    <string name="seriesBottom">"Series "</string>
+    <string name="page_profile">Perfil</string>
+    <string name="account">Conta</string>
+    <string name="account_description">Alterar senha, foto, email…</string>
+    <string name="icone_seta_direita">Ícone, seta para direita</string>
+    <string name="detalhe">Detalhes</string>
+    <string name="Summary">Resumo</string>
+    <string name="logo_brasilflix">Logo Brasilflix</string>
+    <string name="confirmation_email_text1">Enviamos uma confirmação para o novo e-mail cadastrado.</string>
+    <string name="confirmation_email_text2">Assim que aceitar, o email será alterado automaticamente.</string>
+    <string name="voltar_para_a_home">home</string>
+    <string name="error_default">Erro desconhecido, tente novamente.</string>
+    <string name="searchBottom">Buscar</string>
+    <string name="searchItens">Buscar Filmes / Séries</string>
+    <string name="back">Voltar</string>
+    <string name="media_poster">Movie or Series Image</string>
+    <string name="changeEmail">Alterar Email</string>
+    <string name="doNotStay">Não fique triste, vamos\n e ajudar na alteração do seu email!</string>
+    <string name="newEmail">Novo Email</string>
+    <string name="returnV">voltar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="NaBRFlix">Na <b>BRFlix</b>, você escolhe quais\ntipos de filmes séries aparecer\nnem sua Home.</string>
+    <string name="comedy">Comédia</string>
+    <string name="action">Ação</string>
+    <string name="horror">Terror</string>
+    <string name="romantic">Comédia Romântica</string>
+    <string name="thriller">Suspense</string>
+    <string name="adventure">Aventura</string>
+    <string name="next">Próximo</string>
+    <string name="list">Sua lista de favoritos está vazia</string>
+    <string name="textTest">Mussum Ipsum, cacilds vidis litro abertis.
+        Mais vale um bebadis conhecidiss, q ue um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im ampola pa arma uma pindureta. Mussum Ipsum, cacilds vidis litro abertis.
+        Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Detraxit consequat et quo num tendi nada.
+        Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Cevadis im ampola pa arma uma pindureta.
+        Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im a mpola pa arma uma pindureta. Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im ampola pa arma uma pindureta. Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im ampola pa arma uma pindureta.Mussum Ipsum, cacilds vidis litro abertis.
+        Mais vale um bebadis conhecidiss, q ue um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im ampola pa arma uma pindureta. Mussum Ipsum, cacilds vidis litro abertis.
+        Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Detraxit consequat et quo num tendi nada.
+        Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Cevadis im ampola pa arma uma pindureta.
+        Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im a mpola pa arma uma pindureta. Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im ampola pa arma uma pindureta. Mussum Ipsum, cacilds vidis litro abertis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+        Detraxit consequat et quo num tendi nada. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+        Cevadis im ampola pa arma uma pindureta.</string>
+    <string name="searchButton">Pesquisar</string>
+    <string name="emptyfields">Por favor, preencha os campos corretamente</string>
+    <string name="favoritesBottom">Favoritos</string>
+
+</resources>

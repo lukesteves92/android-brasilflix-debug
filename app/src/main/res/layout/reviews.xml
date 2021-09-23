@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reviewCard"
+    style="@style/WatchCardDefault"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/reviewImage"
+            android:layout_width="@dimen/watch_card_img_width"
+            android:layout_height="@dimen/watch_card_img_height"
+            android:contentDescription="@string/media_poster"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/brflixlogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reviewTitle"
+            style="@style/WatchCardTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/reviewImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nome" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/reviewStar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintStart_toStartOf="@+id/reviewTitle"
+            app:layout_constraintEnd_toStartOf="@+id/reviewRating"
+            app:layout_constraintTop_toBottomOf="@+id/reviewTitle"/>
+
+        <TextView
+            android:id="@+id/reviewRating"
+            style="@style/WatchCardGenre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/reviewStar"
+            app:layout_constraintTop_toBottomOf="@id/reviewTitle"
+            tools:text="Comentário" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

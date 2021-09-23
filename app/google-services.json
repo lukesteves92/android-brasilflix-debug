@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "404205412191",
+    "project_id": "brasilflixapp-ec817",
+    "storage_bucket": "brasilflixapp-ec817.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404205412191:android:72b5868e02a5bebac8a0ea",
+        "android_client_info": {
+          "package_name": "com.lucasesteves.brasilflixapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404205412191-h5kouo80864touvulc9qkss0uofpi3kr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lucasesteves.brasilflixapp",
+            "certificate_hash": "bc8cd0c39741d35db6620df8025c6236eca3a37f"
+          }
+        },
+        {
+          "client_id": "404205412191-d6c7qiijpeu596c86qvcu7tp8h2fna3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgsBQRehAOf2p_koRTjmPPb9bMPeQHocA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404205412191-d6c7qiijpeu596c86qvcu7tp8h2fna3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
