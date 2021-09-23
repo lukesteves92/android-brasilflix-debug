@@ -117,7 +117,7 @@ class DetailFragment : Fragment() {
                     with(bindingNonNull) {
                         activity?.let { activityNonNull ->
                             Glide.with(activityNonNull)
-                                .load(serie.backdrop_path)
+                                .load(serie.poster_path)
                                 .into(imageCardDetail)
                         }
                         tvTitle.text = serie.original_name
