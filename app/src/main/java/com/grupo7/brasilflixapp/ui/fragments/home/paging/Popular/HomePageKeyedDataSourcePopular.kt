@@ -63,16 +63,14 @@ class HomePageKeyedDataSourcePopular(
                 return homeUseCase.setupPopularList(list)
             }
             is ResponseApi.Error -> {
-                var popularList: List<films> = listOf()
-                var popularDB: List<Popular> =  PopularDatabase
+                var popularDB =  PopularDatabase
                     .getDatabase(application)
                     .popularDao()
                     .getAllPopular()
-                popularDB.forEach {
-                    popularList = listOf(it.tofilmsDb())
-                }
 
-                return popularList
+                return popularDB.map {
+                    it.tofilmsDb()
+                }
 
             }
         }
