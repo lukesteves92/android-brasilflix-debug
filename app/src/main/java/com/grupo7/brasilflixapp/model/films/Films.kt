@@ -2,6 +2,7 @@ package com.grupo7.brasilflixapp.model.films
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
+import com.grupo7.brasilflixapp.database.allmovies.model.allmovies
 import com.grupo7.brasilflixapp.database.popular.model.Popular
 
 data class films(
@@ -47,4 +48,18 @@ fun films.toPopularDb(): Popular {
         vote_average = this.vote_average
     )
 }
+
+fun films.toAllMoviesDb(): allmovies {
+    return allmovies(
+        id = this.id,
+        backdrop_path = this.backdrop_path,
+        overview = this.overview,
+        poster_path = this.poster_path,
+        release_date = this.release_date,
+        title = this.title,
+        vote_average = this.vote_average
+    )
+}
+
+
 

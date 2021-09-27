@@ -4,9 +4,12 @@ import android.app.Application
 import com.grupo7.brasilflixapp.api.util.ResponseApi
 import com.grupo7.brasilflixapp.api.main.RetrofitInstance
 import com.grupo7.brasilflixapp.base.BaseRepository
+import com.grupo7.brasilflixapp.database.allmovies.database.AllMoviesDatabase
+import com.grupo7.brasilflixapp.database.allmovies.model.allmovies
 import com.grupo7.brasilflixapp.database.popular.database.PopularDatabase
 import com.grupo7.brasilflixapp.database.popular.model.Popular
 import com.grupo7.brasilflixapp.model.films.films
+import com.grupo7.brasilflixapp.model.films.toAllMoviesDb
 import com.grupo7.brasilflixapp.model.films.toPopularDb
 
 class HomeRepository(
@@ -43,6 +46,21 @@ class HomeRepository(
             .popularDao()
             .insertAllPopular(
                 popularDb
+            )
+    }
+
+    suspend fun saveAllMoviesDatabase(movies: List<films>) {
+        val allmoviesDb: MutableList<allmovies> = mutableListOf()
+
+        movies.forEach {
+            allmoviesDb.add(it.toAllMoviesDb())
+        }
+
+        AllMoviesDatabase
+            .getDatabase(application)
+            .allmoviesDao()
+            .insertAllallmovies(
+                allmoviesDb
             )
     }
 }

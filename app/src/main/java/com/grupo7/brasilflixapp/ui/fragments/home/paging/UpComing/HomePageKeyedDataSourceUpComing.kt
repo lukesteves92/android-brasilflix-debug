@@ -24,6 +24,7 @@ class HomePageKeyedDataSourceUpComing (
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             val movies: List<films> = getUpComingMovies(Constants.Home.FIRST_PAGE)
+            homeUseCase.saveAllMoviesDatabase(movies)
             callback.onResult(movies, null, Constants.Home.FIRST_PAGE + 1)
         }
     }
@@ -39,6 +40,7 @@ class HomePageKeyedDataSourceUpComing (
     private fun loadData(page: Int, nextPage: Int, callback: LoadCallback<Int, films>) {
         CoroutineScope(Dispatchers.IO).launch {
             val films: List<films> = getUpComingMovies(page)
+            homeUseCase.saveAllMoviesDatabase(films)
             callback.onResult(films, nextPage)
         }
 

@@ -32,6 +32,7 @@ class HomePageKeyedDataSourcePopular(
         CoroutineScope(Dispatchers.IO).launch {
             val movies: List<films> = getPopularMovies(Constants.Home.FIRST_PAGE)
             homeUseCase.savePopularDatabase(movies)
+            homeUseCase.saveAllMoviesDatabase(movies)
             callback.onResult(movies, null, Constants.Home.FIRST_PAGE + 1)
         }
     }
@@ -48,6 +49,7 @@ class HomePageKeyedDataSourcePopular(
         CoroutineScope(Dispatchers.IO).launch {
             val films: List<films> = getPopularMovies(page)
             homeUseCase.savePopularDatabase(films)
+            homeUseCase.saveAllMoviesDatabase(films)
             callback.onResult(films, nextPage)
         }
 

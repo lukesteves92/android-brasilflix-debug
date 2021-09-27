@@ -24,6 +24,7 @@ class HomePageKeyedDataSourceTopRated(
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             val movies: List<films> = getTopRatedMovies(FIRST_PAGE)
+            homeUseCase.saveAllMoviesDatabase(movies)
             callback.onResult(movies, null, FIRST_PAGE + 1)
         }
     }
@@ -39,6 +40,7 @@ class HomePageKeyedDataSourceTopRated(
     private fun loadData(page: Int, nextPage: Int, callback: LoadCallback<Int, films>) {
         CoroutineScope(Dispatchers.IO).launch {
             val films: List<films> = getTopRatedMovies(page)
+            homeUseCase.saveAllMoviesDatabase(films)
             callback.onResult(films, nextPage)
         }
 

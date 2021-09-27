@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.database.favorites.database.FavoritesDatabase
 import com.grupo7.brasilflixapp.databinding.FragmentDetailBinding
 import com.grupo7.brasilflixapp.database.favorites.model.Favorites
@@ -96,7 +97,8 @@ class DetailFragment : Fragment() {
                     with(bindingNonNull) {
                         activity?.let { activityNonNull ->
                             Glide.with(activityNonNull)
-                                .load(movie.poster_path)
+                                .load(movie.backdrop_path)
+                                .placeholder(R.drawable.brflixlogo)
                                 .into(imageCardDetail)
                         }
                         tvTitle.text = movie.title
