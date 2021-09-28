@@ -7,19 +7,19 @@ import com.grupo7.brasilflixapp.database.popular.model.Popular
 
 data class films(
     @SerializedName("poster_path")
-    var poster_path: String? = null,
+    var poster_path: String?,
     @SerializedName("release_date")
-    var release_date: String? = null,
+    var release_date: String?,
     @SerializedName("title")
-    var title: String? = null,
+    var title: String?,
     @SerializedName("vote_average")
-    var vote_average: Double? = null,
+    var vote_average: Double?,
     @SerializedName("backdrop_path")
-    var backdrop_path: String? = null,
+    var backdrop_path: String?,
     @SerializedName("id")
-    val id: Int? = null,
+    val id: Int?,
     @SerializedName("overview")
-    val overview: String? = null
+    var overview: String?
 ) {
 
     companion object {

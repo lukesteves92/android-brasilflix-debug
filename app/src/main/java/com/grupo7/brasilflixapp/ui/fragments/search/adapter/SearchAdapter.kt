@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.FilmsBinding
+import com.grupo7.brasilflixapp.databinding.SearchBinding
 import com.grupo7.brasilflixapp.model.films.films
 
 class searchAdapter (
@@ -13,7 +14,7 @@ class searchAdapter (
 ) : RecyclerView.Adapter<searchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = FilmsBinding
+        val binding = SearchBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
@@ -23,7 +24,7 @@ class searchAdapter (
     override fun getItemCount() = filmsList.size
 
     class ViewHolder(
-        val binding: FilmsBinding
+        val binding: SearchBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(

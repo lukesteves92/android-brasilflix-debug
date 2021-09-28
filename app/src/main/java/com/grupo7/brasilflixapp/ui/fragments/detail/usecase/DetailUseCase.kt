@@ -1,5 +1,6 @@
 package com.grupo7.brasilflixapp.ui.fragments.detail.usecase
 
+import android.app.Application
 import com.grupo7.brasilflixapp.api.util.ResponseApi
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
@@ -8,9 +9,11 @@ import com.grupo7.brasilflixapp.model.films.films
 import com.grupo7.brasilflixapp.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.model.series.Series
 
-class DetailUseCase {
+class DetailUseCase(
+    private val application: Application
+) {
 
-    private val detailRepository = DetailRepository()
+    private val detailRepository = DetailRepository(application)
 
     suspend fun getMovieById(movieId: Int): ResponseApi {
         return when(val responseApi = detailRepository.getMovieById(movieId)) {
@@ -59,7 +62,11 @@ class DetailUseCase {
         }
     }
 
+    suspend fun getMovieByIdFromDb(movieId: Int) =
+        detailRepository.getMovieByIdFromDb(movieId)
 
+    suspend fun getSerieByIdFromDb(serieId: Int) =
+        detailRepository.getSerieByIdFromDb(serieId)
 
 
 }

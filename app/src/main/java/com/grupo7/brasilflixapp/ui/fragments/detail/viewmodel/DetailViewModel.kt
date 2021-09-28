@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.grupo7.brasilflixapp.base.BaseViewModel
+import com.grupo7.brasilflixapp.database.allmovies.model.allmovies
+import com.grupo7.brasilflixapp.database.allseries.model.allseries
 import com.grupo7.brasilflixapp.ui.fragments.detail.usecase.DetailUseCase
 import com.grupo7.brasilflixapp.model.films.films
 import com.grupo7.brasilflixapp.model.reviews.AuthorResults
@@ -15,7 +17,7 @@ class DetailViewModel(
     application: Application
 ): BaseViewModel(application) {
 
-    private val detailUseCase = DetailUseCase()
+    private val detailUseCase = DetailUseCase(getApplication<Application>())
 
     private val _onSuccessMovieById: MutableLiveData<films> = MutableLiveData()
     val onSuccessMovieById: LiveData<films>
@@ -29,13 +31,22 @@ class DetailViewModel(
     val onSuccessReviewsMovies: LiveData<List<AuthorResults>>
         get() = _onSuccessReviewsMovies
 
+    private val _onSuccessMovieDbByIdFromDb: MutableLiveData<films> = MutableLiveData()
+    val onSuccessMovieDbByIdFromDb: LiveData<films>
+        get() = _onSuccessMovieDbByIdFromDb
+
+    private val _onSuccessSerieDbByIdFromDb: MutableLiveData<allseries> = MutableLiveData()
+    val onSuccessSerieDbByIdFromDb: LiveData<allseries>
+        get() = _onSuccessSerieDbByIdFromDb
+
     fun getMovieById(movieId: Int) {
         viewModelScope.launch {
             callApi(
                 suspend { detailUseCase.getMovieById(movieId) },
                 onSuccess = {
                     _onSuccessMovieById.postValue(it as? films)
-                }
+                },
+
             )
         }
     }
@@ -64,5 +75,11 @@ class DetailViewModel(
         }
     }
 
+    fun getSerieByIdFromDb(serieId: Int) {
+        viewModelScope.launch {
+            val serieFromDb = detailUseCase.getSerieByIdFromDb(serieId)
+            _onSuccessSerieDbByIdFromDb.postValue(serieFromDb)
+        }
+    }
 
 }

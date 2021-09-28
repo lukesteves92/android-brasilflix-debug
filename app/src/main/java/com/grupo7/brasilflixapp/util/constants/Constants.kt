@@ -15,7 +15,7 @@ class Constants {
 
         fun queryParamLanguageValue(): String {
             return if (Locale.getDefault().isO3Country == "BRA") "pt-BR"
-            else "en-US"
+            else "pt-BR"
         }
     }
 

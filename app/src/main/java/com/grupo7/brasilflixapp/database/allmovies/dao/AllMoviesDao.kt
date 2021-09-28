@@ -13,7 +13,7 @@ interface AllMoviesDao {
     suspend fun getAllMovies(): List<allmovies>
 
     @Query("SELECT * FROM allmovies WHERE movieId = :movieId")
-    suspend fun loadPopularById(movieId: Int): allmovies
+    suspend fun loadAllMoviesById(movieId: Int): allmovies
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllallmovies(allmoviesList: List<allmovies>)

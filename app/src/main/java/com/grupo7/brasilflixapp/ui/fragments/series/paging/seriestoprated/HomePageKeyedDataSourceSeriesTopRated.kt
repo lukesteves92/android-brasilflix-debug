@@ -1,4 +1,4 @@
-package com.grupo7.brasilflixapp.ui.fragments.series.paging.series
+package com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated
 
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomePageKeyedDataSourceSeries (
+class HomePageKeyedDataSourceSeriesTopRated (
     private val seriesRepository: SeriesRepository,
     private val seriesUseCase: SeriesUseCase,
     val application: Application
@@ -23,7 +23,7 @@ class HomePageKeyedDataSourceSeries (
         callback: LoadInitialCallback<Int, Series>
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            val movies: List<Series> = getSeries(Constants.Home.FIRST_PAGE)
+            val movies: List<Series> = getSeriesTopRated(Constants.Home.FIRST_PAGE)
             seriesUseCase.saveAllSeriesDatabase(movies)
             callback.onResult(movies, null, Constants.Home.FIRST_PAGE + 1)
         }
@@ -39,19 +39,19 @@ class HomePageKeyedDataSourceSeries (
 
     private fun loadData(page: Int, nextPage: Int, callback: LoadCallback<Int, Series>) {
         CoroutineScope(Dispatchers.IO).launch {
-            val series: List<Series> = getSeries(page)
+            val series: List<Series> = getSeriesTopRated(page)
             seriesUseCase.saveAllSeriesDatabase(series)
             callback.onResult(series, nextPage)
         }
 
     }
-    suspend fun getSeries(page: Int): List<Series>{
+    suspend fun getSeriesTopRated(page: Int): List<Series>{
         return when (
-            val response = seriesRepository.getSeries(page)
+            val response = seriesRepository.getSeriesTopRated(page)
         ) {
             is ResponseApi.Success -> {
                 val list = response.data as? SeriesResults
-                return seriesUseCase.setupSeriesList(list)
+                return seriesUseCase.setupSeriesTopRatedList(list)
             }
             is ResponseApi.Error -> {
                 listOf()

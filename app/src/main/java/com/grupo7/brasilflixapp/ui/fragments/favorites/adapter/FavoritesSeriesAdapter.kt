@@ -5,15 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.databinding.FilmsBinding
 import com.grupo7.brasilflixapp.database.favorites.model.Favorites
-import com.grupo7.brasilflixapp.database.popular.model.Popular
+import com.grupo7.brasilflixapp.database.favorites.model.FavoritesSeries
 import com.grupo7.brasilflixapp.databinding.FavoritesBinding
 
-class FavoritesAdapter (
-    private val filmsList: List<Favorites>,
-    private val onClickListener: (movie: Favorites) -> Unit
-) : RecyclerView.Adapter<FavoritesAdapter.ViewHolder>() {
+class FavoritesSeriesAdapter (
+    private val filmsList: List<FavoritesSeries>,
+    private val onClickListener: (movie: FavoritesSeries) -> Unit
+) : RecyclerView.Adapter<FavoritesSeriesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = FavoritesBinding
@@ -30,15 +29,15 @@ class FavoritesAdapter (
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            films: Favorites,
-            onClickListener: (movie: Favorites) -> Unit,
+            films: FavoritesSeries,
+            onClickListener: (movie: FavoritesSeries) -> Unit,
         ) = with(binding) {
             films.let {
                 Glide.with(itemView)
                     .load(films.poster_path)
                     .placeholder(R.drawable.films)
                     .into(fotoFilme)
-                filmeName.text = films.title
+                filmeName.text = films.original_name
                 removeFavorite.setOnClickListener{
                     onClickListener(films)
                 }

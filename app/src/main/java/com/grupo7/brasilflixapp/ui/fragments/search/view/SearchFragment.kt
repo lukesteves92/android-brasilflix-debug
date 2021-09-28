@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grupo7.brasilflixapp.ui.fragments.search.adapter.searchAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentSearchBinding
@@ -77,7 +78,7 @@ class SearchFragment : Fragment() {
             val searchAdapter = searchAdapter(filmsList)
             binding?.let {
                 with(it) {
-                    searchRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    searchRecyclerView.layoutManager = GridLayoutManager(context, 2)
                     searchRecyclerView.adapter = searchAdapter
                 }
             }

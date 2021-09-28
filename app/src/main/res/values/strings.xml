@@ -12,6 +12,7 @@
     <string name="helper_required">Obrigatório</string>
     <string name="modoescuro">Modo Escuro</string>
     <string name="loginsuccessfully">Login Efetuado</string>
+    <string name="favoriteadded">Filme/Série adicionado aos favoritos!</string>
     <string name="alreadyloggedin">Usuário já logado</string>
     <string name="cadastrar2">Cadastro Realizado com sucesso</string>
     <string name="home">Home</string>
