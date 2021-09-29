@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Update
 import com.google.android.material.snackbar.Snackbar
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.database.favorites.database.FavoritesDatabase
@@ -65,7 +66,7 @@ class FavoritesFragment : Fragment() {
 
                 val favoritesAdapter = FavoritesAdapter(it) {
                         viewModel.removeFavoritesMovieDb(it)
-                        findNavController().navigateUp()
+                        viewModel.getFavoritesMovieFromDb()
                     }
                     binding?.favoritesRecyclerView?.apply {
                         layoutManager =
@@ -87,7 +88,7 @@ class FavoritesFragment : Fragment() {
 
                 val favoritesAdapter = FavoritesSeriesAdapter(it) {
                     viewModel.removeFavoritesSeriesDb(it)
-                    findNavController().navigateUp()
+                    viewModel.getFavoritesSeriesFromDb()
                 }
                 binding?.favoritesRecyclerViewSeries?.apply {
                     layoutManager =
