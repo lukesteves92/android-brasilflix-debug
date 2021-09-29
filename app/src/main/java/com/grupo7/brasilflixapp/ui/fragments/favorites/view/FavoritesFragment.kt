@@ -63,8 +63,12 @@ class FavoritesFragment : Fragment() {
     private fun setupObservablesMovies() {
         viewModel.onSuccessFavoritesMoviesFromDb.observe(viewLifecycleOwner, {
             it?.let {
-
-                val favoritesAdapter = FavoritesAdapter(it) {
+                if (it.isEmpty()) {
+                    binding?.favoritesRecyclerView?.isVisible = false
+                    binding?.birdMovies?.isVisible = true
+                }
+                else {
+                    val favoritesAdapter = FavoritesAdapter(it) {
                         viewModel.removeFavoritesMovieDb(it)
                         viewModel.getFavoritesMovieFromDb()
                     }
@@ -76,7 +80,9 @@ class FavoritesFragment : Fragment() {
                             .Adapter.StateRestorationPolicy
                             .PREVENT_WHEN_EMPTY
                     }
+
                 }
+            }
 
         })
 
@@ -85,18 +91,23 @@ class FavoritesFragment : Fragment() {
     private fun setupObservablesSeries() {
         viewModel.onSuccessFavoritesSeriesFromDb.observe(viewLifecycleOwner, {
             it?.let {
+                if(it.isEmpty()){
+                    binding?.favoritesRecyclerViewSeries?.isVisible = false
+                    binding?.birdSeries?.isVisible = true
+                } else {
 
-                val favoritesAdapter = FavoritesSeriesAdapter(it) {
-                    viewModel.removeFavoritesSeriesDb(it)
-                    viewModel.getFavoritesSeriesFromDb()
-                }
-                binding?.favoritesRecyclerViewSeries?.apply {
-                    layoutManager =
-                        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                    adapter = favoritesAdapter
-                    adapter?.stateRestorationPolicy = RecyclerView
-                        .Adapter.StateRestorationPolicy
-                        .PREVENT_WHEN_EMPTY
+                    val favoritesAdapter = FavoritesSeriesAdapter(it) {
+                        viewModel.removeFavoritesSeriesDb(it)
+                        viewModel.getFavoritesSeriesFromDb()
+                    }
+                    binding?.favoritesRecyclerViewSeries?.apply {
+                        layoutManager =
+                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                        adapter = favoritesAdapter
+                        adapter?.stateRestorationPolicy = RecyclerView
+                            .Adapter.StateRestorationPolicy
+                            .PREVENT_WHEN_EMPTY
+                    }
                 }
             }
 

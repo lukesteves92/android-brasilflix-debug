@@ -42,7 +42,6 @@ class FavoritesAdapter (
                 removeFavorite.setOnClickListener{
                     onClickListener(films)
                 }
-
             }
         }
     }
