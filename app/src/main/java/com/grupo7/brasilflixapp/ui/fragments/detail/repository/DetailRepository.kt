@@ -6,12 +6,14 @@ import com.grupo7.brasilflixapp.api.util.ResponseApi
 import com.grupo7.brasilflixapp.base.BaseRepository
 import com.grupo7.brasilflixapp.database.allmovies.database.AllMoviesDatabase
 import com.grupo7.brasilflixapp.database.allseries.database.AllSeriesDatabase
-import com.grupo7.brasilflixapp.ui.fragments.tips.view.PARAM_NUMBER
+import com.grupo7.brasilflixapp.database.favorites.database.FavoritesDatabase
+import com.grupo7.brasilflixapp.database.favorites.model.Favorites
+import com.grupo7.brasilflixapp.database.favorites.model.FavoritesSeries
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.FIRST_PAGE
 
 class DetailRepository(
     private val application: Application
-): BaseRepository() {
+) : BaseRepository() {
 
     suspend fun getMovieById(movieId: Int): ResponseApi {
         return safeApiCall {
@@ -38,5 +40,16 @@ class DetailRepository(
     suspend fun getSerieByIdFromDb(serieId: Int) =
         AllSeriesDatabase.getDatabase(application)
             .allseriesDao().loadAllSeriesById(serieId)
+
+    suspend fun saveFavoritesDb(favorites: Favorites) =
+        FavoritesDatabase.getDatabase(
+            application
+        ).favoritesDao().insertFavorites(favorites)
+
+    suspend fun saveFavoritesSeriesDb(favorites: FavoritesSeries) =
+        FavoritesDatabase.getDatabase(
+            application
+        ).favoritesSeriesDao().insertFavoritesSeries(favorites)
+
 
 }

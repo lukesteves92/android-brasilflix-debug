@@ -27,4 +27,8 @@ class Constants {
         const val FIRST_PAGE = 1
     }
 
+    object Series{
+        const val KET_BUNDLE_SERIES = "fragmentSeries"
+    }
+
 }

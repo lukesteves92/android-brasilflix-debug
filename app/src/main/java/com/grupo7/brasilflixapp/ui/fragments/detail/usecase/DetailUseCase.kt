@@ -2,6 +2,8 @@ package com.grupo7.brasilflixapp.ui.fragments.detail.usecase
 
 import android.app.Application
 import com.grupo7.brasilflixapp.api.util.ResponseApi
+import com.grupo7.brasilflixapp.database.favorites.model.Favorites
+import com.grupo7.brasilflixapp.database.favorites.model.FavoritesSeries
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
 import com.grupo7.brasilflixapp.ui.fragments.detail.repository.DetailRepository
@@ -68,5 +70,10 @@ class DetailUseCase(
     suspend fun getSerieByIdFromDb(serieId: Int) =
         detailRepository.getSerieByIdFromDb(serieId)
 
+    suspend fun saveFavoritesDb(favorites: Favorites) =
+        detailRepository.saveFavoritesDb(favorites)
+
+    suspend fun saveFavoritesSeriesDb(favorites: FavoritesSeries) =
+        detailRepository.saveFavoritesSeriesDb(favorites)
 
 }

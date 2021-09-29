@@ -7,22 +7,18 @@
 
 Projeto BrasilFlix
 
+Curso: Desenvolvimento Android
+
+Escola: Digital House
+
 Linguagem: 📱 Kotlin
 
-Dev: 👨 Lucas Esteves A. Coelho
 
-Tecnologias utilizadas:
-<br> -> Retrofit
-<br> -> Gson
-<br> -> Paging 2
-<br> -> Jetpack Library
-<br> -> Room
-<br> -> ViewModel
-<br> -> LiveData
-<br> -> Glide
-<br> -> Okhttp
-<br> -> Coroutines
-<br> -> MVVM
+Devs: 
 
+👨 Lucas Esteves A. Coelho
 
+👨 Tania Mara Alves Ferreira
+
+👨 Renan Cleber
 

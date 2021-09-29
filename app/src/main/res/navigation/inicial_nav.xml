@@ -11,8 +11,8 @@
         android:label="fragment_initial"
         tools:layout="@layout/fragment_initial">
         <action
-            android:id="@+id/action_initialFragment_to_tips_nav"
-            app:destination="@id/tips_nav" />
+            android:id="@+id/action_initialFragment_to_preferences_nav"
+            app:destination="@id/preferences_nav" />
     </fragment>
-    <include app:graph="@navigation/tips_nav" />
+    <include app:graph="@navigation/preferences_nav" />
 </navigation>

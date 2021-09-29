@@ -4,9 +4,13 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.snackbar.Snackbar
+import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.base.BaseViewModel
 import com.grupo7.brasilflixapp.database.allmovies.model.allmovies
 import com.grupo7.brasilflixapp.database.allseries.model.allseries
+import com.grupo7.brasilflixapp.database.favorites.model.Favorites
+import com.grupo7.brasilflixapp.database.favorites.model.FavoritesSeries
 import com.grupo7.brasilflixapp.ui.fragments.detail.usecase.DetailUseCase
 import com.grupo7.brasilflixapp.model.films.films
 import com.grupo7.brasilflixapp.model.reviews.AuthorResults
@@ -79,6 +83,19 @@ class DetailViewModel(
         viewModelScope.launch {
             val serieFromDb = detailUseCase.getSerieByIdFromDb(serieId)
             _onSuccessSerieDbByIdFromDb.postValue(serieFromDb)
+        }
+    }
+
+    fun saveFavoritesDb(favorites: Favorites) {
+        viewModelScope.launch {
+            detailUseCase.saveFavoritesDb(favorites)
+
+        }
+    }
+
+    fun saveFavoritesSeriesDb(favorites: FavoritesSeries) {
+        viewModelScope.launch {
+            detailUseCase.saveFavoritesSeriesDb(favorites)
         }
     }
 

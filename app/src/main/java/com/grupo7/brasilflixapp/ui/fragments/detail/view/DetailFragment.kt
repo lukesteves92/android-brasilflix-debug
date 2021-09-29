@@ -23,6 +23,8 @@ import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_I
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_POSTER
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_TITLE
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_SERIE_ID
+import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIES
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -38,6 +40,11 @@ class DetailFragment(
     private val serieId: Int by lazy {
         arguments?.getInt(KEY_BUNDLE_SERIE_ID) ?: -1
     }
+
+    private val serieFragment: Int by lazy {
+        arguments?.getInt(KET_BUNDLE_SERIES) ?: -1
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,49 +81,49 @@ class DetailFragment(
 
         }
 
-        binding?.ivMenu?.setOnClickListener{
+        binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
         }
 
-        binding?.ivHeart?.setOnClickListener{
-          viewModel.onSuccessMovieById.observe(viewLifecycleOwner,{
-              val id = it.id
-              val poster = it.poster_path
-              val title = it.title
-              val favorite = Favorites(id, poster, title)
-              GlobalScope.launch {
-                  context?.let { contextNonNull ->
-                      FavoritesDatabase.getDatabase(
-                          contextNonNull
-                      ).favoritesDao().insertFavorites(favorite)
-                  }
-              }
-              Snackbar.make(
-                  this.requireView(),
-                  getString(R.string.favoriteadded),
-                  Snackbar.LENGTH_SHORT
-              ).show()
-          })
+        binding?.ivHeart?.setOnClickListener {
 
-            viewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner,{
-                val id = it.id
-                val poster = it.poster_path
-                val title = it.original_name
-                val favorite = FavoritesSeries(id, poster, title)
-                GlobalScope.launch {
-                    context?.let { contextNonNull ->
-                        FavoritesDatabase.getDatabase(
-                            contextNonNull
-                        ).favoritesSeriesDao().insertFavoritesSeries(favorite)
-                    }
-                }
-                Snackbar.make(
-                    this.requireView(),
-                    getString(R.string.favoriteadded),
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            })
 
+            if (serieFragment == 50) {
+                viewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
+
+                    val id = it.id
+                    val poster = it.poster_path
+                    val title = it.original_name
+                    val favorite = FavoritesSeries(id, poster, title)
+                    viewModel.saveFavoritesSeriesDb(favorite)
+
+                    Snackbar.make(
+                        this.requireView(),
+                        getString(R.string.favoriteadded),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                })
+
+            } else {
+                viewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
+
+
+                    val id = it.id
+                    val poster = it.poster_path
+                    val title = it.title
+                    val favorite = Favorites(id, poster, title)
+                    viewModel.saveFavoritesDb(favorite)
+
+
+                    Snackbar.make(
+                        this.requireView(),
+                        getString(R.string.favoriteadded),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                })
+
+
+            }
         }
     }
 
@@ -142,6 +149,7 @@ class DetailFragment(
 
 
     }
+
     private fun setupDetailSerie() {
 
         viewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
@@ -169,15 +177,15 @@ class DetailFragment(
         viewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
             it?.let {
                 val ReviewsAdapter = DetailReviewAdapter(it)
-            binding?.let {
-                with(it) {
-                    reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
-                    reviewsRecyclerView.adapter = ReviewsAdapter
-                    reviewsRecyclerView.adapter?.stateRestorationPolicy = RecyclerView
-                        .Adapter.StateRestorationPolicy
-                        .PREVENT_WHEN_EMPTY
+                binding?.let {
+                    with(it) {
+                        reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
+                        reviewsRecyclerView.adapter = ReviewsAdapter
+                        reviewsRecyclerView.adapter?.stateRestorationPolicy = RecyclerView
+                            .Adapter.StateRestorationPolicy
+                            .PREVENT_WHEN_EMPTY
+                    }
                 }
-            }
             }
         })
 

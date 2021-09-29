@@ -80,7 +80,7 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
-                    findNavController().navigate(R.id.action_initialFragment_to_tips_nav)
+                    findNavController().navigate(R.id.action_initialFragment_to_preferences_nav)
                     Snackbar.make(
                         this.requireView(),
                         getString(R.string.loginsuccessfully),
