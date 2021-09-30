@@ -40,4 +40,16 @@ class SeriesUseCase(
             it
         } ?: listOf()
     }
+
+    suspend fun saveOnTheAirDatabase(series: List<Series>) {
+        seriesRepository.saveOnTheAirDatabase(series)
+    }
+
+    suspend fun savePopularSeriesDatabase(series: List<Series>) {
+        seriesRepository.savePopularSeriesDatabase(series)
+    }
+
+    suspend fun saveTopRatedSeriesDatabase(series: List<Series>) {
+        seriesRepository.saveTopRatedSeriesDatabase(series)
+    }
 }

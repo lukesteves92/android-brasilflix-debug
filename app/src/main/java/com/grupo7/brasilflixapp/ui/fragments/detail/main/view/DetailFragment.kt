@@ -65,6 +65,8 @@ class DetailFragment(
 
             detailViewModel.getMovieById(movieId)
 
+            detailViewModel.getMovieByIdFromDb(movieId)
+
             detailViewModel.getSerieByIdFromDb(serieId)
 
             setupReviewsMovies()

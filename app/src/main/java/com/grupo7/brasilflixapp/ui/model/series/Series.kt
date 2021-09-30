@@ -3,6 +3,9 @@ package com.grupo7.brasilflixapp.ui.model.series
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
 import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
+import com.grupo7.brasilflixapp.data.database.series.ontheair.entity.OnTheAirSeries
+import com.grupo7.brasilflixapp.data.database.series.popular.entity.PopularSeries
+import com.grupo7.brasilflixapp.data.database.series.toprated.entity.TopRatedSeries
 
 class Series (
     @SerializedName("poster_path")
@@ -39,6 +42,42 @@ class Series (
 
 fun Series.toAllSeriesDb(): allseries {
     return allseries(
+        id = this.id,
+        backdrop_path = this.backdrop_path,
+        overview = this.overview,
+        poster_path = this.poster_path,
+        first_air_date = this.first_air_date,
+        original_name = this.original_name,
+        vote_average = this.vote_average
+    )
+}
+
+fun Series.toPopularSeriesDb(): PopularSeries {
+    return PopularSeries(
+        id = this.id,
+        backdrop_path = this.backdrop_path,
+        overview = this.overview,
+        poster_path = this.poster_path,
+        first_air_date = this.first_air_date,
+        original_name = this.original_name,
+        vote_average = this.vote_average
+    )
+}
+
+fun Series.toTopRatedSeriesDb(): TopRatedSeries {
+    return TopRatedSeries(
+        id = this.id,
+        backdrop_path = this.backdrop_path,
+        overview = this.overview,
+        poster_path = this.poster_path,
+        first_air_date = this.first_air_date,
+        original_name = this.original_name,
+        vote_average = this.vote_average
+    )
+}
+
+fun Series.toOnTheAirSeriesDb(): OnTheAirSeries {
+    return OnTheAirSeries(
         id = this.id,
         backdrop_path = this.backdrop_path,
         overview = this.overview,

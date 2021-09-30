@@ -8,6 +8,7 @@ import com.grupo7.brasilflixapp.base.BaseViewModel
 import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
+import com.grupo7.brasilflixapp.data.database.movies.allmovies.entity.allmovies
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase.DetailSearchUseCase
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase.DetailUseCase
 import com.grupo7.brasilflixapp.ui.model.films.films
@@ -33,8 +34,8 @@ class DetailViewModel(
     val onSuccessReviewsMovies: LiveData<List<AuthorResults>>
         get() = _onSuccessReviewsMovies
 
-    private val _onSuccessMovieDbByIdFromDb: MutableLiveData<films> = MutableLiveData()
-    val onSuccessMovieDbByIdFromDb: LiveData<films>
+    private val _onSuccessMovieDbByIdFromDb: MutableLiveData<allmovies> = MutableLiveData()
+    val onSuccessMovieDbByIdFromDb: LiveData<allmovies>
         get() = _onSuccessMovieDbByIdFromDb
 
     private val _onSuccessSerieDbByIdFromDb: MutableLiveData<allseries> = MutableLiveData()
@@ -81,6 +82,13 @@ class DetailViewModel(
         viewModelScope.launch {
             val serieFromDb = detailUseCase.getSerieByIdFromDb(serieId)
             _onSuccessSerieDbByIdFromDb.postValue(serieFromDb)
+        }
+    }
+
+    fun getMovieByIdFromDb(movieId: Int) {
+        viewModelScope.launch {
+            val movieFromDb = detailUseCase.getMovieByIdFromDb(movieId)
+            _onSuccessMovieDbByIdFromDb.postValue(movieFromDb)
         }
     }
 

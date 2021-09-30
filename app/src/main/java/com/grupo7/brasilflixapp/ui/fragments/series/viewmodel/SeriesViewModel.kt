@@ -9,12 +9,12 @@ import androidx.paging.PagedList
 import com.grupo7.brasilflixapp.base.BaseViewModel
 import com.grupo7.brasilflixapp.ui.fragments.series.usecase.SeriesUseCase
 import com.grupo7.brasilflixapp.ui.model.series.Series
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.series.HomeDataSourceFactorySeries
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.series.HomePageKeyedDataSourceSeries
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriespopular.HomeDataSourceFactorySeriesPopular
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriespopular.HomePageKeyedDataSourceSeriesPopular
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated.HomeDataSourceFactorySeriesTopRated
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated.HomePageKeyedDataSourceSeriesTopRated
+import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriesontheair.DataSourceFactorySeriesOnTheAir
+import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriesontheair.PageKeyedDataSourceSeriesOnTheAir
+import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriespopular.DataSourceFactorySeriesPopular
+import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriespopular.PageKeyedDataSourceSeriesPopular
+import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated.DataSourceFactorySeriesTopRated
+import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated.PageKeyedDataSourceSeriesTopRated
 import com.grupo7.brasilflixapp.ui.fragments.series.repository.SeriesRepository
 
 class SeriesViewModel(
@@ -35,10 +35,10 @@ class SeriesViewModel(
             .setPageSize(MifareUltralight.PAGE_SIZE).build()
 
 
-        val homePageKeyedDataSourceSeries = HomePageKeyedDataSourceSeries(
+        val homePageKeyedDataSourceSeries = PageKeyedDataSourceSeriesOnTheAir(
             seriesUseCase = seriesUseCase, seriesRepository = seriesRepository, application = application
         )
-        val homeDataSourceFactorySeries = HomeDataSourceFactorySeries(homePageKeyedDataSourceSeries)
+        val homeDataSourceFactorySeries = DataSourceFactorySeriesOnTheAir(homePageKeyedDataSourceSeries)
 
         watchMoviesLiveDataSourceSeries = homeDataSourceFactorySeries.getLiveDataSource()
         seriesPagedList = LivePagedListBuilder(homeDataSourceFactorySeries, pagedListConfig)
@@ -57,10 +57,10 @@ class SeriesViewModel(
             .setPageSize(MifareUltralight.PAGE_SIZE).build()
 
 
-        val homePageKeyedDataSourceSeriesTopRated = HomePageKeyedDataSourceSeriesTopRated(
+        val homePageKeyedDataSourceSeriesTopRated = PageKeyedDataSourceSeriesTopRated(
             seriesUseCase = seriesUseCase, seriesRepository = seriesRepository, application = application
         )
-        val homeDataSourceFactorySeriesTopRated = HomeDataSourceFactorySeriesTopRated(homePageKeyedDataSourceSeriesTopRated)
+        val homeDataSourceFactorySeriesTopRated = DataSourceFactorySeriesTopRated(homePageKeyedDataSourceSeriesTopRated)
 
         watchMoviesLiveDataSourceSeriesTopRated = homeDataSourceFactorySeriesTopRated.getLiveDataSourceTopRated()
         seriesTopRatedPagedList = LivePagedListBuilder(homeDataSourceFactorySeriesTopRated, pagedListConfig)
@@ -79,10 +79,10 @@ class SeriesViewModel(
             .setPageSize(MifareUltralight.PAGE_SIZE).build()
 
 
-        val homePageKeyedDataSourceSeriesPopular = HomePageKeyedDataSourceSeriesPopular(
+        val homePageKeyedDataSourceSeriesPopular = PageKeyedDataSourceSeriesPopular(
             seriesUseCase = seriesUseCase, seriesRepository = seriesRepository, application = application
         )
-        val homeDataSourceFactorySeriesPopular = HomeDataSourceFactorySeriesPopular(homePageKeyedDataSourceSeriesPopular)
+        val homeDataSourceFactorySeriesPopular = DataSourceFactorySeriesPopular(homePageKeyedDataSourceSeriesPopular)
 
         watchMoviesLiveDataSourceSeriesPopular = homeDataSourceFactorySeriesPopular.getLiveDataSourcePopular()
         seriesPopularPagedList = LivePagedListBuilder(homeDataSourceFactorySeriesPopular, pagedListConfig)
