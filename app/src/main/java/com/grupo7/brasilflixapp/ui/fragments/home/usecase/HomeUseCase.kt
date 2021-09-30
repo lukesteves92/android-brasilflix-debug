@@ -42,6 +42,12 @@ class HomeUseCase(
     suspend fun savePopularDatabase(movies: List<films>) {
         homeRepository.savePopularDatabase(movies)
     }
+    suspend fun saveTopRatedDatabase(movies: List<films>) {
+        homeRepository.saveTopRatedDatabase(movies)
+    }
+    suspend fun saveUpComingDatabase(movies: List<films>) {
+        homeRepository.saveUpComingDatabase(movies)
+    }
 
     suspend fun saveAllMoviesDatabase(movies: List<films>) {
         homeRepository.saveAllMoviesDatabase(movies)

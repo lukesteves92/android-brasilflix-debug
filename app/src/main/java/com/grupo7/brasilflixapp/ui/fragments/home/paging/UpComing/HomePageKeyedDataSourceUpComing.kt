@@ -3,6 +3,10 @@ package com.grupo7.brasilflixapp.ui.fragments.home.paging.UpComing
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
 import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.data.database.movies.popular.database.PopularDatabase
+import com.grupo7.brasilflixapp.data.database.movies.popular.entity.tofilmsDb
+import com.grupo7.brasilflixapp.data.database.movies.upcoming.database.UpComingDatabase
+import com.grupo7.brasilflixapp.data.database.movies.upcoming.entity.tofilmsDb
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository
@@ -25,6 +29,7 @@ class HomePageKeyedDataSourceUpComing (
         CoroutineScope(Dispatchers.IO).launch {
             val movies: List<films> = getUpComingMovies(Constants.Home.FIRST_PAGE)
             homeUseCase.saveAllMoviesDatabase(movies)
+            homeUseCase.saveUpComingDatabase(movies)
             callback.onResult(movies, null, Constants.Home.FIRST_PAGE + 1)
         }
     }
@@ -41,6 +46,7 @@ class HomePageKeyedDataSourceUpComing (
         CoroutineScope(Dispatchers.IO).launch {
             val films: List<films> = getUpComingMovies(page)
             homeUseCase.saveAllMoviesDatabase(films)
+            homeUseCase.saveUpComingDatabase(films)
             callback.onResult(films, nextPage)
         }
 
@@ -54,7 +60,14 @@ class HomePageKeyedDataSourceUpComing (
                 return homeUseCase.setupUpComingList(list)
             }
             is ResponseApi.Error -> {
-                listOf()
+                var upcomingDB =  UpComingDatabase
+                    .getDatabase(application)
+                    .upcomingDao()
+                    .getAllUpComing()
+
+                return upcomingDB.map {
+                    it.tofilmsDb()
+                }
             }
         }
     }

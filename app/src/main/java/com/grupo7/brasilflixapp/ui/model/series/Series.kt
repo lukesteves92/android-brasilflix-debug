@@ -2,7 +2,7 @@ package com.grupo7.brasilflixapp.ui.model.series
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
-import com.grupo7.brasilflixapp.data.database.allseries.entity.allseries
+import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 
 class Series (
     @SerializedName("poster_path")

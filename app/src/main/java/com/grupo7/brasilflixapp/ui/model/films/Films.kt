@@ -2,8 +2,10 @@ package com.grupo7.brasilflixapp.ui.model.films
 
 import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
-import com.grupo7.brasilflixapp.data.database.allmovies.entity.allmovies
-import com.grupo7.brasilflixapp.data.database.popular.entity.Popular
+import com.grupo7.brasilflixapp.data.database.movies.allmovies.entity.allmovies
+import com.grupo7.brasilflixapp.data.database.movies.popular.entity.Popular
+import com.grupo7.brasilflixapp.data.database.movies.toprated.entity.TopRated
+import com.grupo7.brasilflixapp.data.database.movies.upcoming.entity.UpComing
 
 data class films(
     @SerializedName("poster_path")
@@ -39,6 +41,30 @@ data class films(
 
 fun films.toPopularDb(): Popular {
     return Popular(
+        id = this.id,
+        backdrop_path = this.backdrop_path,
+        overview = this.overview,
+        poster_path = this.poster_path,
+        release_date = this.release_date,
+        title = this.title,
+        vote_average = this.vote_average
+    )
+}
+
+fun films.toUpComingDb(): UpComing {
+    return UpComing(
+        id = this.id,
+        backdrop_path = this.backdrop_path,
+        overview = this.overview,
+        poster_path = this.poster_path,
+        release_date = this.release_date,
+        title = this.title,
+        vote_average = this.vote_average
+    )
+}
+
+fun films.toTopRatedDb(): TopRated {
+    return TopRated(
         id = this.id,
         backdrop_path = this.backdrop_path,
         overview = this.overview,

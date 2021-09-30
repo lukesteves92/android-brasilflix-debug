@@ -3,6 +3,10 @@ package com.grupo7.brasilflixapp.ui.fragments.home.paging.TopRated
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
 import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.data.database.movies.popular.database.PopularDatabase
+import com.grupo7.brasilflixapp.data.database.movies.popular.entity.tofilmsDb
+import com.grupo7.brasilflixapp.data.database.movies.toprated.database.TopRatedDatabase
+import com.grupo7.brasilflixapp.data.database.movies.toprated.entity.tofilmsDb
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository
@@ -25,6 +29,7 @@ class HomePageKeyedDataSourceTopRated(
         CoroutineScope(Dispatchers.IO).launch {
             val movies: List<films> = getTopRatedMovies(FIRST_PAGE)
             homeUseCase.saveAllMoviesDatabase(movies)
+            homeUseCase.saveTopRatedDatabase(movies)
             callback.onResult(movies, null, FIRST_PAGE + 1)
         }
     }
@@ -41,6 +46,7 @@ class HomePageKeyedDataSourceTopRated(
         CoroutineScope(Dispatchers.IO).launch {
             val films: List<films> = getTopRatedMovies(page)
             homeUseCase.saveAllMoviesDatabase(films)
+            homeUseCase.saveTopRatedDatabase(films)
             callback.onResult(films, nextPage)
         }
 
@@ -54,7 +60,14 @@ class HomePageKeyedDataSourceTopRated(
                return homeUseCase.setupTopRatedList(list)
             }
             is ResponseApi.Error -> {
-                listOf()
+                var topratedDB =  TopRatedDatabase
+                    .getDatabase(application)
+                    .topratedDao()
+                    .getAllTopRated()
+
+                return topratedDB.map {
+                    it.tofilmsDb()
+                }
             }
         }
     }

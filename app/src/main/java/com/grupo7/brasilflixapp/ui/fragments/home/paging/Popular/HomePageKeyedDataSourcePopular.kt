@@ -3,8 +3,8 @@ package com.grupo7.brasilflixapp.ui.fragments.home.paging.Popular
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
 import com.grupo7.brasilflixapp.data.api.util.ResponseApi
-import com.grupo7.brasilflixapp.data.database.popular.database.PopularDatabase
-import com.grupo7.brasilflixapp.data.database.popular.entity.tofilmsDb
+import com.grupo7.brasilflixapp.data.database.movies.popular.database.PopularDatabase
+import com.grupo7.brasilflixapp.data.database.movies.popular.entity.tofilmsDb
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository

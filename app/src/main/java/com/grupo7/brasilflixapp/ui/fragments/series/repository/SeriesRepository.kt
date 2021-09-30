@@ -4,8 +4,8 @@ import android.app.Application
 import com.grupo7.brasilflixapp.data.api.util.ResponseApi
 import com.grupo7.brasilflixapp.data.api.main.RetrofitInstance
 import com.grupo7.brasilflixapp.base.BaseRepository
-import com.grupo7.brasilflixapp.data.database.allseries.database.AllSeriesDatabase
-import com.grupo7.brasilflixapp.data.database.allseries.entity.allseries
+import com.grupo7.brasilflixapp.data.database.series.allseries.database.AllSeriesDatabase
+import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 import com.grupo7.brasilflixapp.ui.model.series.Series
 import com.grupo7.brasilflixapp.ui.model.series.toAllSeriesDb
 

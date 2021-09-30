@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.grupo7.brasilflixapp.base.BaseViewModel
-import com.grupo7.brasilflixapp.data.database.allseries.entity.allseries
+import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase.DetailSearchUseCase
