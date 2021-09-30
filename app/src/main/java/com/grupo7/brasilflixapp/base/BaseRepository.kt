@@ -1,8 +1,8 @@
 package com.grupo7.brasilflixapp.base
 
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.api.util.ResponseApi
-import com.grupo7.brasilflixapp.api.util.ErrorUtils
+import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.data.api.util.ErrorUtils
 import retrofit2.Response
 
 open class BaseRepository {

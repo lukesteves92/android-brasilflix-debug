@@ -8,7 +8,7 @@ import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
 import com.grupo7.brasilflixapp.base.BaseViewModel
 import com.grupo7.brasilflixapp.ui.fragments.home.usecase.HomeUseCase
-import com.grupo7.brasilflixapp.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.fragments.home.paging.Popular.HomeDataSourceFactoryPopular
 import com.grupo7.brasilflixapp.ui.fragments.home.paging.Popular.HomePageKeyedDataSourcePopular
 import com.grupo7.brasilflixapp.ui.fragments.home.paging.TopRated.HomeDataSourceFactoryTopRated

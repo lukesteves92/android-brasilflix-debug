@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.databinding.FilmsBinding
 import com.grupo7.brasilflixapp.databinding.SearchBinding
-import com.grupo7.brasilflixapp.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.films
 
 class searchAdapter (
     private val filmsList: List<films>,
+    private val onClickListener: (films: films) -> Unit
 ) : RecyclerView.Adapter<searchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -19,7 +19,7 @@ class searchAdapter (
         return ViewHolder(binding)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(filmsList[position])
+        holder.bind(filmsList[position], onClickListener)
     }
     override fun getItemCount() = filmsList.size
 
@@ -29,6 +29,7 @@ class searchAdapter (
 
         fun bind(
             films: films,
+            onClickListener: (films: films) -> Unit,
         ) = with(binding) {
             films.let {
                 Glide.with(itemView)
@@ -38,6 +39,9 @@ class searchAdapter (
                 filmeName.text = films.title
                 dataLancamento.text = (films.release_date)
                 voteModelText.text = films.vote_average.toString()
+                searchContainer.setOnClickListener{
+                    onClickListener(films)
+                }
             }
         }
     }

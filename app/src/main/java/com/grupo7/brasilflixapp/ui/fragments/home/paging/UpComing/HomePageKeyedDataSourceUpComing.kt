@@ -2,9 +2,9 @@ package com.grupo7.brasilflixapp.ui.fragments.home.paging.UpComing
 
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
-import com.grupo7.brasilflixapp.api.util.ResponseApi
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.model.films.filmsResults
+import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.ui.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository
 import com.grupo7.brasilflixapp.ui.fragments.home.usecase.HomeUseCase
 import com.grupo7.brasilflixapp.util.constants.Constants

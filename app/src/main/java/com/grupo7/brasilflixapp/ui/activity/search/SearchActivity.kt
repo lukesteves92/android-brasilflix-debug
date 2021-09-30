@@ -17,14 +17,8 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding?.topAppBar?.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.backbutton -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    true
-                }
-                else -> false
-            }
+        binding?.backSearch?.setOnClickListener {
+            this?.onBackPressed()
         }
 
     }

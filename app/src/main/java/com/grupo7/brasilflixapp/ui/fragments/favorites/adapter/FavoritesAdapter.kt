@@ -5,9 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.databinding.FilmsBinding
-import com.grupo7.brasilflixapp.database.favorites.model.Favorites
-import com.grupo7.brasilflixapp.database.popular.model.Popular
+import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.databinding.FavoritesBinding
 
 class FavoritesAdapter (

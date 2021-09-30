@@ -2,10 +2,9 @@ package com.grupo7.brasilflixapp.ui.fragments.favorites.repository
 
 import android.app.Application
 import com.grupo7.brasilflixapp.base.BaseRepository
-import com.grupo7.brasilflixapp.database.allmovies.database.AllMoviesDatabase
-import com.grupo7.brasilflixapp.database.favorites.database.FavoritesDatabase
-import com.grupo7.brasilflixapp.database.favorites.model.Favorites
-import com.grupo7.brasilflixapp.database.favorites.model.FavoritesSeries
+import com.grupo7.brasilflixapp.data.database.favorites.database.FavoritesDatabase
+import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
+import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 
 class FavoritesRepository (
     private val application: Application

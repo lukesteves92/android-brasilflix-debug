@@ -3,9 +3,7 @@ package com.grupo7.brasilflixapp.ui.fragments.series.paging.series
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.model.series.Series
-import com.grupo7.brasilflixapp.ui.fragments.home.paging.Popular.HomePageKeyedDataSourcePopular
+import com.grupo7.brasilflixapp.ui.model.series.Series
 
 class HomeDataSourceFactorySeries(
     private val tmdbDataSourceSeries: HomePageKeyedDataSourceSeries

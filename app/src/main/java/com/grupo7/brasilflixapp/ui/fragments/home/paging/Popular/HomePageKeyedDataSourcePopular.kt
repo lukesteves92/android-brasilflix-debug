@@ -2,19 +2,16 @@ package com.grupo7.brasilflixapp.ui.fragments.home.paging.Popular
 
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
-import com.grupo7.brasilflixapp.api.util.ResponseApi
-import com.grupo7.brasilflixapp.database.popular.database.PopularDatabase
-import com.grupo7.brasilflixapp.database.popular.model.Popular
-import com.grupo7.brasilflixapp.database.popular.model.tofilmsDb
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.model.films.filmsResults
-import com.grupo7.brasilflixapp.model.films.toPopularDb
+import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.data.database.popular.database.PopularDatabase
+import com.grupo7.brasilflixapp.data.database.popular.entity.tofilmsDb
+import com.grupo7.brasilflixapp.ui.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository
 import com.grupo7.brasilflixapp.ui.fragments.home.usecase.HomeUseCase
 import com.grupo7.brasilflixapp.util.constants.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class HomePageKeyedDataSourcePopular(

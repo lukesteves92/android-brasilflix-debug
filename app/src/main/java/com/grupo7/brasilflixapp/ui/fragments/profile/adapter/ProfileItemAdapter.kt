@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo7.brasilflixapp.databinding.ProfileClickableItemBinding
 import com.grupo7.brasilflixapp.databinding.ProfileNonClickableItemBinding
-import com.grupo7.brasilflixapp.model.profile.ItemProfile
+import com.grupo7.brasilflixapp.ui.model.profile.ItemProfile
 import com.grupo7.brasilflixapp.util.enumarators.ProfileItemActionEnum
 import com.grupo7.brasilflixapp.util.interfaces.IProfileItemClick
 

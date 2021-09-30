@@ -7,22 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Update
-import com.google.android.material.snackbar.Snackbar
-import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.database.favorites.database.FavoritesDatabase
 import com.grupo7.brasilflixapp.databinding.FragmentFavoritesBinding
-import com.grupo7.brasilflixapp.database.favorites.model.Favorites
-import com.grupo7.brasilflixapp.database.popular.database.PopularDatabase
-import com.grupo7.brasilflixapp.database.popular.model.Popular
 import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.FavoritesAdapter
 import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.FavoritesSeriesAdapter
 import com.grupo7.brasilflixapp.ui.fragments.favorites.viewmodel.FavoritesViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class FavoritesFragment : Fragment() {

@@ -2,15 +2,12 @@ package com.grupo7.brasilflixapp.ui.fragments.series.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.FilmsBinding
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.model.series.Series
-import com.grupo7.brasilflixapp.ui.fragments.home.adapter.filmsAdapter
+import com.grupo7.brasilflixapp.ui.model.series.Series
 
 
 class seriesAdapter (

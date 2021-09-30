@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.ui.fragments.series.adapter.seriesAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentSeriesBinding
-import com.grupo7.brasilflixapp.model.series.Series
-import com.grupo7.brasilflixapp.ui.fragments.home.adapter.filmsAdapter
 import com.grupo7.brasilflixapp.ui.fragments.series.adapter.popular.SeriesPopularAdapter
 import com.grupo7.brasilflixapp.ui.fragments.series.adapter.toprated.SeriesTopRatedAdapter
 import com.grupo7.brasilflixapp.ui.fragments.series.viewmodel.SeriesViewModel

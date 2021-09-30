@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.FragmentHomeImageBinding
-import com.grupo7.brasilflixapp.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.films
 
 const val PARAM_NUMBER2 = "param_number"
 

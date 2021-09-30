@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.FilmsBinding
-import com.grupo7.brasilflixapp.model.series.Series
+import com.grupo7.brasilflixapp.ui.model.series.Series
 
 class SeriesTopRatedAdapter(
     private val onClickListener: (series: Series) -> Unit

@@ -3,8 +3,7 @@ package com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.grupo7.brasilflixapp.model.series.Series
-import com.grupo7.brasilflixapp.ui.fragments.series.paging.series.HomePageKeyedDataSourceSeries
+import com.grupo7.brasilflixapp.ui.model.series.Series
 
 class HomeDataSourceFactorySeriesTopRated (
     private val tmdbDataSourceSeriesTopRated: HomePageKeyedDataSourceSeriesTopRated

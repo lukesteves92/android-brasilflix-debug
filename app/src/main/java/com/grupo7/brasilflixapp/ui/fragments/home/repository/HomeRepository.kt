@@ -1,16 +1,16 @@
 package com.grupo7.brasilflixapp.ui.fragments.home.repository
 
 import android.app.Application
-import com.grupo7.brasilflixapp.api.util.ResponseApi
-import com.grupo7.brasilflixapp.api.main.RetrofitInstance
+import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.data.api.main.RetrofitInstance
 import com.grupo7.brasilflixapp.base.BaseRepository
-import com.grupo7.brasilflixapp.database.allmovies.database.AllMoviesDatabase
-import com.grupo7.brasilflixapp.database.allmovies.model.allmovies
-import com.grupo7.brasilflixapp.database.popular.database.PopularDatabase
-import com.grupo7.brasilflixapp.database.popular.model.Popular
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.model.films.toAllMoviesDb
-import com.grupo7.brasilflixapp.model.films.toPopularDb
+import com.grupo7.brasilflixapp.data.database.allmovies.database.AllMoviesDatabase
+import com.grupo7.brasilflixapp.data.database.allmovies.entity.allmovies
+import com.grupo7.brasilflixapp.data.database.popular.database.PopularDatabase
+import com.grupo7.brasilflixapp.data.database.popular.entity.Popular
+import com.grupo7.brasilflixapp.ui.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.toAllMoviesDb
+import com.grupo7.brasilflixapp.ui.model.films.toPopularDb
 
 class HomeRepository(
     val application: Application

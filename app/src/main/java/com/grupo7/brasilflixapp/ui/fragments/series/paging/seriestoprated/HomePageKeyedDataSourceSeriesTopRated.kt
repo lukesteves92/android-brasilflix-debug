@@ -2,9 +2,9 @@ package com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated
 
 import android.app.Application
 import androidx.paging.PageKeyedDataSource
-import com.grupo7.brasilflixapp.api.util.ResponseApi
-import com.grupo7.brasilflixapp.model.series.Series
-import com.grupo7.brasilflixapp.model.series.SeriesResults
+import com.grupo7.brasilflixapp.data.api.util.ResponseApi
+import com.grupo7.brasilflixapp.ui.model.series.Series
+import com.grupo7.brasilflixapp.ui.model.series.SeriesResults
 import com.grupo7.brasilflixapp.ui.fragments.series.repository.SeriesRepository
 import com.grupo7.brasilflixapp.ui.fragments.series.usecase.SeriesUseCase
 import com.grupo7.brasilflixapp.util.constants.Constants

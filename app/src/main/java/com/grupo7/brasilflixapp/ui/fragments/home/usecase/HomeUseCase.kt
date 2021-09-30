@@ -1,13 +1,11 @@
 package com.grupo7.brasilflixapp.ui.fragments.home.usecase
 
 import android.app.Application
-import com.grupo7.brasilflixapp.api.util.ResponseApi
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
-import com.grupo7.brasilflixapp.model.films.films
+import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository
-import com.grupo7.brasilflixapp.model.films.filmsResults
-import com.grupo7.brasilflixapp.util.constants.Constants.Home.FIRST_PAGE
+import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 
 class HomeUseCase(
     private val application: Application

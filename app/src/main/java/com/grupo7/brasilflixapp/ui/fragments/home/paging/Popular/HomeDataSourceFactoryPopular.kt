@@ -3,8 +3,7 @@ package com.grupo7.brasilflixapp.ui.fragments.home.paging.Popular
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.ui.fragments.home.paging.TopRated.HomePageKeyedDataSourceTopRated
+import com.grupo7.brasilflixapp.ui.model.films.films
 
 class HomeDataSourceFactoryPopular (
     private val tmdbDataSourcePopular: HomePageKeyedDataSourcePopular

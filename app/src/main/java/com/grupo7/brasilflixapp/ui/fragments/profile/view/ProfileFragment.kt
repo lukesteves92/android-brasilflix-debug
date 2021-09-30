@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grupo7.brasilflixapp.ui.fragments.profile.adapter.ProfileItemAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentProfileBinding
-import com.grupo7.brasilflixapp.model.profile.ItemProfile
+import com.grupo7.brasilflixapp.ui.model.profile.ItemProfile
 import com.grupo7.brasilflixapp.util.enumarators.ProfileItemActionEnum
 import com.grupo7.brasilflixapp.util.interfaces.IProfileItemClick
 

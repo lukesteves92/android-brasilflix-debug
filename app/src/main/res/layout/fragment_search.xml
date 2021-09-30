@@ -28,13 +28,42 @@
         app:queryHint="Pesquisar filmes / séries"
         />
 
+        <CheckBox
+            android:id="@+id/boxMovie"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:checked="false"
+            android:layout_marginStart="10dp"
+            android:text="@string/boxSearchMovie"
+            android:fontFamily="@font/rubik_bold"
+            android:textSize="15sp"
+            android:buttonTint="@color/boxSearch"
+            app:layout_constraintStart_toStartOf="@+id/searchField"
+            app:layout_constraintEnd_toStartOf="@+id/boxSeries"
+            app:layout_constraintTop_toBottomOf="@id/searchField"
+            app:layout_constraintBottom_toTopOf="@+id/searchRecyclerView"/>
+
+        <CheckBox
+            android:id="@+id/boxSeries"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:checked="false"
+            android:layout_marginEnd="10dp"
+            android:text="@string/boxSearchSeries"
+            android:fontFamily="@font/rubik_bold"
+            android:textSize="15sp"
+            android:buttonTint="@color/boxSearch"
+            app:layout_constraintEnd_toEndOf="@+id/searchField"
+            app:layout_constraintStart_toEndOf="@+id/boxMovie"
+            app:layout_constraintTop_toBottomOf="@id/searchField"
+            app:layout_constraintBottom_toTopOf="@+id/searchRecyclerView"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@id/searchField"
+        app:layout_constraintTop_toBottomOf="@id/boxMovie"
         tools:itemCount="10"
         tools:listitem="@layout/films" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,11 @@
 package com.grupo7.brasilflixapp.ui.fragments.series.usecase
 
 import android.app.Application
-import com.grupo7.brasilflixapp.api.util.ResponseApi
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
-import com.grupo7.brasilflixapp.model.films.films
-import com.grupo7.brasilflixapp.model.films.filmsResults
-import com.grupo7.brasilflixapp.model.series.Series
+import com.grupo7.brasilflixapp.ui.model.series.Series
 import com.grupo7.brasilflixapp.ui.fragments.series.repository.SeriesRepository
-import com.grupo7.brasilflixapp.model.series.SeriesResults
+import com.grupo7.brasilflixapp.ui.model.series.SeriesResults
 
 class SeriesUseCase(
     private val application: Application

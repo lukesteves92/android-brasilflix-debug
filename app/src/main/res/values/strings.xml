@@ -87,5 +87,8 @@
     <string name="searchButton">Pesquisar</string>
     <string name="emptyfields">Por favor, preencha os campos corretamente</string>
     <string name="favoritesBottom">Favoritos</string>
+    <string name="boxSearchMovie">Filmes</string>
+    <string name="boxSearchSeries">Séries</string>
+    <string name="searchBar">Escolha Séries/Filmes</string>
 
 </resources>
