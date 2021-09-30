@@ -1,86 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.favorites.view.FavoritesFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageFavoritesMovies"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/favoritosfilmes"
-        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBottom_toTopOf="@+id/favoritesRecyclerView" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoritesRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="360dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageFavoritesMovies"
-        tools:itemCount="10"
-        tools:listitem="@layout/films" />
+            <ImageView
+                android:id="@+id/imageFavoritesMovies"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/favoritosfilmes"
+                app:layout_constraintBottom_toTopOf="@+id/favoritesRecyclerView"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favoritesRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="360dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="70dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageFavoritesMovies"
+                tools:itemCount="10"
+                tools:listitem="@layout/films" />
+
+            <ImageView
+                android:id="@+id/imageSeries"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/series"
+                app:layout_constraintBottom_toTopOf="@+id/favoritesRecyclerViewSeries"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/favoritesRecyclerView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favoritesRecyclerViewSeries"
+                android:layout_width="0dp"
+                android:layout_height="360dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="70dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageSeries"
+                tools:itemCount="10"
+                tools:listitem="@layout/films" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
             android:id="@+id/birdMovies"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/rubik_bold"
-            android:src="@drawable/undraw_happy_music"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageFavoritesMovies"
-            app:layout_constraintBottom_toTopOf="@id/imageSeries"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            android:visibility="gone">
 
-    <ImageView
-        android:id="@+id/imageSeries"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="380dp"
-        android:src="@drawable/series"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birdMovies"
-        app:layout_constraintBottom_toTopOf="@+id/favoritesRecyclerViewSeries"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/rubik_bold"
+                android:src="@drawable/undraw_happy_music"
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoritesRecyclerViewSeries"
-        android:layout_width="0dp"
-        android:layout_height="360dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageSeries"
-        tools:itemCount="10"
-        tools:listitem="@layout/films" />
+                />
+        </FrameLayout>
 
-        <ImageView
+        <FrameLayout
             android:id="@+id/birdSeries"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/rubik_bold"
-            android:visibility="gone"
-            android:src="@drawable/undraw_happy_music"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageSeries"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="540dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/rubik_bold"
+                android:src="@drawable/undraw_happy_music"
+
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/textSeries"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="447dp"
+            android:layout_marginEnd="205dp"
+
+            >
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/rubik_bold"
+                android:src="@drawable/series"
+
+                />
+        </FrameLayout>
+    </RelativeLayout>
 </ScrollView>

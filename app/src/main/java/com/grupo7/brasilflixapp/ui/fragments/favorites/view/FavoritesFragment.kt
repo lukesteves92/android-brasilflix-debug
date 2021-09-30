@@ -33,6 +33,7 @@ class FavoritesFragment : Fragment() {
         return binding?.root
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,14 +51,18 @@ class FavoritesFragment : Fragment() {
         }
 
     }
+
     private fun setupObservablesMovies() {
         viewModel.onSuccessFavoritesMoviesFromDb.observe(viewLifecycleOwner, {
             it?.let {
                 if (it.isEmpty()) {
-                    binding?.favoritesRecyclerView?.isVisible = false
-                    binding?.birdMovies?.isVisible = true
-                }
-                else {
+                    binding?.apply {
+                        favoritesRecyclerView.isVisible = false
+                        birdMovies.isVisible = true
+                        textSeries.isVisible = true
+                        imageSeries.isVisible = false
+                    }
+                } else {
                     val favoritesAdapter = FavoritesAdapter(it) {
                         viewModel.removeFavoritesMovieDb(it)
                         viewModel.getFavoritesMovieFromDb()
@@ -81,7 +86,7 @@ class FavoritesFragment : Fragment() {
     private fun setupObservablesSeries() {
         viewModel.onSuccessFavoritesSeriesFromDb.observe(viewLifecycleOwner, {
             it?.let {
-                if(it.isEmpty()){
+                if (it.isEmpty()) {
                     binding?.favoritesRecyclerViewSeries?.isVisible = false
                     binding?.birdSeries?.isVisible = true
                 } else {
@@ -106,11 +111,10 @@ class FavoritesFragment : Fragment() {
     }
 
 
-        override fun onDestroyView() {
-            super.onDestroyView()
-            binding = null
-        }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
 
 }
