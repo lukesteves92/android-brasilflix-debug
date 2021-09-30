@@ -40,10 +40,10 @@ class DetailSearchViewModel(
     val onSuccessSerieDbByIdFromDb: LiveData<allseries>
         get() = _onSuccessSerieDbByIdFromDb
 
-    fun getMovieById(movieId: Int) {
+    fun getMovieByIdSearch(movieId: Int) {
         viewModelScope.launch {
             callApi(
-                suspend { detailUseCase.getMovieById(movieId) },
+                suspend { detailUseCase.getMovieByIdSearch(movieId) },
                 onSuccess = {
                     _onSuccessMovieById.postValue(it as? films)
                 },
@@ -51,10 +51,10 @@ class DetailSearchViewModel(
             )
         }
     }
-    fun getSeriesById(serieId: Int) {
+    fun getSeriesByIdSearch(serieId: Int) {
         viewModelScope.launch {
             callApi(
-                suspend { detailUseCase.getSeriesById(serieId) },
+                suspend { detailUseCase.getSeriesByIdSearch(serieId) },
                 onSuccess = {
                     _onSuccessSeriesById.postValue(it as? Series)
                 }
@@ -62,10 +62,10 @@ class DetailSearchViewModel(
         }
     }
 
-    fun getReviewsMovies(movieId: Int) {
+    fun getReviewsMoviesSearch(movieId: Int) {
         viewModelScope.launch {
             callApi(
-                suspend { detailUseCase.getReviewsMovies(movieId) },
+                suspend { detailUseCase.getReviewsMoviesSearch(movieId) },
                 onSuccess = {
                     val result = it as? List<*>
                     _onSuccessReviewsMovies.postValue(
@@ -76,23 +76,23 @@ class DetailSearchViewModel(
         }
     }
 
-    fun getSerieByIdFromDb(serieId: Int) {
+    fun getSerieByIdFromDbSearch(serieId: Int) {
         viewModelScope.launch {
-            val serieFromDb = detailUseCase.getSerieByIdFromDb(serieId)
+            val serieFromDb = detailUseCase.getSerieByIdFromDbSearch(serieId)
             _onSuccessSerieDbByIdFromDb.postValue(serieFromDb)
         }
     }
 
-    fun saveFavoritesDb(favorites: Favorites) {
+    fun saveFavoritesDbSearch(favorites: Favorites) {
         viewModelScope.launch {
-            detailUseCase.saveFavoritesDb(favorites)
+            detailUseCase.saveFavoritesDbSearch(favorites)
 
         }
     }
 
-    fun saveFavoritesSeriesDb(favorites: FavoritesSeries) {
+    fun saveFavoritesSeriesDbSearch(favorites: FavoritesSeries) {
         viewModelScope.launch {
-            detailUseCase.saveFavoritesSeriesDb(favorites)
+            detailUseCase.saveFavoritesSeriesDbSearch(favorites)
         }
     }
 

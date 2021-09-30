@@ -9,6 +9,7 @@ import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase.DetailSearchUseCase
+import com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase.DetailUseCase
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
@@ -18,7 +19,7 @@ class DetailViewModel(
     application: Application
 ): BaseViewModel(application) {
 
-    private val detailUseCase = DetailSearchUseCase(getApplication<Application>())
+    private val detailUseCase = DetailUseCase(getApplication<Application>())
 
     private val _onSuccessMovieById: MutableLiveData<films> = MutableLiveData()
     val onSuccessMovieById: LiveData<films>

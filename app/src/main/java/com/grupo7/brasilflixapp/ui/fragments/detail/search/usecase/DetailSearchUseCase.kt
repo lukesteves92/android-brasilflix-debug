@@ -17,8 +17,8 @@ class DetailSearchUseCase(
 
     private val detailRepository = DetailSearchRepository(application)
 
-    suspend fun getMovieById(movieId: Int): ResponseApi {
-        return when(val responseApi = detailRepository.getMovieById(movieId)) {
+    suspend fun getMovieByIdSearch(movieId: Int): ResponseApi {
+        return when(val responseApi = detailRepository.getMovieByIdSearch(movieId)) {
             is ResponseApi.Success -> {
                 val films = responseApi.data as? films
                 films?.backdrop_path = films?.backdrop_path?.getFullImageUrl()
@@ -33,8 +33,8 @@ class DetailSearchUseCase(
         }
     }
 
-    suspend fun getSeriesById(serieId: Int): ResponseApi {
-        return when(val responseApi = detailRepository.getSeriesById(serieId)) {
+    suspend fun getSeriesByIdSearch(serieId: Int): ResponseApi {
+        return when(val responseApi = detailRepository.getSeriesByIdSearch(serieId)) {
             is ResponseApi.Success -> {
                 val Series = responseApi.data as? Series
                 Series?.backdrop_path = Series?.backdrop_path?.getFullImageUrl()
@@ -48,8 +48,8 @@ class DetailSearchUseCase(
         }
     }
 
-    suspend fun getReviewsMovies(movieId: Int): ResponseApi {
-        return when(val responseApi = detailRepository.getReviewsMovies(movieId)) {
+    suspend fun getReviewsMoviesSearch(movieId: Int): ResponseApi {
+        return when(val responseApi = detailRepository.getReviewsMoviesSearch(movieId)) {
             is ResponseApi.Success -> {
                 val data = responseApi.data as? ReviewResults
                 val result = data?.results?.map{
@@ -64,16 +64,16 @@ class DetailSearchUseCase(
         }
     }
 
-    suspend fun getMovieByIdFromDb(movieId: Int) =
-        detailRepository.getMovieByIdFromDb(movieId)
+    suspend fun getMovieByIdFromDbSearch(movieId: Int) =
+        detailRepository.getMovieByIdFromDbSearch(movieId)
 
-    suspend fun getSerieByIdFromDb(serieId: Int) =
-        detailRepository.getSerieByIdFromDb(serieId)
+    suspend fun getSerieByIdFromDbSearch(serieId: Int) =
+        detailRepository.getSerieByIdFromDbSearch(serieId)
 
-    suspend fun saveFavoritesDb(favorites: Favorites) =
-        detailRepository.saveFavoritesDb(favorites)
+    suspend fun saveFavoritesDbSearch(favorites: Favorites) =
+        detailRepository.saveFavoritesDbSearch(favorites)
 
-    suspend fun saveFavoritesSeriesDb(favorites: FavoritesSeries) =
-        detailRepository.saveFavoritesSeriesDb(favorites)
+    suspend fun saveFavoritesSeriesDbSearch(favorites: FavoritesSeries) =
+        detailRepository.saveFavoritesSeriesDbSearch(favorites)
 
 }

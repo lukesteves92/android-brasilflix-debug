@@ -6,6 +6,7 @@ import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
+import com.grupo7.brasilflixapp.ui.fragments.detail.main.repository.DetailRepository
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.repository.DetailSearchRepository
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
@@ -15,7 +16,7 @@ class DetailUseCase(
     private val application: Application
 ) {
 
-    private val detailRepository = DetailSearchRepository(application)
+    private val detailRepository = DetailRepository(application)
 
     suspend fun getMovieById(movieId: Int): ResponseApi {
         return when(val responseApi = detailRepository.getMovieById(movieId)) {

@@ -15,38 +15,38 @@ class DetailSearchRepository(
     private val application: Application
 ) : BaseRepository() {
 
-    suspend fun getMovieById(movieId: Int): ResponseApi {
+    suspend fun getMovieByIdSearch(movieId: Int): ResponseApi {
         return safeApiCall {
             RetrofitInstance.tmdbApi.getMovieById(movieId)
         }
     }
 
-    suspend fun getSeriesById(serieId: Int): ResponseApi {
+    suspend fun getSeriesByIdSearch(serieId: Int): ResponseApi {
         return safeApiCall {
             RetrofitInstance.tmdbApi.getSeriesById(serieId)
         }
     }
 
-    suspend fun getReviewsMovies(movieId: Int): ResponseApi {
+    suspend fun getReviewsMoviesSearch(movieId: Int): ResponseApi {
         return safeApiCall {
             RetrofitInstance.tmdbApi.getReviewsMovies(movieId, FIRST_PAGE)
         }
     }
 
-    suspend fun getMovieByIdFromDb(movieId: Int) =
+    suspend fun getMovieByIdFromDbSearch(movieId: Int) =
         AllMoviesDatabase.getDatabase(application)
             .allmoviesDao().loadAllMoviesById(movieId)
 
-    suspend fun getSerieByIdFromDb(serieId: Int) =
+    suspend fun getSerieByIdFromDbSearch(serieId: Int) =
         AllSeriesDatabase.getDatabase(application)
             .allseriesDao().loadAllSeriesById(serieId)
 
-    suspend fun saveFavoritesDb(favorites: Favorites) =
+    suspend fun saveFavoritesDbSearch(favorites: Favorites) =
         FavoritesDatabase.getDatabase(
             application
         ).favoritesDao().insertFavorites(favorites)
 
-    suspend fun saveFavoritesSeriesDb(favorites: FavoritesSeries) =
+    suspend fun saveFavoritesSeriesDbSearch(favorites: FavoritesSeries) =
         FavoritesDatabase.getDatabase(
             application
         ).favoritesSeriesDao().insertFavoritesSeries(favorites)

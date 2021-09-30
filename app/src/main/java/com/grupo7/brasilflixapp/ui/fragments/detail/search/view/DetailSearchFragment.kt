@@ -15,6 +15,7 @@ import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.FragmentDetailBinding
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
+import com.grupo7.brasilflixapp.databinding.FragmentDetailSearchBinding
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.adapter.DetailReviewSearchAdapter
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.viewmodel.DetailSearchViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
@@ -24,8 +25,8 @@ import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIE
 
 class DetailSearchFragment(
 ) : Fragment() {
-    private var binding: FragmentDetailBinding? = null
-    private lateinit var searchViewModel: DetailSearchViewModel
+    private var binding: FragmentDetailSearchBinding? = null
+    private lateinit var detailsearchViewModel: DetailSearchViewModel
     private val movieId: Int by lazy {
         arguments?.getInt(KEY_BUNDLE_MOVIE_ID) ?: -1
     }
@@ -48,7 +49,7 @@ class DetailSearchFragment(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentDetailSearchBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -56,15 +57,15 @@ class DetailSearchFragment(
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            searchViewModel = ViewModelProvider(it)[DetailSearchViewModel::class.java]
+            detailsearchViewModel = ViewModelProvider(it)[DetailSearchViewModel::class.java]
 
-            searchViewModel.command = MutableLiveData()
+            detailsearchViewModel.command = MutableLiveData()
 
-            searchViewModel.getReviewsMovies(movieId)
+            detailsearchViewModel.getReviewsMoviesSearch(movieId)
 
-            searchViewModel.getMovieById(movieId)
+            detailsearchViewModel.getMovieByIdSearch(movieId)
 
-            searchViewModel.getSerieByIdFromDb(serieId)
+            detailsearchViewModel.getSerieByIdFromDbSearch(serieId)
 
             setupReviewsMovies()
 
@@ -82,13 +83,13 @@ class DetailSearchFragment(
 
 
             if (serieFragment == 50) {
-                searchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
+                detailsearchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
 
                     val id = it.id
                     val poster = it.poster_path
                     val title = it.original_name
                     val favorite = FavoritesSeries(id, poster, title)
-                    searchViewModel.saveFavoritesSeriesDb(favorite)
+                    detailsearchViewModel.saveFavoritesSeriesDbSearch(favorite)
 
                     Snackbar.make(
                         this.requireView(),
@@ -98,14 +99,14 @@ class DetailSearchFragment(
                 })
 
             } else {
-                searchViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
+                detailsearchViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
 
 
                     val id = it.id
                     val poster = it.poster_path
                     val title = it.title
                     val favorite = Favorites(id, poster, title)
-                    searchViewModel.saveFavoritesDb(favorite)
+                    detailsearchViewModel.saveFavoritesDbSearch(favorite)
 
 
                     Snackbar.make(
@@ -122,7 +123,7 @@ class DetailSearchFragment(
 
     private fun setupDetailMovie() {
 
-        searchViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
+        detailsearchViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
             it?.let { movie ->
                 binding?.let { bindingNonNull ->
                     with(bindingNonNull) {
@@ -145,7 +146,7 @@ class DetailSearchFragment(
 
     private fun setupDetailSerie() {
 
-        searchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
+        detailsearchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
             it?.let { serie ->
                 binding?.let { bindingNonNull ->
                     with(bindingNonNull) {
@@ -167,7 +168,7 @@ class DetailSearchFragment(
     }
 
     private fun setupReviewsMovies() {
-        searchViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
+        detailsearchViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
             it?.let {
                 val ReviewsAdapter = DetailReviewSearchAdapter(it)
                 binding?.let {

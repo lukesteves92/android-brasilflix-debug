@@ -17,6 +17,7 @@ import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.adapter.DetailReviewSearchAdapter
 import com.grupo7.brasilflixapp.ui.fragments.detail.main.viewmodel.DetailSearchViewModel
+import com.grupo7.brasilflixapp.ui.fragments.detail.main.viewmodel.DetailViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_SERIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIES
@@ -25,7 +26,7 @@ import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIE
 class DetailFragment(
 ) : Fragment() {
     private var binding: FragmentDetailBinding? = null
-    private lateinit var searchViewModel: DetailSearchViewModel
+    private lateinit var detailViewModel: DetailViewModel
     private val movieId: Int by lazy {
         arguments?.getInt(KEY_BUNDLE_MOVIE_ID) ?: -1
     }
@@ -56,15 +57,15 @@ class DetailFragment(
         super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
-            searchViewModel = ViewModelProvider(it)[DetailSearchViewModel::class.java]
+            detailViewModel = ViewModelProvider(it)[DetailViewModel::class.java]
 
-            searchViewModel.command = MutableLiveData()
+            detailViewModel.command = MutableLiveData()
 
-            searchViewModel.getReviewsMovies(movieId)
+            detailViewModel.getReviewsMovies(movieId)
 
-            searchViewModel.getMovieById(movieId)
+            detailViewModel.getMovieById(movieId)
 
-            searchViewModel.getSerieByIdFromDb(serieId)
+            detailViewModel.getSerieByIdFromDb(serieId)
 
             setupReviewsMovies()
 
@@ -82,13 +83,13 @@ class DetailFragment(
 
 
             if (serieFragment == 50) {
-                searchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
+                detailViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
 
                     val id = it.id
                     val poster = it.poster_path
                     val title = it.original_name
                     val favorite = FavoritesSeries(id, poster, title)
-                    searchViewModel.saveFavoritesSeriesDb(favorite)
+                    detailViewModel.saveFavoritesSeriesDb(favorite)
 
                     Snackbar.make(
                         this.requireView(),
@@ -98,14 +99,14 @@ class DetailFragment(
                 })
 
             } else {
-                searchViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
+                detailViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
 
 
                     val id = it.id
                     val poster = it.poster_path
                     val title = it.title
                     val favorite = Favorites(id, poster, title)
-                    searchViewModel.saveFavoritesDb(favorite)
+                    detailViewModel.saveFavoritesDb(favorite)
 
 
                     Snackbar.make(
@@ -122,7 +123,7 @@ class DetailFragment(
 
     private fun setupDetailMovie() {
 
-        searchViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
+        detailViewModel.onSuccessMovieDbByIdFromDb.observe(viewLifecycleOwner, {
             it?.let { movie ->
                 binding?.let { bindingNonNull ->
                     with(bindingNonNull) {
@@ -145,7 +146,7 @@ class DetailFragment(
 
     private fun setupDetailSerie() {
 
-        searchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
+        detailViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
             it?.let { serie ->
                 binding?.let { bindingNonNull ->
                     with(bindingNonNull) {
@@ -167,7 +168,7 @@ class DetailFragment(
     }
 
     private fun setupReviewsMovies() {
-        searchViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
+        detailViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
             it?.let {
                 val ReviewsAdapter = DetailReviewSearchAdapter(it)
                 binding?.let {
