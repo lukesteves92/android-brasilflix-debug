@@ -11,6 +11,21 @@ Objetivo: Listagem de todos os filmes / séries que estão em cartaz e etc. Poss
 
 Linguagem: 📱 Kotlin
 
+Tecnologias utilizadas:
+<br> --> Kotlin
+<br> --> MVVM com Clean Architecture
+<br> --> Consumo de API (Coroutines + Retrofit)
+<br> --> Okhttp
+<br> --> Gson
+<br> --> Glide
+<br> --> LiveData
+<br> --> ViewModel
+<br> --> Jetpack Library
+<br> --> Paging 2
+<br> --> Room
+<br> --> Firebase Auth
+<br> --> Biometric Auth
+
 Dev: 
 <br>👨 Lucas Esteves A. Coelho
 
