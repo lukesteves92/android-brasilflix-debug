@@ -7,18 +7,11 @@
 
 Projeto BrasilFlix
 
-Curso: Desenvolvimento Android
-
-Escola: Digital House
+Objetivo: Listagem de todos os filmes / séries que estão em cartaz e etc. Possível adicionar nos favoritos e checar depois.
 
 Linguagem: 📱 Kotlin
 
+Dev: 
+<br>👨 Lucas Esteves A. Coelho
 
-Devs: 
-
-👨 Lucas Esteves A. Coelho
-
-👨 Tania Mara Alves Ferreira
-
-👨 Renan Cleber
 
