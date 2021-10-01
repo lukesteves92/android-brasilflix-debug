@@ -4,6 +4,7 @@
     package="com.grupo7.brasilflixapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <queries>
         <package android:name="com.google.android.apps.maps" />
@@ -38,11 +39,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrasilFlixapp">
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.detail.DetailActivity"
-            android:exported="true" />
-        <activity
             android:name="com.grupo7.brasilflixapp.ui.activity.changeEmail.ChangeEmailActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="com.grupo7.brasilflixapp.ui.activity.account.AccountActivity"
             android:exported="true" />
@@ -57,9 +55,6 @@
             android:exported="true" />
         <activity
             android:name="com.grupo7.brasilflixapp.ui.activity.preferences.PreferencesActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.tips.TipsActivity"
             android:exported="true" />
         <activity android:name="com.grupo7.brasilflixapp.ui.activity.home.HomeActivity" />
         <activity android:name="com.grupo7.brasilflixapp.ui.activity.splash.SplashActivity">

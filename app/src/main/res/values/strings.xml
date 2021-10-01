@@ -90,5 +90,11 @@
     <string name="boxSearchMovie">Filmes</string>
     <string name="boxSearchSeries">Séries</string>
     <string name="searchBar">Escolha Séries/Filmes</string>
+    <string name="infoSearchDetail">Oops! Sem Informações</string>
+    <string name="noCommentsReview">Nenhum comentário</string>
+    <string name="ratingReview">0.0</string>
+    <string name="accept" color="#003880">Home</string>
+    <string name="dialogplashText1">Sem conexão com a internet!</string>
+    <string name="limitedFunctionsSplash">Funcionalidades do app limitadas</string>
 
 </resources>
