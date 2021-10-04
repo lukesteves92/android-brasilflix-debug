@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.email.ConfirmationEmailFragment"
     android:paddingHorizontal="50dp"
-    >
+    android:background="@drawable/gradiente">
 
     <ImageView
         android:id="@+id/ivLogo"

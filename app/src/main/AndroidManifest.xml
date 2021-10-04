@@ -39,32 +39,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrasilFlixapp">
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.changeEmail.ChangeEmailActivity"
+            android:name=".ui.activity.profile.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.account.AccountActivity"
+            android:name=".ui.activity.account.AccountActivity"
             android:exported="true" />
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.search.SearchActivity"
+            android:name=".ui.activity.changeEmail.ChangeEmailActivity"
             android:exported="true" />
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.profile.ProfileActivity"
+            android:name=".ui.activity.search.SearchActivity"
             android:exported="true" />
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.myPreference.MyPreferenceActivity"
+            android:name=".ui.activity.myPreference.MyPreferenceActivity"
             android:exported="true" />
         <activity
-            android:name="com.grupo7.brasilflixapp.ui.activity.preferences.PreferencesActivity"
+            android:name=".ui.activity.preferences.PreferencesActivity"
             android:exported="true" />
-        <activity android:name="com.grupo7.brasilflixapp.ui.activity.home.HomeActivity" />
-        <activity android:name="com.grupo7.brasilflixapp.ui.activity.splash.SplashActivity">
+        <activity android:name=".ui.activity.home.HomeActivity" />
+        <activity android:name=".ui.activity.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.grupo7.brasilflixapp.ui.activity.main.MainActivity" />
+        <activity android:name=".ui.activity.main.MainActivity" />
     </application>
 
 </manifest>

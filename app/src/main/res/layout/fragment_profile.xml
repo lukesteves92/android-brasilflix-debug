@@ -3,17 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.profile.view.profileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.profile.view.profileFragment"
+    android:background="@drawable/gradiente">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProfileItemList"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cvProfileItemContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/profile_clickable_item"
-        tools:itemCount="5"
-        android:layout_marginTop="50dp"
-        />
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingHorizontal="@dimen/margin_default"
+        android:paddingVertical="@dimen/margin_default"
+        >
 
+        <TextView
+            android:id="@+id/profileConfig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profileDetails"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profileDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/profile_config"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileConfig" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_chevron_right_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/icone_seta_direita"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/profileDescription"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </FrameLayout>

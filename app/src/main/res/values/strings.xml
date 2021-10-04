@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BrasilFlix</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Fragmento Novo</string>
     <string name="login">Login</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="nome">Nome</string>
@@ -96,5 +96,12 @@
     <string name="accept" color="#003880">Home</string>
     <string name="dialogplashText1">Sem conexão com a internet!</string>
     <string name="limitedFunctionsSplash">Funcionalidades do app limitadas</string>
+    <string name="accountLogout">Sair</string>
+    <string name="account_description_logout">Deslogar da conta</string>
+    <string name="profileDetails">Configuração do Perfil</string>
+    <string name="profile_config">Alterar foto e etc..</string>
+    <string name="accountBar">Conta</string>
+    <string name="profileBar">Perfil</string>
+    <string name="logoutAccount">Perfil deslogado</string>
 
 </resources>

@@ -7,26 +7,18 @@
 
 Projeto BrasilFlix
 
-Objetivo: Listagem de todos os filmes / séries que estão em cartaz e etc. Possível adicionar nos favoritos e checar depois.
+Curso: Desenvolvimento Android
+
+Escola: Digital House
 
 Linguagem: 📱 Kotlin
 
-Tecnologias utilizadas:
-<br> --> Kotlin
-<br> --> MVVM com Clean Architecture
-<br> --> Consumo de API (Coroutines + Retrofit)
-<br> --> Okhttp
-<br> --> Gson
-<br> --> Glide
-<br> --> LiveData
-<br> --> ViewModel
-<br> --> Jetpack Library
-<br> --> Paging 2
-<br> --> Room
-<br> --> Firebase Auth
-<br> --> Biometric Auth
 
-Dev: 
-<br>👨 Lucas Esteves A. Coelho
+Devs: 
 
+👨 Lucas Esteves A. Coelho
+
+👨 Tania Mara Alves Ferreira
+
+👨 Renan Cleber
 

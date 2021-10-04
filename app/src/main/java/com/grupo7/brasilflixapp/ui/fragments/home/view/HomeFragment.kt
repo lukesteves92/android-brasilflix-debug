@@ -12,11 +12,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.ui.activity.account.AccountActivity
-import com.grupo7.brasilflixapp.ui.activity.profile.ProfileActivity
 import com.grupo7.brasilflixapp.ui.activity.search.SearchActivity
 import com.grupo7.brasilflixapp.ui.fragments.home.adapter.filmsAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentHomeBinding
+import com.grupo7.brasilflixapp.ui.activity.account.AccountActivity
+import com.grupo7.brasilflixapp.ui.activity.profile.ProfileActivity
 import com.grupo7.brasilflixapp.ui.fragments.home.adapter.upcomingAdapter
 import com.grupo7.brasilflixapp.ui.fragments.home.viewmodel.HomeViewModel
 import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.popularAdapter

@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.grupo7.brasilflixapp.ui.fragments.profile.adapter.ProfileItemAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentProfileBinding
 import com.grupo7.brasilflixapp.ui.model.profile.ItemProfile
 import com.grupo7.brasilflixapp.util.enumarators.ProfileItemActionEnum
 import com.grupo7.brasilflixapp.util.interfaces.IProfileItemClick
 
 
-class profileFragment : Fragment(), IProfileItemClick {
+class profileFragment : Fragment() {
 
     private var binding: FragmentProfileBinding? = null
 
@@ -30,22 +29,7 @@ class profileFragment : Fragment(), IProfileItemClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val item1 = ItemProfile("Conta", "Alterar senha, email, foto...", true, ProfileItemActionEnum.GO_TO_EDIT_ACCOUNT)
-        val item2 = ItemProfile("Economia de dados", "", false, ProfileItemActionEnum.NO_ACTION)
-        val item3 = ItemProfile("Modo offline", "", false, ProfileItemActionEnum.NO_ACTION)
-        val item4 = ItemProfile("Notificações", "Habilitar para receber notificações de push", false, ProfileItemActionEnum.NO_ACTION)
 
-        val list = listOf<ItemProfile>(item1, item2, item3, item4)
-        val itemAdapter = ProfileItemAdapter(list, this) {
-            Log.i("item", it.itemTitle)
-        }
-
-        binding?.let {
-            with(it) {
-                rvProfileItemList.layoutManager = LinearLayoutManager(context)
-                rvProfileItemList.adapter = itemAdapter
-            }
-        }
     }
 
     override fun onDestroyView() {
@@ -54,8 +38,6 @@ class profileFragment : Fragment(), IProfileItemClick {
     }
 
 
-    override fun itemProfileCLick(item: ItemProfile) {
-        TODO("Not yet implemented")
-    }
+
 
 }

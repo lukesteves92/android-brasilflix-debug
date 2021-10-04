@@ -31,4 +31,8 @@ class Constants {
         const val KET_BUNDLE_SERIES = "fragmentSeries"
     }
 
+    object Logout{
+        var LOGIN_TYPE = 0
+    }
+
 }

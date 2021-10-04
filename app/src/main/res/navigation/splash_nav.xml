@@ -8,5 +8,10 @@
         android:id="@+id/splashFragment"
         android:name="com.grupo7.brasilflixapp.ui.fragments.splash.view.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_inicial_nav"
+            app:destination="@id/inicial_nav" />
+    </fragment>
+    <include app:graph="@navigation/inicial_nav" />
 </navigation>

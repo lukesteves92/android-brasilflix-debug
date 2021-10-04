@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.detail.main.view.DetailSearchFragment">
+    tools:context=".ui.fragments.detail.main.view.DetailSearchFragment"
+    android:background="@drawable/gradiente">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
