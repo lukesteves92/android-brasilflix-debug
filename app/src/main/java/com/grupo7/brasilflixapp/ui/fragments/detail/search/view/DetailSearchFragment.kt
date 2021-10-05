@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,6 +19,7 @@ import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.databinding.FragmentDetailSearchBinding
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.adapter.DetailReviewSearchAdapter
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.viewmodel.DetailSearchViewModel
+import com.grupo7.brasilflixapp.util.constants.Constants
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_SERIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIES
@@ -74,12 +77,12 @@ class DetailSearchFragment(
 
         }
 
+
         binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
         }
 
         binding?.ivHeart?.setOnClickListener {
-
 
             if (serieFragment == 50) {
                 detailsearchViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
@@ -130,6 +133,7 @@ class DetailSearchFragment(
                             Glide.with(activityNonNull)
                                 .load(movie.backdrop_path)
                                 .placeholder(R.drawable.brflixlogo)
+                                .override(900, 500)
                                 .into(imageCardDetail)
                         }
                         tvTitle.text = movie.title
@@ -168,15 +172,20 @@ class DetailSearchFragment(
 
     private fun setupReviewsMovies() {
         detailsearchViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
-            it?.let {
-                val ReviewsAdapter = DetailReviewSearchAdapter(it)
-                binding?.let {
-                    with(it) {
-                        reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
-                        reviewsRecyclerView.adapter = ReviewsAdapter
-                        reviewsRecyclerView.adapter?.stateRestorationPolicy = RecyclerView
-                            .Adapter.StateRestorationPolicy
-                            .PREVENT_WHEN_EMPTY
+            if(it.isNullOrEmpty()){
+                binding?.nocomentsCard?.isVisible = true
+                binding?.reviewsRecyclerView?.isVisible = false
+            }else {
+                it?.let {
+                    val ReviewsAdapter = DetailReviewSearchAdapter(it)
+                    binding?.let {
+                        with(it) {
+                            reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
+                            reviewsRecyclerView.adapter = ReviewsAdapter
+                            reviewsRecyclerView.adapter?.stateRestorationPolicy = RecyclerView
+                                .Adapter.StateRestorationPolicy
+                                .PREVENT_WHEN_EMPTY
+                        }
                     }
                 }
             }

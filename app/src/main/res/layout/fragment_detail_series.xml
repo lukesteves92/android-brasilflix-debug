@@ -9,6 +9,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainViewDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -91,7 +92,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             tools:text="Ano de lançamento: 2019" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -181,7 +182,49 @@
             android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageReview"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/reviews" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nocomentsCard"
+            style="@style/WatchCardDefault"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/imageReview">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/reviewImage"
+                    android:layout_width="@dimen/watch_card_img_width"
+                    android:layout_height="@dimen/watch_card_img_height"
+                    android:contentDescription="@string/media_poster"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/brflixlogo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/reviewTitle"
+                    style="@style/WatchCardTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/noCommentsReview"
+                    app:layout_constraintEnd_toStartOf="@id/reviewImage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

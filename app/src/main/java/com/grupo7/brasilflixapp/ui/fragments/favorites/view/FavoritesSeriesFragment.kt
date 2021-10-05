@@ -51,7 +51,7 @@ class FavoritesSeriesFragment : Fragment() {
     private fun setupObservablesSeries() {
         viewModel.onSuccessFavoritesSeriesFromDb.observe(viewLifecycleOwner, {
             it?.let {
-                if (it.isEmpty()) {
+                if (it.isNullOrEmpty()) {
                     binding?.favoritesRecyclerViewSeries?.isVisible = false
                     binding?.birdSeries?.isVisible = true
                 } else {

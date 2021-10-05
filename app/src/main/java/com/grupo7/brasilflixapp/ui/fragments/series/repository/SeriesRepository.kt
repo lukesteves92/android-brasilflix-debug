@@ -21,7 +21,7 @@ class SeriesRepository(
 
     suspend fun getSeries(page: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getSeries(page)
+            RetrofitInstance.tmdbApiSeries.getSeries(page)
         }
     }
 
@@ -42,13 +42,13 @@ class SeriesRepository(
 
     suspend fun getSeriesTopRated(page: Int): ResponseApi{
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getSeriesTopRated(page)
+            RetrofitInstance.tmdbApiSeries.getSeriesTopRated(page)
         }
     }
 
     suspend fun getSeriesPopular(page: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getSeriesPopular(page)
+            RetrofitInstance.tmdbApiSeries.getSeriesPopular(page)
         }
     }
 

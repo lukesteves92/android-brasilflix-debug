@@ -11,13 +11,13 @@ class VideosRepository(
 
     suspend fun getMoviesVideos(movieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getMoviesVideos(movieId)
+            RetrofitInstance.tmdbApiMovies.getMoviesVideos(movieId)
         }
     }
 
     suspend fun getSeriesVideos(serieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getSeriesVideos(serieId)
+            RetrofitInstance.tmdbApiSeries.getSeriesVideos(serieId)
         }
     }
 

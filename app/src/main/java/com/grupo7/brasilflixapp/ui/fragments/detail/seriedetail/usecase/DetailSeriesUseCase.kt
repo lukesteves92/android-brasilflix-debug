@@ -30,6 +30,22 @@ class DetailSeriesUseCase (
         }
     }
 
+    suspend fun getReviewsSeries(seriesId: Int): ResponseApi {
+        return when (val responseApi = detailSeriesRepository.getReviewsSeries(seriesId)) {
+            is ResponseApi.Success -> {
+                val data = responseApi.data as? ReviewResults
+                val result = data?.results?.map {
+                    it.author_details.avatar_path = it.author_details.avatar_path.getFullImageUrl()
+                    it
+                }
+                return ResponseApi.Success(result)
+            }
+            is ResponseApi.Error -> {
+                responseApi
+            }
+        }
+    }
+
 
     suspend fun getSerieByIdFromDb(serieId: Int) =
         detailSeriesRepository.getSerieByIdFromDb(serieId)

@@ -22,9 +22,9 @@ class DetailSeriesViewModel (
     val onSuccessSeriesById: LiveData<Series>
         get() = _onSuccessSeriesById
 
-    private val _onSuccessReviewsMovies: MutableLiveData<List<AuthorResults>> = MutableLiveData()
-    val onSuccessReviewsMovies: LiveData<List<AuthorResults>>
-        get() = _onSuccessReviewsMovies
+    private val _onSuccessReviewsSeries: MutableLiveData<List<AuthorResults>> = MutableLiveData()
+    val onSuccessReviewsSeries: LiveData<List<AuthorResults>>
+        get() = _onSuccessReviewsSeries
 
     private val _onSuccessSerieDbByIdFromDb: MutableLiveData<allseries> = MutableLiveData()
     val onSuccessSerieDbByIdFromDb: LiveData<allseries>
@@ -41,7 +41,6 @@ class DetailSeriesViewModel (
         }
     }
 
-
     fun getSerieByIdFromDb(serieId: Int) {
         viewModelScope.launch {
             val serieFromDb = detailSeriesUseCase.getSerieByIdFromDb(serieId)
@@ -52,6 +51,20 @@ class DetailSeriesViewModel (
     fun saveFavoritesSeriesDb(favorites: FavoritesSeries) {
         viewModelScope.launch {
             detailSeriesUseCase.saveFavoritesSeriesDb(favorites)
+        }
+    }
+
+    fun getReviewsSeries(seriesId: Int) {
+        viewModelScope.launch {
+            callApi(
+                suspend { detailSeriesUseCase.getReviewsSeries(seriesId) },
+                onSuccess = {
+                    val result = it as? List<*>
+                    _onSuccessReviewsSeries.postValue(
+                        result?.filterIsInstance<AuthorResults>()
+                    )
+                }
+            )
         }
     }
 

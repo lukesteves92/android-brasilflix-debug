@@ -20,19 +20,19 @@ class HomeRepository(
 
     suspend fun getTopRatedMovies(page: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getFilmes(page)
+            RetrofitInstance.tmdbApiMovies.getFilmes(page)
         }
     }
 
     suspend fun getUpComingMovies(page: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getUpComing(page)
+            RetrofitInstance.tmdbApiMovies.getUpComing(page)
         }
     }
 
     suspend fun getPopularMovies(page: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getPopular(page)
+            RetrofitInstance.tmdbApiMovies.getPopular(page)
         }
     }
 

@@ -16,14 +16,17 @@
     <dimen name="smaller_text_size">12sp</dimen>
     <dimen name="tiny_text_size">11sp</dimen>
 
-    <dimen name="title_size">17sp</dimen>
+    <dimen name="title_size">13sp</dimen>
     <dimen name="subtitle_size">18sp</dimen>
     <dimen name="small_title_size">20sp</dimen>
     <dimen name="user_name_size">18sp</dimen>
 
     <dimen name="watch_card_elevation">3dp</dimen>
-    <dimen name="watch_card_img_width">100dp</dimen>
-    <dimen name="watch_card_img_height">160dp</dimen>
+    <dimen name="watch_card_img_width">90dp</dimen>
+    <dimen name="watch_card_img_height">90dp</dimen>
+
+    <dimen name="trailer_card_img_width">100dp</dimen>
+    <dimen name="trailer_card_img_height">100dp</dimen>
 
     <dimen name="button_height">40dp</dimen>
     <dimen name="button_icon_size">48dp</dimen>

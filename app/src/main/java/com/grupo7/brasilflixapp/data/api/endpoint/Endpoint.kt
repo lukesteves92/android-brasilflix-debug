@@ -52,6 +52,11 @@ interface Endpoint {
         @Path("movie_id") reviews: Int, @Query("page") page: Int
     ): Response<ReviewResults>
 
+    @GET("tv/{tv_id}/reviews")
+    suspend fun getReviewsSeries(
+        @Path("tv_id") reviews: Int, @Query("page") page: Int
+    ): Response<ReviewResults>
+
     @GET("movie/{movie_id}/videos")
     suspend fun getMoviesVideos(
         @Path("movie_id") movieId: Int): Response<VideosResults>

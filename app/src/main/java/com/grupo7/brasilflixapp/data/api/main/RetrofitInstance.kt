@@ -1,7 +1,9 @@
 package com.grupo7.brasilflixapp.data.api.main
 
 import com.google.firebase.BuildConfig
-import com.grupo7.brasilflixapp.data.api.endpoint.Endpoint
+import com.grupo7.brasilflixapp.data.api.endpoint.movies.EndpointMovies
+import com.grupo7.brasilflixapp.data.api.endpoint.search.EndpointSearch
+import com.grupo7.brasilflixapp.data.api.endpoint.series.EndpointSeries
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.API_CONST
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.API_KEY_TMDB
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.BASE_URL
@@ -14,12 +16,13 @@ import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_LANGUAG
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_LANGUAGE_VALUE
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_REGION_LABEL
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_REGION_VALUE
-import com.grupo7.brasilflixapp.util.constants.Constants.Api.queryParamLanguageValue
 
 class RetrofitInstance {
     companion object {
 
-        val tmdbApi: Endpoint = getRetrofitInstance().create(Endpoint::class.java)
+        val tmdbApiSeries: EndpointSeries = getRetrofitInstance().create(EndpointSeries::class.java)
+        val tmdbApiMovies: EndpointMovies = getRetrofitInstance().create(EndpointMovies::class.java)
+        val tmdbApiSearch: EndpointSearch = getRetrofitInstance().create(EndpointSearch::class.java)
 
         fun getRetrofitInstance(): Retrofit {
             return Retrofit.Builder()

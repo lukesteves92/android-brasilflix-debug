@@ -25,6 +25,7 @@ class FavoritesMoviesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +52,7 @@ class FavoritesMoviesFragment : Fragment() {
     private fun setupObservablesMovies() {
         viewModel.onSuccessFavoritesMoviesFromDb.observe(viewLifecycleOwner, {
             it?.let {
-                if (it.isEmpty()) {
+                if (it.isNullOrEmpty()) {
                     binding?.apply {
                         favoritesRecyclerViewMovies.isVisible = false
                         birdMovies.isVisible = true

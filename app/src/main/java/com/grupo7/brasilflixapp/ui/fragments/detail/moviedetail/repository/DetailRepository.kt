@@ -15,13 +15,13 @@ class DetailRepository(
 
     suspend fun getMovieById(movieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getMovieById(movieId)
+            RetrofitInstance.tmdbApiMovies.getMovieById(movieId)
         }
     }
 
     suspend fun getReviewsMovies(movieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getReviewsMovies(movieId, FIRST_PAGE)
+            RetrofitInstance.tmdbApiMovies.getReviewsMovies(movieId, FIRST_PAGE)
         }
     }
 

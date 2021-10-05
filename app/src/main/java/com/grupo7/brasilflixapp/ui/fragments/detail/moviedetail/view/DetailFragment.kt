@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,7 @@ import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.adapter.DetailRe
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.viewmodel.DetailViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants.Detail.KEY_BUNDLE_VIDEO_ID_MOVIE
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
+import com.grupo7.brasilflixapp.util.share.ShareImage
 
 
 class DetailFragment(
@@ -28,6 +30,7 @@ class DetailFragment(
     private val movieId: Int by lazy {
         arguments?.getInt(KEY_BUNDLE_MOVIE_ID) ?: -1
     }
+    private val mainView = binding?.mainViewDetail
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,16 +85,13 @@ class DetailFragment(
 
         binding?.ivHeart?.setOnClickListener {
 
-
             detailViewModel.onSuccessMovieById.observe(viewLifecycleOwner, {
-
 
                 val id = it.id
                 val poster = it.poster_path
                 val title = it.title
                 val favorite = Favorites(id, poster, title)
                 detailViewModel.saveFavoritesDb(favorite)
-
 
                 Snackbar.make(
                     this.requireView(),
@@ -114,6 +114,7 @@ class DetailFragment(
                             Glide.with(activityNonNull)
                                 .load(movie.backdrop_path)
                                 .placeholder(R.drawable.brflixlogo)
+                                .override(900, 500)
                                 .into(imageCardDetail)
                         }
                         tvTitle.text = movie.title
@@ -127,18 +128,22 @@ class DetailFragment(
 
     }
 
-
     private fun setupReviewsMovies() {
         detailViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
-            it?.let {
-                val ReviewsAdapter = DetailReviewAdapter(it)
-                binding?.let {
-                    with(it) {
-                        reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
-                        reviewsRecyclerView.adapter = ReviewsAdapter
-                        reviewsRecyclerView.adapter?.stateRestorationPolicy = RecyclerView
-                            .Adapter.StateRestorationPolicy
-                            .PREVENT_WHEN_EMPTY
+            if(it.isNullOrEmpty()){
+                binding?.nocomentsCard?.isVisible = true
+                binding?.reviewsRecyclerView?.isVisible = false
+            }else {
+                it?.let {
+                    val ReviewsAdapter = DetailReviewAdapter(it)
+                    binding?.let {
+                        with(it) {
+                            reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
+                            reviewsRecyclerView.adapter = ReviewsAdapter
+                            reviewsRecyclerView.adapter?.stateRestorationPolicy = RecyclerView
+                                .Adapter.StateRestorationPolicy
+                                .PREVENT_WHEN_EMPTY
+                        }
                     }
                 }
             }

@@ -36,9 +36,9 @@
 
     <style name="roundimageview">
 
-        <item name="cornerSizeBottomRight">45dp</item>
+        <item name="cornerSizeBottomRight">35dp</item>
         <item name="cornerFamilyTopRight">rounded</item>
-        <item name="cornerSizeBottomLeft">45dp</item>
+        <item name="cornerSizeBottomLeft">35dp</item>
         <item name="cornerFamilyTopLeft">rounded</item>
         <item name="color">@color/white</item>
     </style>

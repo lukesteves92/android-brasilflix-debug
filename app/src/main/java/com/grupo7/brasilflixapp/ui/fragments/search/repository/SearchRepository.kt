@@ -8,13 +8,13 @@ class SearchRepository: BaseRepository() {
 
     suspend fun searchMovies(search: String): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.searchMovies(search)
+            RetrofitInstance.tmdbApiSearch.searchMovies(search)
         }
     }
 
     suspend fun searchSeries(search: String): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.searchSeries(search)
+            RetrofitInstance.tmdbApiSearch.searchSeries(search)
         }
     }
 }

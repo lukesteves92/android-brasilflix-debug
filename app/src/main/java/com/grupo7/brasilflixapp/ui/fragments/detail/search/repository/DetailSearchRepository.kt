@@ -17,19 +17,19 @@ class DetailSearchRepository(
 
     suspend fun getMovieByIdSearch(movieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getMovieById(movieId)
+            RetrofitInstance.tmdbApiMovies.getMovieById(movieId)
         }
     }
 
     suspend fun getSeriesByIdSearch(serieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getSeriesById(serieId)
+            RetrofitInstance.tmdbApiSeries.getSeriesById(serieId)
         }
     }
 
     suspend fun getReviewsMoviesSearch(movieId: Int): ResponseApi {
         return safeApiCall {
-            RetrofitInstance.tmdbApi.getReviewsMovies(movieId, FIRST_PAGE)
+            RetrofitInstance.tmdbApiMovies.getReviewsMovies(movieId, FIRST_PAGE)
         }
     }
 
