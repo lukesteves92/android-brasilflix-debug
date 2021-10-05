@@ -8,9 +8,9 @@ import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.ReviewsBinding
 import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
 
-class DetailReviewSearchAdapter (
+class DetailReviewAdapter (
     private val reviewsList: List<AuthorResults>,
-) : RecyclerView.Adapter<DetailReviewSearchAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<DetailReviewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ReviewsBinding

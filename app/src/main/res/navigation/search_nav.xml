@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailSearchFragment"
-        android:name="com.grupo7.brasilflixapp.ui.fragments.detail.main.view.DetailSearchFragment"
+        android:name="com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.view.DetailSearchFragment"
         android:label="fragment_detail_search"
         tools:layout="@layout/fragment_detail_search" />
 </navigation>

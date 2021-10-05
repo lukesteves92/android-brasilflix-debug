@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,111 +7,36 @@
     tools:context=".ui.fragments.favorites.view.FavoritesFragment"
     android:background="@drawable/gradiente">
 
-    <RelativeLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="@color/dotsTips1"
+        app:tabTextColor="@color/dotsTips2">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favoritesMovies" />
 
-            <ImageView
-                android:id="@+id/imageFavoritesMovies"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/favoritosfilmes"
-                app:layout_constraintBottom_toTopOf="@+id/favoritesRecyclerView"
-                app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favoritesSeries"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favoritesRecyclerView"
-                android:layout_width="0dp"
-                android:layout_height="360dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="70dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageFavoritesMovies"
-                tools:itemCount="10"
-                tools:listitem="@layout/films" />
+    </com.google.android.material.tabs.TabLayout>
 
-            <ImageView
-                android:id="@+id/imageSeries"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/series"
-                app:layout_constraintBottom_toTopOf="@+id/favoritesRecyclerViewSeries"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/favoritesRecyclerView" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_pages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favoritesRecyclerViewSeries"
-                android:layout_width="0dp"
-                android:layout_height="360dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="70dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageSeries"
-                tools:itemCount="10"
-                tools:listitem="@layout/films" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <FrameLayout
-            android:id="@+id/birdMovies"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="80dp"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/rubik_bold"
-                android:src="@drawable/undraw_happy_music"
-
-                />
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/birdSeries"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="540dp"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/rubik_bold"
-                android:src="@drawable/undraw_happy_music"
-
-                />
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/textSeries"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="447dp"
-            android:layout_marginEnd="205dp"
-
-            >
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/rubik_bold"
-                android:src="@drawable/series"
-
-                />
-        </FrameLayout>
-    </RelativeLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

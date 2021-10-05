@@ -1,4 +1,4 @@
-package com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase
+package com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.usecase
 
 import android.app.Application
 import com.grupo7.brasilflixapp.data.api.util.ResponseApi
@@ -6,7 +6,7 @@ import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
-import com.grupo7.brasilflixapp.ui.fragments.detail.main.repository.DetailSearchRepository
+import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.repository.DetailSearchRepository
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.ui.model.series.Series

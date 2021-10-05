@@ -1,4 +1,4 @@
-package com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.adapter
+package com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +8,9 @@ import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.ReviewsBinding
 import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
 
-class DetailReviewSearchAdapter (
+class DetailReviewSeriesAdapter (
     private val reviewsList: List<AuthorResults>,
-) : RecyclerView.Adapter<DetailReviewSearchAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<DetailReviewSeriesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ReviewsBinding

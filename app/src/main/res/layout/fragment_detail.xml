@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.detail.view.DetailFragment"
+    tools:context=".ui.fragments.detail.moviedetail.view.DetailFragment"
     android:background="@drawable/gradiente">
 
 
@@ -102,7 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dateCardDetail" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

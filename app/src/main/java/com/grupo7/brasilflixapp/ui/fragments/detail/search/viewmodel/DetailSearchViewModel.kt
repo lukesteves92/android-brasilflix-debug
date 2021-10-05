@@ -1,4 +1,4 @@
-package com.grupo7.brasilflixapp.ui.fragments.detail.main.viewmodel
+package com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -8,7 +8,7 @@ import com.grupo7.brasilflixapp.base.BaseViewModel
 import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
-import com.grupo7.brasilflixapp.ui.fragments.detail.main.usecase.DetailSearchUseCase
+import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.usecase.DetailSearchUseCase
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
 import com.grupo7.brasilflixapp.ui.model.series.Series

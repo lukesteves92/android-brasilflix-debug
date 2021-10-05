@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_LANGUAGE_LABEL
+import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_LANGUAGE_VALUE
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_REGION_LABEL
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.QUERY_PARAM_REGION_VALUE
 import com.grupo7.brasilflixapp.util.constants.Constants.Api.queryParamLanguageValue
@@ -42,7 +43,7 @@ class RetrofitInstance {
                 .addInterceptor { chain ->
                     val url = chain.request().url.newBuilder()
                         .addQueryParameter(API_CONST, API_KEY_TMDB)
-                        .addQueryParameter(QUERY_PARAM_LANGUAGE_LABEL, queryParamLanguageValue())
+                        .addQueryParameter(QUERY_PARAM_LANGUAGE_LABEL, QUERY_PARAM_LANGUAGE_VALUE)
                         .addQueryParameter(QUERY_PARAM_REGION_LABEL, QUERY_PARAM_REGION_VALUE)
                         .build()
                     val newRequest = chain.request().newBuilder().url(url).build()

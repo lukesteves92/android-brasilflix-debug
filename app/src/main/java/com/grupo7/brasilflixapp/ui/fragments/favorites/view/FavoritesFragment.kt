@@ -12,13 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.grupo7.brasilflixapp.databinding.FragmentFavoritesBinding
 import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.FavoritesAdapter
 import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.FavoritesSeriesAdapter
+import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.FavoritesVPAdapter
 import com.grupo7.brasilflixapp.ui.fragments.favorites.viewmodel.FavoritesViewModel
+import com.grupo7.brasilflixapp.ui.fragments.initial.view.initialVPAdapter
+import com.grupo7.brasilflixapp.ui.fragments.login.LoginFragment
+import com.grupo7.brasilflixapp.ui.fragments.register.RegisterFragment
 
 
 class FavoritesFragment : Fragment() {
 
     private var binding: FragmentFavoritesBinding? = null
-    private lateinit var viewModel: FavoritesViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,77 +41,23 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val fragmentsList = listOf(FavoritesMoviesFragment(), FavoritesSeriesFragment())
+        val fragmentsTitleList = listOf("Filmes", "Séries")
 
         activity?.let {
-            viewModel = ViewModelProvider(it)[FavoritesViewModel::class.java]
+            val viewPagerAdapter = FavoritesVPAdapter(
+                fragmentManager = childFragmentManager,
+                fragmentsList = fragmentsList,
+                fragmentsTitleList = fragmentsTitleList
+            )
+            binding?.let { bindingNonNull ->
+                with(bindingNonNull) {
+                    vpPages.adapter = viewPagerAdapter
+                    tabLayout.setupWithViewPager(vpPages)
 
-            viewModel.getFavoritesMovieFromDb()
-            viewModel.getFavoritesSeriesFromDb()
-
-            setupObservablesMovies()
-
-            setupObservablesSeries()
-
+                }
+            }
         }
-
-    }
-
-    private fun setupObservablesMovies() {
-        viewModel.onSuccessFavoritesMoviesFromDb.observe(viewLifecycleOwner, {
-            it?.let {
-                if (it.isEmpty()) {
-                    binding?.apply {
-                        favoritesRecyclerView.isVisible = false
-                        birdMovies.isVisible = true
-                        textSeries.isVisible = true
-                        imageSeries.isVisible = false
-                    }
-                } else {
-                    val favoritesAdapter = FavoritesAdapter(it) {
-                        viewModel.removeFavoritesMovieDb(it)
-                        viewModel.getFavoritesMovieFromDb()
-                    }
-                    binding?.favoritesRecyclerView?.apply {
-                        layoutManager =
-                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                        adapter = favoritesAdapter
-                        adapter?.stateRestorationPolicy = RecyclerView
-                            .Adapter.StateRestorationPolicy
-                            .PREVENT_WHEN_EMPTY
-                    }
-
-                }
-            }
-
-        })
-
-    }
-
-    private fun setupObservablesSeries() {
-        viewModel.onSuccessFavoritesSeriesFromDb.observe(viewLifecycleOwner, {
-            it?.let {
-                if (it.isEmpty()) {
-                    binding?.favoritesRecyclerViewSeries?.isVisible = false
-                    binding?.birdSeries?.isVisible = true
-                } else {
-
-                    val favoritesAdapter = FavoritesSeriesAdapter(it) {
-                        viewModel.removeFavoritesSeriesDb(it)
-                        viewModel.getFavoritesSeriesFromDb()
-                    }
-                    binding?.favoritesRecyclerViewSeries?.apply {
-                        layoutManager =
-                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                        adapter = favoritesAdapter
-                        adapter?.stateRestorationPolicy = RecyclerView
-                            .Adapter.StateRestorationPolicy
-                            .PREVENT_WHEN_EMPTY
-                    }
-                }
-            }
-
-        })
-
     }
 
 

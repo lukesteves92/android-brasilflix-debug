@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.detail.moviedetail.view.DetailSearchFragment"
+    tools:context=".ui.fragments.detail.seriedetail.view.DetailSeriesFragment"
     android:background="@drawable/gradiente">
 
 
@@ -62,8 +62,9 @@
                 android:id="@+id/imageCardDetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:src="@drawable/brflixlogo"
                 android:adjustViewBounds="true"
-                android:src="@drawable/brflixlogo"/>
+                />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/infoSearchDetail"
-            android:textSize="24sp"
+            android:textSize="19sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvCard" />
@@ -101,7 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dateCardDetail" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

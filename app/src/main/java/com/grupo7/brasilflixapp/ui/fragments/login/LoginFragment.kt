@@ -47,7 +47,6 @@ class LoginFragment : Fragment() {
                 getString(R.string.alreadyloggedin),
                 Snackbar.LENGTH_SHORT
             ).show()
-
         }
     }
 
@@ -62,7 +61,6 @@ class LoginFragment : Fragment() {
         auth = Firebase.auth
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -95,7 +93,6 @@ class LoginFragment : Fragment() {
         }
 
     }
-
     private fun signInGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -125,7 +122,6 @@ class LoginFragment : Fragment() {
 
                 }
             }
-
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

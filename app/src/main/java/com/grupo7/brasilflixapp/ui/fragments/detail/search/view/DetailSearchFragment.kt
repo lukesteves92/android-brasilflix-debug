@@ -1,4 +1,4 @@
-package com.grupo7.brasilflixapp.ui.fragments.detail.main.view
+package com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.databinding.FragmentDetailBinding
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.databinding.FragmentDetailSearchBinding
-import com.grupo7.brasilflixapp.ui.fragments.detail.main.adapter.DetailReviewSearchAdapter
-import com.grupo7.brasilflixapp.ui.fragments.detail.main.viewmodel.DetailSearchViewModel
+import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.adapter.DetailReviewSearchAdapter
+import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.viewmodel.DetailSearchViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_SERIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIES

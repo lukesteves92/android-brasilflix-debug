@@ -5,6 +5,8 @@ import com.grupo7.brasilflixapp.ui.model.films.filmsResults
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
 import com.grupo7.brasilflixapp.ui.model.series.SeriesResults
+import com.grupo7.brasilflixapp.ui.model.videos.Videos
+import com.grupo7.brasilflixapp.ui.model.videos.VideosResults
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -49,6 +51,14 @@ interface Endpoint {
     suspend fun getReviewsMovies(
         @Path("movie_id") reviews: Int, @Query("page") page: Int
     ): Response<ReviewResults>
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMoviesVideos(
+        @Path("movie_id") movieId: Int): Response<VideosResults>
+
+    @GET("tv/{tv_id}/videos")
+    suspend fun getSeriesVideos(
+        @Path("tv_id") serieId: Int): Response<VideosResults>
 
 
 }

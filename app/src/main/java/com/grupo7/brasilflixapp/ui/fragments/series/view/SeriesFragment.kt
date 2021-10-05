@@ -64,9 +64,8 @@ class seriesFragment : Fragment() {
         seriesAdapter { series ->
             val bundle = Bundle()
             bundle.putInt(Constants.Home.KEY_BUNDLE_SERIE_ID, series.id ?: -1)
-            bundle.putInt(Constants.Series.KET_BUNDLE_SERIES, 50)
             findNavController().navigate(
-                R.id.action_seriesFragment_to_detailFragment,
+                R.id.action_seriesFragment_to_detailSeriesFragment,
                 bundle
             )
         }
@@ -95,9 +94,8 @@ class seriesFragment : Fragment() {
         SeriesTopRatedAdapter { toprated ->
             val bundle = Bundle()
             bundle.putInt(Constants.Home.KEY_BUNDLE_SERIE_ID, toprated.id ?: -1)
-            bundle.putInt(Constants.Series.KET_BUNDLE_SERIES, 50)
             findNavController().navigate(
-                R.id.action_seriesFragment_to_detailFragment,
+                R.id.action_seriesFragment_to_detailSeriesFragment,
                 bundle
             )
         }
@@ -126,9 +124,8 @@ class seriesFragment : Fragment() {
         SeriesPopularAdapter { popular ->
             val bundle = Bundle()
             bundle.putInt(Constants.Home.KEY_BUNDLE_SERIE_ID, popular.id ?: -1)
-            bundle.putInt(Constants.Series.KET_BUNDLE_SERIES, 50)
             findNavController().navigate(
-                R.id.action_seriesFragment_to_detailFragment,
+                R.id.action_seriesFragment_to_detailSeriesFragment,
                 bundle
             )
         }

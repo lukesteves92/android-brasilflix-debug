@@ -16,7 +16,7 @@
     <dimen name="smaller_text_size">12sp</dimen>
     <dimen name="tiny_text_size">11sp</dimen>
 
-    <dimen name="title_size">24sp</dimen>
+    <dimen name="title_size">17sp</dimen>
     <dimen name="subtitle_size">18sp</dimen>
     <dimen name="small_title_size">20sp</dimen>
     <dimen name="user_name_size">18sp</dimen>
