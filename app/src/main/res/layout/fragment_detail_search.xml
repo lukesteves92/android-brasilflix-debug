@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainViewDetail"
         android:layout_width="match_parent"
+        android:background="@drawable/gradiente"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar

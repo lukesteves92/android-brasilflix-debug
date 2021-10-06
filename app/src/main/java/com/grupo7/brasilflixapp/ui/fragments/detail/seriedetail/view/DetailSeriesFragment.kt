@@ -20,6 +20,7 @@ import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.adapter.DetailRe
 import com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.adapter.DetailReviewSeriesAdapter
 import com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.viewmodel.DetailSeriesViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants
+import com.grupo7.brasilflixapp.util.share.ShareImage
 
 
 class DetailSeriesFragment : Fragment() {
@@ -59,6 +60,14 @@ class DetailSeriesFragment : Fragment() {
 
             setupDetailSerie()
 
+        }
+
+        binding?.ivShare?.setOnClickListener{
+
+            binding?.mainViewDetail?.let { it1 ->
+                ShareImage.share(this.requireActivity(),
+                    it1, "Compartilhando Filmes/Séries")
+            }
         }
 
         binding?.ivMenu?.setOnClickListener {

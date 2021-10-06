@@ -72,6 +72,15 @@ class DetailFragment(
             activity?.onBackPressed()
         }
 
+        binding?.ivShare?.setOnClickListener{
+
+            binding?.mainViewDetail?.let { it1 ->
+                ShareImage.share(this.requireActivity(),
+                    it1, "Compartilhando Filmes/Séries")
+            }
+        }
+
+
         binding?.ivMovie?.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt(KEY_BUNDLE_VIDEO_ID_MOVIE, movieId)

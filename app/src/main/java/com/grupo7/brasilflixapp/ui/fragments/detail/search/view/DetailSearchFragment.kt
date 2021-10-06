@@ -23,6 +23,7 @@ import com.grupo7.brasilflixapp.util.constants.Constants
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_SERIE_ID
 import com.grupo7.brasilflixapp.util.constants.Constants.Series.KET_BUNDLE_SERIES
+import com.grupo7.brasilflixapp.util.share.ShareImage
 
 
 class DetailSearchFragment(
@@ -77,6 +78,13 @@ class DetailSearchFragment(
 
         }
 
+        binding?.ivShare?.setOnClickListener{
+
+            binding?.mainViewDetail?.let { it1 ->
+                ShareImage.share(this.requireActivity(),
+                    it1, "Compartilhando Filmes/Séries")
+            }
+        }
 
         binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
