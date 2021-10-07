@@ -18,37 +18,75 @@
         android:paddingVertical="@dimen/margin_default"
         >
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/pictureProfile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="65dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/changePictureProfile">
+
+            <ImageView
+                android:id="@+id/pictureCardProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/nophoto" />
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/changePictureProfile"
+            android:layout_width="127dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/rubik_bold"
+            android:text="@string/changepicture"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/button"
+            app:layout_constraintEnd_toEndOf="@+id/pictureProfile"
+            app:layout_constraintStart_toStartOf="@+id/pictureProfile"
+            app:layout_constraintTop_toBottomOf="@+id/pictureProfile" />
+
         <TextView
             android:id="@+id/profileConfig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profileDetails"
             android:textColor="@color/black"
+            android:layout_marginTop="20dp"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/changePictureProfile" />
 
         <TextView
             android:id="@+id/profileDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/profile_config"
+            android:text="@string/profileDetails"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileConfig" />
 
         <ImageView
+            android:id="@+id/chevronRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/outline_chevron_right_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/icone_seta_direita"
-            />
+            android:src="@drawable/outline_chevron_right_24"
+            app:layout_constraintBottom_toBottomOf="@+id/profileConfig"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.876"
+            app:layout_constraintStart_toEndOf="@+id/profileConfig" />
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthResult
@@ -71,20 +72,20 @@ class RegisterFragment : Fragment() {
 
         binding?.buttonCadastrar?.setOnClickListener {
             if (CPFUtil.myValidateCPF(binding?.campoCpf?.text.toString())) {
-                registerUser()
+                val email = binding?.campoEmail?.text.toString()
+                val password = binding?.campoSenha?.text.toString()
+                registerUser(email, password)
+                findNavController().navigate(R.id.action_initialFragment_to_confirmationRegisterFragment)
                 Snackbar.make(
                     this.requireView(),
                     getString(R.string.cadastrar2),
                     Snackbar.LENGTH_SHORT
                 ).show()
             } else {
-                binding?.layoutCpf?.error = "CPF inválido"
+                binding?.layoutCpf?.error = "CPF inválido ou informações incorretas"
             }
         }
-
-
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
@@ -99,15 +100,10 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun registerUser(): Task<AuthResult> {
-
-        val email = binding?.campoEmail?.text.toString()
-        val password = binding?.campoSenha?.text.toString()
-
-        return auth.createUserWithEmailAndPassword(email, password)
+    private fun registerUser(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this.requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
@@ -118,7 +114,4 @@ class RegisterFragment : Fragment() {
                 }
             }
     }
-
-
-
 }

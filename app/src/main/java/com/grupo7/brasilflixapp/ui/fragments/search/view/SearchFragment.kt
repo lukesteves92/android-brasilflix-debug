@@ -1,11 +1,13 @@
 package com.grupo7.brasilflixapp.ui.fragments.search.view
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.ui.fragments.search.adapter.searchAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentSearchBinding
+import com.grupo7.brasilflixapp.extensions.hideKeyboard
 import com.grupo7.brasilflixapp.ui.fragments.search.adapter.SearchAdapterSeries
 import com.grupo7.brasilflixapp.ui.fragments.search.viewmodel.SearchViewModel
 import com.grupo7.brasilflixapp.ui.model.films.films
@@ -58,10 +61,15 @@ class SearchFragment : Fragment() {
                         return true
                     }
 
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        return false
+                    override fun onQueryTextChange(query: String?): Boolean {
+                        query?.let {
+                            viewModel.searchMovies(it)
+                        }
+                        return true
                     }
                 })
+                this.view?.hideKeyboard()
+
             }
 
             binding?.boxSeries?.setOnCheckedChangeListener{ buttonView, isChecked ->
@@ -74,10 +82,15 @@ class SearchFragment : Fragment() {
                         return true
                     }
 
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        return false
+                    override fun onQueryTextChange(query: String?): Boolean {
+                        query?.let {
+                            viewModel.searchSeries(it)
+                        }
+                        return true
                     }
                 })
+
+                this.view?.hideKeyboard()
             }
 
 
@@ -115,6 +128,8 @@ class SearchFragment : Fragment() {
                     searchRecyclerView.adapter = searchAdapter
                 }
             }
+
+
         }
     }
 
@@ -136,12 +151,17 @@ class SearchFragment : Fragment() {
                 }
             }
         }
+
     }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
+
 
 }
 

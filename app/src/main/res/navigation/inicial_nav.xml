@@ -13,6 +13,30 @@
         <action
             android:id="@+id/action_initialFragment_to_preferences_nav"
             app:destination="@id/preferences_nav" />
+        <action
+            android:id="@+id/action_initialFragment_to_confirmationRegisterFragment"
+            app:destination="@id/confirmationRegisterFragment" />
+        <action
+            android:id="@+id/action_initialFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <include app:graph="@navigation/preferences_nav" />
+    <fragment
+        android:id="@+id/confirmationRegisterFragment"
+        android:name="com.grupo7.brasilflixapp.ui.fragments.confirmation.ConfirmationRegisterFragment"
+        android:label="fragment_confirmation_register"
+        tools:layout="@layout/fragment_confirmation_register" >
+        <action
+            android:id="@+id/action_confirmationRegisterFragment_to_initialFragment"
+            app:destination="@id/initialFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.grupo7.brasilflixapp.ui.fragments.forgotpassword.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_initialFragment"
+            app:destination="@id/initialFragment" />
+    </fragment>
 </navigation>

@@ -98,7 +98,7 @@
     <string name="limitedFunctionsSplash">Funcionalidades do app limitadas</string>
     <string name="accountLogout">Sair</string>
     <string name="account_description_logout">Deslogar da conta</string>
-    <string name="profileDetails">Configuração do Perfil</string>
+    <string name="profileDetails">Dados pessoais, e-mail e etc..</string>
     <string name="profile_config">Alterar foto e etc..</string>
     <string name="accountBar">Conta</string>
     <string name="profileBar">Perfil</string>
@@ -112,5 +112,16 @@
     <string name="backVideosFragment">Voltar</string>
     <string name="notrailer">Ops! Nenhum trailer encontrado!</string>
     <string name="title_share_card">Compartilhando Série/Filme</string>
+    <string name="profile_picture">Alteração de foto</string>
+    <string name="profilePictureChange">Alterar Foto</string>
+    <string name="google_sign">Entrar com Google</string>
+    <string name="changepicture">Alterar Foto</string>
+    <string name="confirmation_register">Obrigado por se juntar a nós!</string>
+    <string name="back_to_login">Login</string>
+    <string name="forgotPasswordLogin">Esqueceu a senha? Clique aqui</string>
+    <string name="forgotPasswordDetails">Iremos te enviar o link para reset da senha!</string>
+    <string name="forgotPassword">Enviar</string>
+    <string name="forgotPasswordsuccessfully">E-mail enviado com sucesso!</string>
+    <string name="forgotPasswordfailure">Ocorreu um erro ao enviar o email!</string>
 
 </resources>

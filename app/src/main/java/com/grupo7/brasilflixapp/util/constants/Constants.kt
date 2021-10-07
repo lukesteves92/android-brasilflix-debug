@@ -39,4 +39,8 @@ class Constants {
         const val KEY_BUNDLE_VIDEO_ID_SERIE = "videoSerieId"
     }
 
+    object Login{
+        lateinit var UserID: String
+    }
+
 }
