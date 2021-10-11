@@ -14,13 +14,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.databinding.FragmentDetailBinding
+
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
+import com.grupo7.brasilflixapp.databinding.FragmentDetailBinding
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.adapter.DetailReviewAdapter
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.viewmodel.DetailViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants.Detail.KEY_BUNDLE_VIDEO_ID_MOVIE
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
 import com.grupo7.brasilflixapp.util.share.ShareImage
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 
 
 class DetailFragment(
@@ -30,7 +34,6 @@ class DetailFragment(
     private val movieId: Int by lazy {
         arguments?.getInt(KEY_BUNDLE_MOVIE_ID) ?: -1
     }
-    private val mainView = binding?.mainViewDetail
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,23 +63,23 @@ class DetailFragment(
 
             detailViewModel.getMovieByIdFromDb(movieId)
 
+            detailViewModel.getMoviesVideos(movieId)
 
             setupReviewsMovies()
-
             setupDetailMovie()
-
-
         }
 
         binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
         }
 
-        binding?.ivShare?.setOnClickListener{
+        binding?.ivShare?.setOnClickListener {
 
             binding?.mainViewDetail?.let { it1 ->
-                ShareImage.share(this.requireActivity(),
-                    it1, "Compartilhando Filmes/Séries")
+                ShareImage.share(
+                    this.requireActivity(),
+                    it1, "Compartilhando Filmes/Séries"
+                )
             }
         }
 
@@ -114,18 +117,12 @@ class DetailFragment(
     }
 
     private fun setupDetailMovie() {
-
+        var imageMovie: String? = null
         detailViewModel.onSuccessMovieDbByIdFromDb.observe(viewLifecycleOwner, {
             it?.let { movie ->
                 binding?.let { bindingNonNull ->
                     with(bindingNonNull) {
-                        activity?.let { activityNonNull ->
-                            Glide.with(activityNonNull)
-                                .load(movie.backdrop_path)
-                                .placeholder(R.drawable.brflixlogo)
-                                .override(900, 500)
-                                .into(imageCardDetail)
-                        }
+                        imageMovie = movie.backdrop_path
                         tvTitle.text = movie.title
                         tvTextSummary.text = movie.overview
                         dateCardDetail.text = ("Data de lançamento:  ${movie.release_date}")
@@ -134,15 +131,42 @@ class DetailFragment(
             }
         })
 
+        detailViewModel.onSuccessMoviesVideos.observe(viewLifecycleOwner, {
+
+            if(it.isNullOrEmpty()){
+                binding?.apply {
+                    youtubePlayerDetail.isVisible = false
+                    imageCardDetail.isVisible = true
+                    activity?.let { activityNonNull ->
+                        Glide.with(activityNonNull)
+                            .load(imageMovie)
+                            .placeholder(R.drawable.brflixlogo)
+                            .override(900, 500)
+                            .into(imageCardDetail)
+                    }
+                }
+
+            }else {
+                val youtube = it.last()
+                binding?.youtubePlayerDetail?.addYouTubePlayerListener(object :
+                    AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
+                    }
+                })
+            }
+
+        })
+
 
     }
 
     private fun setupReviewsMovies() {
         detailViewModel.onSuccessReviewsMovies.observe(viewLifecycleOwner, {
-            if(it.isNullOrEmpty()){
+            if (it.isNullOrEmpty()) {
                 binding?.nocomentsCard?.isVisible = true
                 binding?.reviewsRecyclerView?.isVisible = false
-            }else {
+            } else {
                 it?.let {
                     val ReviewsAdapter = DetailReviewAdapter(it)
                     binding?.let {

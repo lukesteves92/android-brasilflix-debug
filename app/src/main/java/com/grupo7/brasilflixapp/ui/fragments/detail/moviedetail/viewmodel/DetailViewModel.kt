@@ -10,6 +10,7 @@ import com.grupo7.brasilflixapp.data.database.movies.allmovies.entity.allmovies
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.usecase.DetailUseCase
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
+import com.grupo7.brasilflixapp.ui.model.videos.Videos
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
@@ -30,6 +31,23 @@ class DetailViewModel(
     val onSuccessMovieDbByIdFromDb: LiveData<allmovies>
         get() = _onSuccessMovieDbByIdFromDb
 
+    private val _onSuccessMoviesVideos: MutableLiveData<List<Videos>> = MutableLiveData()
+    val onSuccessMoviesVideos: LiveData<List<Videos>>
+        get() = _onSuccessMoviesVideos
+
+    fun getMoviesVideos(movieId: Int) {
+        viewModelScope.launch {
+            callApi(
+                suspend { detailUseCase.getMoviesVideos(movieId) },
+                onSuccess = {
+                    val result = it as? List<*>
+                    _onSuccessMoviesVideos.postValue(
+                        result?.filterIsInstance<Videos>()
+                    )
+                }
+            )
+        }
+    }
 
 
     fun getMovieById(movieId: Int) {

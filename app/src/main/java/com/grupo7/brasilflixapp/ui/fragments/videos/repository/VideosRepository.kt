@@ -20,7 +20,4 @@ class VideosRepository(
             RetrofitInstance.tmdbApiSeries.getSeriesVideos(serieId)
         }
     }
-
-
-
 }

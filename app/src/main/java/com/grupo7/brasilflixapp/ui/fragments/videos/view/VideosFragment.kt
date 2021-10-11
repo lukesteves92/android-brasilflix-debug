@@ -39,6 +39,8 @@ class VideosFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
     }
 
     override fun onCreateView(
@@ -51,12 +53,6 @@ class VideosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding?.ivMenu?.setOnClickListener {
-            activity?.onBackPressed()
-        }
-
-        // ------------- Chamando ViewModel -------------//
 
         activity?.let {
             viewModel = ViewModelProvider(it)[VideosViewModel::class.java]
@@ -71,15 +67,20 @@ class VideosFragment : Fragment() {
 
             setupObservablesSeries()
         }
+
+        binding?.ivMenu?.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
     }
 
     private fun setupObservablesMovies() {
         viewModel.onSuccessMoviesVideos?.observe(viewLifecycleOwner, {
-            if (it.isEmpty()) {
+            if (it.isNullOrEmpty()) {
                 binding?.notrailerCard?.isVisible = true
                 binding?.videosRecyclerView?.isVisible = false
             } else {
-                it?.let {
+                it.let {
                     val VideosAdapter = VideosAdapter(it) {
                         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it.key)))
                     }

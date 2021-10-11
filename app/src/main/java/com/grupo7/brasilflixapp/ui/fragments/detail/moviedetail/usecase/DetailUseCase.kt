@@ -5,9 +5,11 @@ import com.grupo7.brasilflixapp.data.api.util.ResponseApi
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.extensions.getDateBR
 import com.grupo7.brasilflixapp.extensions.getFullImageUrl
+import com.grupo7.brasilflixapp.extensions.getFullYoutubeUrl
 import com.grupo7.brasilflixapp.ui.fragments.detail.moviedetail.repository.DetailRepository
 import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
+import com.grupo7.brasilflixapp.ui.model.videos.VideosResults
 
 class DetailUseCase(
     private val application: Application
@@ -54,6 +56,21 @@ class DetailUseCase(
 
     suspend fun saveFavoritesDb(favorites: Favorites) =
         detailRepository.saveFavoritesDb(favorites)
+
+    suspend fun getMoviesVideos(movieId: Int): ResponseApi {
+        return when(val responseApi = detailRepository.getMoviesVideos(movieId)) {
+            is ResponseApi.Success -> {
+                val films = responseApi.data as? VideosResults
+                val result = films?.results
+                return ResponseApi.Success(result)
+            }
+            is ResponseApi.Error -> {
+                responseApi
+            }
+
+        }
+    }
+
 
 
 }

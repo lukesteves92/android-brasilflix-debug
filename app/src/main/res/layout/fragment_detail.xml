@@ -60,12 +60,24 @@
             app:layout_constraintTop_toBottomOf="@id/wtToolbar"
             app:shapeAppearanceOverlay="@style/roundimageview">
 
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtubePlayerDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showFullScreenButton="false"
+                 />
+
             <ImageView
                 android:id="@+id/imageCardDetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:src="@drawable/brflixlogo"
                 android:adjustViewBounds="true"
-                android:src="@drawable/brflixlogo" />
+                android:visibility="gone"
+                />
 
         </com.google.android.material.card.MaterialCardView>
 

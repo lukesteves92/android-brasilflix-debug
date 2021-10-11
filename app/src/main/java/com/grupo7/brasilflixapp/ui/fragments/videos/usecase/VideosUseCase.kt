@@ -18,8 +18,7 @@ class VideosUseCase(
         return when(val responseApi = videosRepository.getMoviesVideos(movieId)) {
             is ResponseApi.Success -> {
                 val films = responseApi.data as? VideosResults
-                Log.i("tag1movie", "$films")
-                var result = films?.results?.map {
+                val result = films?.results?.map {
                     it.key = it.key.getFullYoutubeUrl()
                     it
                 }
@@ -36,9 +35,12 @@ class VideosUseCase(
     suspend fun getSeriesVideos(serieId: Int): ResponseApi {
         return when(val responseApi = videosRepository.getSeriesVideos(serieId)) {
             is ResponseApi.Success -> {
-                val Series = responseApi.data as? Videos
-                Series?.key = Series?.key?.getFullYoutubeUrl()
-                return ResponseApi.Success(Series)
+                val Series = responseApi.data as? VideosResults
+                val result = Series?.results?.map {
+                    it?.key = it?.key?.getFullYoutubeUrl()
+                    it
+                }
+                return ResponseApi.Success(result)
             }
             is ResponseApi.Error -> {
                 responseApi

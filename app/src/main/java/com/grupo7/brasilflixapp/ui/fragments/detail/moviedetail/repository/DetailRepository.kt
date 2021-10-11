@@ -35,6 +35,13 @@ class DetailRepository(
             application
         ).favoritesDao().insertFavorites(favorites)
 
+    suspend fun getMoviesVideos(movieId: Int): ResponseApi {
+        return safeApiCall {
+            RetrofitInstance.tmdbApiMovies.getMoviesVideos(movieId)
+        }
+    }
+
+
 
 
 }
