@@ -37,4 +37,10 @@ class DetailSeriesRepository (
         ).favoritesSeriesDao().insertFavoritesSeries(favorites)
 
 
+    suspend fun getSeriesVideos(seriesId: Int): ResponseApi {
+        return safeApiCall {
+            RetrofitInstance.tmdbApiSeries.getSeriesVideos(seriesId)
+        }
+    }
+
 }

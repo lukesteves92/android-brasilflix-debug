@@ -21,6 +21,8 @@ import com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.adapter.DetailRe
 import com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.viewmodel.DetailSeriesViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants
 import com.grupo7.brasilflixapp.util.share.ShareImage
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 
 class DetailSeriesFragment : Fragment() {
@@ -55,6 +57,8 @@ class DetailSeriesFragment : Fragment() {
             detailSeriesViewModel.getReviewsSeries(serieId)
 
             detailSeriesViewModel.getSerieByIdFromDb(serieId)
+
+            detailSeriesViewModel.getSeriesVideos(serieId)
 
             setupReviewsSeries()
 
@@ -105,23 +109,47 @@ class DetailSeriesFragment : Fragment() {
 
     private fun setupDetailSerie() {
 
+        var imageSerie: String? = null
         detailSeriesViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
             it?.let { serie ->
                 binding?.let { bindingNonNull ->
                     with(bindingNonNull) {
-                        activity?.let { activityNonNull ->
-                            Glide.with(activityNonNull)
-                                .load(serie.poster_path)
-                                .placeholder(R.drawable.brflixlogo)
-                                .override(900, 500)
-                                .into(imageCardDetail)
-                        }
+                        imageSerie = serie.poster_path
                         tvTitle.text = serie.original_name
                         tvTextSummary.text = serie.overview
                         dateCardDetail.text = ("Data de lançamento:  ${serie.first_air_date}")
                     }
                 }
             }
+        })
+
+        detailSeriesViewModel.onSuccessSeriesVideos.observe(viewLifecycleOwner, {
+            if(it.isNullOrEmpty()){
+                binding?.apply {
+                    youtubePlayerDetail.isVisible = false
+                    imageCardDetail.isVisible = true
+                    activity?.let { activityNonNull ->
+                        Glide.with(activityNonNull)
+                            .load(imageSerie)
+                            .placeholder(R.drawable.brflixlogo)
+                            .override(900, 500)
+                            .into(imageCardDetail)
+                    }
+                }
+
+            }else {
+                val youtube = it.last()
+                binding?.apply {
+                    youtubePlayerDetail.addYouTubePlayerListener(object :
+                        AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
+                        }
+                    })
+                    youtubePlayerDetail.isFullScreen()
+                }
+            }
+
         })
 
 

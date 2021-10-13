@@ -148,12 +148,15 @@ class DetailFragment(
 
             }else {
                 val youtube = it.last()
-                binding?.youtubePlayerDetail?.addYouTubePlayerListener(object :
-                    AbstractYouTubePlayerListener() {
-                    override fun onReady(youTubePlayer: YouTubePlayer) {
-                        youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
-                    }
-                })
+                binding?.apply {
+                    youtubePlayerDetail.addYouTubePlayerListener(object :
+                        AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
+                        }
+                    })
+                    youtubePlayerDetail.isFullScreen()
+                }
             }
 
         })

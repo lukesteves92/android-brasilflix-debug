@@ -8,6 +8,7 @@ import com.grupo7.brasilflixapp.extensions.getFullImageUrl
 import com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.repository.DetailSeriesRepository
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
+import com.grupo7.brasilflixapp.ui.model.videos.VideosResults
 
 class DetailSeriesUseCase (
     private val application: Application
@@ -46,12 +47,25 @@ class DetailSeriesUseCase (
         }
     }
 
-
     suspend fun getSerieByIdFromDb(serieId: Int) =
         detailSeriesRepository.getSerieByIdFromDb(serieId)
 
     suspend fun saveFavoritesSeriesDb(favorites: FavoritesSeries) =
         detailSeriesRepository.saveFavoritesSeriesDb(favorites)
+
+    suspend fun getSeriesVideos(seriesId: Int): ResponseApi {
+        return when(val responseApi = detailSeriesRepository.getSeriesVideos(seriesId)) {
+            is ResponseApi.Success -> {
+                val series = responseApi.data as? VideosResults
+                val result = series?.results
+                return ResponseApi.Success(result)
+            }
+            is ResponseApi.Error -> {
+                responseApi
+            }
+
+        }
+    }
 
 
 }

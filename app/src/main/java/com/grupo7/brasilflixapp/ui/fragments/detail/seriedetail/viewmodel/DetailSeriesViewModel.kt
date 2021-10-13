@@ -10,11 +10,12 @@ import com.grupo7.brasilflixapp.data.database.series.allseries.entity.allseries
 import com.grupo7.brasilflixapp.ui.fragments.detail.seriedetail.usecase.DetailSeriesUseCase
 import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
+import com.grupo7.brasilflixapp.ui.model.videos.Videos
 import kotlinx.coroutines.launch
 
-class DetailSeriesViewModel (
+class DetailSeriesViewModel(
     application: Application
-): BaseViewModel(application) {
+) : BaseViewModel(application) {
 
     private val detailSeriesUseCase = DetailSeriesUseCase(getApplication<Application>())
 
@@ -29,6 +30,24 @@ class DetailSeriesViewModel (
     private val _onSuccessSerieDbByIdFromDb: MutableLiveData<allseries> = MutableLiveData()
     val onSuccessSerieDbByIdFromDb: LiveData<allseries>
         get() = _onSuccessSerieDbByIdFromDb
+
+    private val _onSuccessSeriesVideos: MutableLiveData<List<Videos>> = MutableLiveData()
+    val onSuccessSeriesVideos: LiveData<List<Videos>>
+        get() = _onSuccessSeriesVideos
+
+    fun getSeriesVideos(seriesId: Int) {
+        viewModelScope.launch {
+            callApi(
+                suspend { detailSeriesUseCase.getSeriesVideos(seriesId) },
+                onSuccess = {
+                    val result = it as? List<*>
+                    _onSuccessSeriesVideos.postValue(
+                        result?.filterIsInstance<Videos>()
+                    )
+                }
+            )
+        }
+    }
 
     fun getSeriesById(serieId: Int) {
         viewModelScope.launch {

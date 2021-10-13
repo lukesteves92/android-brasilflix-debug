@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     tools:context=".ui.fragments.register.RegisterFragment"
-    android:background="@drawable/gradiente">
+    android:background="@drawable/gradiente_externo">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

@@ -13,7 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="150dp"
-        android:layout_height="250dp">
+        android:layout_height="250dp"
+        android:background="@drawable/gradiente_externo">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fotoFilme"

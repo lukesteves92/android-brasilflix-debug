@@ -51,7 +51,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wtToolbar"
-        tools:listitem="@layout/videos" />
+        tools:listitem="@layout/videos"
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/notrailerCard"
@@ -67,7 +68,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <ImageView
                 android:id="@+id/reviewImage"
@@ -78,7 +80,8 @@
                 android:src="@drawable/brflixlogo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <TextView
                 android:id="@+id/notrailerTitle"
@@ -88,7 +91,8 @@
                 android:text="@string/notrailer"
                 app:layout_constraintEnd_toStartOf="@id/reviewImage"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
