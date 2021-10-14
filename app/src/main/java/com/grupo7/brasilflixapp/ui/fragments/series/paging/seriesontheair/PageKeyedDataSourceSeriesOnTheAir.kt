@@ -15,12 +15,15 @@ import com.grupo7.brasilflixapp.util.constants.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class PageKeyedDataSourceSeriesOnTheAir (
     private val seriesRepository: SeriesRepository,
-    private val seriesUseCase: SeriesUseCase,
-    val application: Application
-) : PageKeyedDataSource<Int, Series>() {
+    private val seriesUseCase: SeriesUseCase
+) : PageKeyedDataSource<Int, Series>(), KoinComponent {
+
+    private val application: Application by inject()
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,

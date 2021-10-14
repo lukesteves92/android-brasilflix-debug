@@ -47,12 +47,12 @@
         android:id="@+id/videosRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wtToolbar"
-        tools:listitem="@layout/videos"
-        />
+        tools:listitem="@layout/videos" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/notrailerCard"
@@ -69,7 +69,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:background="@drawable/gradiente_externo">
 
             <ImageView
                 android:id="@+id/reviewImage"
@@ -92,7 +92,7 @@
                 app:layout_constraintEnd_toStartOf="@id/reviewImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+              />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

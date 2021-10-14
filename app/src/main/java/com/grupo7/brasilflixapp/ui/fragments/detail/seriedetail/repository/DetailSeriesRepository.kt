@@ -10,10 +10,12 @@ import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.data.database.movies.allmovies.database.AllMoviesDatabase
 import com.grupo7.brasilflixapp.data.database.series.allseries.database.AllSeriesDatabase
 import com.grupo7.brasilflixapp.util.constants.Constants
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class DetailSeriesRepository (
-    private val application: Application
-) : BaseRepository() {
+class DetailSeriesRepository () : BaseRepository(), KoinComponent {
+
+    private val application: Application by inject()
 
     suspend fun getSeriesById(serieId: Int): ResponseApi {
         return safeApiCall {

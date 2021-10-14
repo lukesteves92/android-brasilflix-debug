@@ -66,16 +66,20 @@ class DetailSeriesFragment : Fragment() {
 
         }
 
-        binding?.ivShare?.setOnClickListener{
+        binding?.ivShare?.setOnClickListener {
 
             binding?.mainViewDetail?.let { it1 ->
-                ShareImage.share(this.requireActivity(),
-                    it1, "Compartilhando Filmes/Séries")
+                ShareImage.share(
+                    this.requireActivity(),
+                    it1, "Compartilhando Filmes/Séries"
+                )
             }
         }
 
         binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
+
+
         }
 
         binding?.ivMovie?.setOnClickListener {
@@ -107,24 +111,21 @@ class DetailSeriesFragment : Fragment() {
         }
     }
 
-    private fun setupDetailSerie() {
-
-        var imageSerie: String? = null
-        detailSeriesViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
-            it?.let { serie ->
-                binding?.let { bindingNonNull ->
-                    with(bindingNonNull) {
-                        imageSerie = serie.poster_path
-                        tvTitle.text = serie.original_name
-                        tvTextSummary.text = serie.overview
-                        dateCardDetail.text = ("Data de lançamento:  ${serie.first_air_date}")
-                    }
-                }
-            }
-        })
-
+    private fun setupImageOrVideo(imageSerie: String) {
         detailSeriesViewModel.onSuccessSeriesVideos.observe(viewLifecycleOwner, {
-            if(it.isNullOrEmpty()){
+            if (it.isNotEmpty()) {
+                val youtube = it.last()
+                binding?.apply {
+                    youtubePlayerDetail.addYouTubePlayerListener(object :
+                        AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
+                        }
+                    })
+                    youtubePlayerDetail.isFullScreen()
+                }
+
+            } else {
                 binding?.apply {
                     youtubePlayerDetail.isVisible = false
                     imageCardDetail.isVisible = true
@@ -137,30 +138,34 @@ class DetailSeriesFragment : Fragment() {
                     }
                 }
 
-            }else {
-                val youtube = it.last()
-                binding?.apply {
-                    youtubePlayerDetail.addYouTubePlayerListener(object :
-                        AbstractYouTubePlayerListener() {
-                        override fun onReady(youTubePlayer: YouTubePlayer) {
-                            youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
-                        }
-                    })
-                    youtubePlayerDetail.isFullScreen()
-                }
             }
 
         })
 
+    }
+
+    private fun setupDetailSerie() {
+        detailSeriesViewModel.onSuccessSerieDbByIdFromDb.observe(viewLifecycleOwner, {
+            it?.let { serie ->
+                binding?.let { bindingNonNull ->
+                    with(bindingNonNull) {
+                        serie.backdrop_path?.let { it1 -> setupImageOrVideo(it1) }
+                        tvTitle.text = serie.original_name
+                        tvTextSummary.text = serie.overview
+                        dateCardDetail.text = ("Data de lançamento:  ${serie.first_air_date}")
+                    }
+                }
+            }
+        })
 
     }
 
     private fun setupReviewsSeries() {
         detailSeriesViewModel.onSuccessReviewsSeries.observe(viewLifecycleOwner, {
-            if(it.isNullOrEmpty()){
+            if (it.isNullOrEmpty()) {
                 binding?.nocomentsCard?.isVisible = true
                 binding?.reviewsRecyclerView?.isVisible = false
-            }else {
+            } else {
                 it?.let {
                     val ReviewsAdapter = DetailReviewSeriesAdapter(it)
                     binding?.let {

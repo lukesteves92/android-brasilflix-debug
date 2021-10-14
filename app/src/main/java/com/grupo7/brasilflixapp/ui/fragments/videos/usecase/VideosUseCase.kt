@@ -8,11 +8,9 @@ import com.grupo7.brasilflixapp.ui.fragments.videos.repository.VideosRepository
 import com.grupo7.brasilflixapp.ui.model.videos.Videos
 import com.grupo7.brasilflixapp.ui.model.videos.VideosResults
 
-class VideosUseCase(
-    private val application: Application
-) {
+class VideosUseCase() {
 
-    private val videosRepository = VideosRepository(application)
+    private val videosRepository = VideosRepository()
 
     suspend fun getMoviesVideos(movieId: Int): ResponseApi {
         return when(val responseApi = videosRepository.getMoviesVideos(movieId)) {

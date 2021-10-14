@@ -71,6 +71,8 @@ class DetailFragment(
 
         binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
+
+
         }
 
         binding?.ivShare?.setOnClickListener {
@@ -116,24 +118,20 @@ class DetailFragment(
         }
     }
 
-    private fun setupDetailMovie() {
-        var imageMovie: String? = null
-        detailViewModel.onSuccessMovieDbByIdFromDb.observe(viewLifecycleOwner, {
-            it?.let { movie ->
-                binding?.let { bindingNonNull ->
-                    with(bindingNonNull) {
-                        imageMovie = movie.backdrop_path
-                        tvTitle.text = movie.title
-                        tvTextSummary.text = movie.overview
-                        dateCardDetail.text = ("Data de lançamento:  ${movie.release_date}")
-                    }
-                }
-            }
-        })
-
+    private fun setupImageOrVideo(imageMovie: String) {
         detailViewModel.onSuccessMoviesVideos.observe(viewLifecycleOwner, {
-
-            if(it.isNullOrEmpty()){
+            if (it.isNotEmpty()) {
+                val youtube = it.last()
+                binding?.apply {
+                    youtubePlayerDetail.addYouTubePlayerListener(object :
+                        AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
+                        }
+                    })
+                    youtubePlayerDetail.isFullScreen()
+                }
+            } else {
                 binding?.apply {
                     youtubePlayerDetail.isVisible = false
                     imageCardDetail.isVisible = true
@@ -146,21 +144,25 @@ class DetailFragment(
                     }
                 }
 
-            }else {
-                val youtube = it.last()
-                binding?.apply {
-                    youtubePlayerDetail.addYouTubePlayerListener(object :
-                        AbstractYouTubePlayerListener() {
-                        override fun onReady(youTubePlayer: YouTubePlayer) {
-                            youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
-                        }
-                    })
-                    youtubePlayerDetail.isFullScreen()
-                }
             }
 
         })
 
+    }
+    private fun setupDetailMovie() {
+
+        detailViewModel.onSuccessMovieDbByIdFromDb.observe(viewLifecycleOwner, {
+            it?.let { movie ->
+                binding?.let { bindingNonNull ->
+                    with(bindingNonNull) {
+                        movie.backdrop_path?.let { it1 -> setupImageOrVideo(it1) }
+                        tvTitle.text = movie.title
+                        tvTextSummary.text = movie.overview
+                        dateCardDetail.text = ("Data de lançamento:  ${movie.release_date}")
+                    }
+                }
+            }
+        })
 
     }
 

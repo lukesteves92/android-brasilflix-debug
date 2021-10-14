@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.preferences.PreferencesActivity"
-    android:background="@drawable/gradiente">
+    android:background="@drawable/gradiente_externo">
 
     <fragment
         android:id="@+id/nav_host_fragment"

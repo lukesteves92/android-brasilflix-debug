@@ -13,11 +13,9 @@ import com.grupo7.brasilflixapp.ui.model.series.Series
 import com.grupo7.brasilflixapp.ui.model.videos.Videos
 import kotlinx.coroutines.launch
 
-class DetailSeriesViewModel(
-    application: Application
-) : BaseViewModel(application) {
+class DetailSeriesViewModel() : BaseViewModel() {
 
-    private val detailSeriesUseCase = DetailSeriesUseCase(getApplication<Application>())
+    private val detailSeriesUseCase = DetailSeriesUseCase()
 
     private val _onSuccessSeriesById: MutableLiveData<Series> = MutableLiveData()
     val onSuccessSeriesById: LiveData<Series>

@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_detailFragment_to_VideosFragment"
             app:destination="@id/VideosFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -53,6 +56,9 @@
         <action
             android:id="@+id/action_detailSeriesFragment_to_VideosFragment"
             app:destination="@id/VideosFragment" />
+        <action
+            android:id="@+id/action_detailSeriesFragment_to_seriesFragment"
+            app:destination="@id/seriesFragment" />
     </fragment>
 
 

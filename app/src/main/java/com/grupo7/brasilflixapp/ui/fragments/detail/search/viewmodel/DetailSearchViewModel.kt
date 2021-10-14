@@ -14,11 +14,9 @@ import com.grupo7.brasilflixapp.ui.model.reviews.AuthorResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
 import kotlinx.coroutines.launch
 
-class DetailSearchViewModel(
-    application: Application
-): BaseViewModel(application) {
+class DetailSearchViewModel(): BaseViewModel() {
 
-    private val detailUseCase = DetailSearchUseCase(getApplication<Application>())
+    private val detailUseCase = DetailSearchUseCase()
 
     private val _onSuccessMovieById: MutableLiveData<films> = MutableLiveData()
     val onSuccessMovieById: LiveData<films>

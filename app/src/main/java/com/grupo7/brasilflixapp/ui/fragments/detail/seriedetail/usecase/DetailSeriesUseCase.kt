@@ -10,11 +10,9 @@ import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
 import com.grupo7.brasilflixapp.ui.model.videos.VideosResults
 
-class DetailSeriesUseCase (
-    private val application: Application
-) {
+class DetailSeriesUseCase () {
 
-    private val detailSeriesRepository = DetailSeriesRepository(application)
+    private val detailSeriesRepository = DetailSeriesRepository()
 
     suspend fun getSeriesById(serieId: Int): ResponseApi {
         return when(val responseApi = detailSeriesRepository.getSeriesById(serieId)) {

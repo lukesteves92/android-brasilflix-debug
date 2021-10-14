@@ -17,12 +17,10 @@ import com.grupo7.brasilflixapp.ui.fragments.home.paging.UpComing.DataSourceFact
 import com.grupo7.brasilflixapp.ui.fragments.home.paging.UpComing.PageKeyedDataSourceUpComing
 import com.grupo7.brasilflixapp.ui.fragments.home.repository.HomeRepository
 
-class HomeViewModel(
-    application: Application
-) : BaseViewModel(application) {
+class HomeViewModel() : BaseViewModel() {
 
-    private val homeUseCase = HomeUseCase(getApplication())
-    private val homeRepository = HomeRepository(getApplication<Application>())
+    private val homeUseCase = HomeUseCase()
+    private val homeRepository = HomeRepository()
 
 //    <---------------------------------------------------- Setup Page 2 Home - Top Rated-------------------------------------->
 
@@ -37,8 +35,7 @@ class HomeViewModel(
 
         val homePageKeyedDataSource = PageKeyedDataSourceTopRated(
             homeUseCase = homeUseCase,
-            homeRepository = homeRepository,
-            application = application
+            homeRepository = homeRepository
         )
         val homeDataSourceFactory = DataSourceFactoryTopRated(homePageKeyedDataSource)
 
@@ -61,8 +58,7 @@ class HomeViewModel(
 
         val homePageKeyedDataSourceUpComing = PageKeyedDataSourceUpComing(
             homeUseCase = homeUseCase,
-            homeRepository = homeRepository,
-                    application = application
+            homeRepository = homeRepository
         )
         val homeDataSourceFactoryUpComing = DataSourceFactoryUpComing(homePageKeyedDataSourceUpComing)
 
@@ -85,8 +81,7 @@ class HomeViewModel(
 
         val homePageKeyedDataSourcePopular = PageKeyedDataSourcePopular(
             homeUseCase = homeUseCase,
-            homeRepository = homeRepository,
-            application = application
+            homeRepository = homeRepository
         )
         val homeDataSourceFactoryPopular = DataSourceFactoryPopular(homePageKeyedDataSourcePopular)
 

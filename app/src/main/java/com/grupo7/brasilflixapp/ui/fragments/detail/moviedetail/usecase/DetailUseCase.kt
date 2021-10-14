@@ -11,11 +11,9 @@ import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.ui.model.videos.VideosResults
 
-class DetailUseCase(
-    private val application: Application
-) {
+class DetailUseCase() {
 
-    private val detailRepository = DetailRepository(application)
+    private val detailRepository = DetailRepository()
 
     suspend fun getMovieById(movieId: Int): ResponseApi {
         return when (val responseApi = detailRepository.getMovieById(movieId)) {

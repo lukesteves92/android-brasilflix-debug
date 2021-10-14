@@ -10,9 +10,7 @@ import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.series.Series
 import kotlinx.coroutines.launch
 
-class SearchViewModel(
-    application: Application
-) : BaseViewModel(application){
+class SearchViewModel() : BaseViewModel(){
 
     private val searchUseCase = SearchUseCase()
 

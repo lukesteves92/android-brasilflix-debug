@@ -5,10 +5,8 @@ import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.ui.fragments.favorites.repository.FavoritesRepository
 
-class FavoritesUseCase(
-    application: Application
-) {
-    private val favoritesRepository = FavoritesRepository(application)
+class FavoritesUseCase() {
+    private val favoritesRepository = FavoritesRepository()
 
     suspend fun getFavoritesMovieFromDb() =
         favoritesRepository.getFavoritesMovieFromDb()

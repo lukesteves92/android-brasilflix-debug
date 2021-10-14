@@ -10,10 +10,12 @@ import com.grupo7.brasilflixapp.data.database.favorites.database.FavoritesDataba
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.FIRST_PAGE
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class DetailSearchRepository(
-    private val application: Application
-) : BaseRepository() {
+class DetailSearchRepository() : BaseRepository(), KoinComponent {
+
+    private val application: Application by inject()
 
     suspend fun getMovieByIdSearch(movieId: Int): ResponseApi {
         return safeApiCall {

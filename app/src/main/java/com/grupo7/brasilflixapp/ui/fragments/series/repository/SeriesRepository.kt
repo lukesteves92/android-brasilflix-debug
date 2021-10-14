@@ -14,10 +14,13 @@ import com.grupo7.brasilflixapp.data.database.series.toprated.database.TopRatedS
 import com.grupo7.brasilflixapp.data.database.series.toprated.entity.TopRatedSeries
 import com.grupo7.brasilflixapp.ui.model.series.*
 import com.grupo7.brasilflixapp.ui.model.series.toPopularSeriesDb
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class SeriesRepository(
-    val application: Application
-) : BaseRepository() {
+) : BaseRepository(), KoinComponent {
+
+    private val application: Application by inject()
 
     suspend fun getSeries(page: Int): ResponseApi {
         return safeApiCall {

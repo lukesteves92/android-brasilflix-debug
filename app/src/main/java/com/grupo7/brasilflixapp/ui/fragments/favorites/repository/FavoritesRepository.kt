@@ -5,10 +5,12 @@ import com.grupo7.brasilflixapp.base.BaseRepository
 import com.grupo7.brasilflixapp.data.database.favorites.database.FavoritesDatabase
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.data.database.favorites.entity.FavoritesSeries
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class FavoritesRepository (
-    private val application: Application
-): BaseRepository() {
+class FavoritesRepository (): BaseRepository(), KoinComponent {
+
+    private val application: Application by inject()
 
     suspend fun getFavoritesMovieFromDb() =
         FavoritesDatabase.getDatabase(application)

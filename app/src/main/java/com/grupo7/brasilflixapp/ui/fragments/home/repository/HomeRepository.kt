@@ -13,10 +13,13 @@ import com.grupo7.brasilflixapp.data.database.movies.toprated.entity.TopRated
 import com.grupo7.brasilflixapp.data.database.movies.upcoming.database.UpComingDatabase
 import com.grupo7.brasilflixapp.data.database.movies.upcoming.entity.UpComing
 import com.grupo7.brasilflixapp.ui.model.films.*
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class HomeRepository(
-    val application: Application
-) : BaseRepository() {
+
+class HomeRepository() : BaseRepository(), KoinComponent {
+
+    private val application: Application by inject()
 
     suspend fun getTopRatedMovies(page: Int): ResponseApi {
         return safeApiCall {

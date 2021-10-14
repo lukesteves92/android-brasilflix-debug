@@ -9,11 +9,9 @@ import com.grupo7.brasilflixapp.ui.fragments.videos.usecase.VideosUseCase
 import com.grupo7.brasilflixapp.ui.model.videos.Videos
 import kotlinx.coroutines.launch
 
-class VideosViewModel(
-    application: Application
-): BaseViewModel(application)  {
+class VideosViewModel(): BaseViewModel()  {
 
-    private val videosUseCase = VideosUseCase(getApplication())
+    private val videosUseCase = VideosUseCase()
 
     private val _onSuccessSeriesVideos: MutableLiveData<List<Videos>> = MutableLiveData()
     val onSuccessSeriesVideos: LiveData<List<Videos>>

@@ -11,11 +11,9 @@ import com.grupo7.brasilflixapp.ui.model.films.films
 import com.grupo7.brasilflixapp.ui.model.reviews.ReviewResults
 import com.grupo7.brasilflixapp.ui.model.series.Series
 
-class DetailSearchUseCase(
-    private val application: Application
-) {
+class DetailSearchUseCase() {
 
-    private val detailRepository = DetailSearchRepository(application)
+    private val detailRepository = DetailSearchRepository()
 
     suspend fun getMovieByIdSearch(movieId: Int): ResponseApi {
         return when(val responseApi = detailRepository.getMovieByIdSearch(movieId)) {

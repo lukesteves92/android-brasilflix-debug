@@ -17,12 +17,10 @@ import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated.DataSo
 import com.grupo7.brasilflixapp.ui.fragments.series.paging.seriestoprated.PageKeyedDataSourceSeriesTopRated
 import com.grupo7.brasilflixapp.ui.fragments.series.repository.SeriesRepository
 
-class SeriesViewModel(
-    application: Application
-) : BaseViewModel(application) {
+class SeriesViewModel() : BaseViewModel() {
 
-    private val seriesUseCase = SeriesUseCase(getApplication())
-    private val seriesRepository = SeriesRepository(getApplication<Application>())
+    private val seriesUseCase = SeriesUseCase()
+    private val seriesRepository = SeriesRepository()
 
     //    <---------------------------------------------------- Setup Page 2 Series - On The Air-------------------------------------->
 
@@ -36,7 +34,7 @@ class SeriesViewModel(
 
 
         val homePageKeyedDataSourceSeries = PageKeyedDataSourceSeriesOnTheAir(
-            seriesUseCase = seriesUseCase, seriesRepository = seriesRepository, application = application
+            seriesUseCase = seriesUseCase, seriesRepository = seriesRepository
         )
         val homeDataSourceFactorySeries = DataSourceFactorySeriesOnTheAir(homePageKeyedDataSourceSeries)
 
@@ -58,7 +56,7 @@ class SeriesViewModel(
 
 
         val homePageKeyedDataSourceSeriesTopRated = PageKeyedDataSourceSeriesTopRated(
-            seriesUseCase = seriesUseCase, seriesRepository = seriesRepository, application = application
+            seriesUseCase = seriesUseCase, seriesRepository = seriesRepository
         )
         val homeDataSourceFactorySeriesTopRated = DataSourceFactorySeriesTopRated(homePageKeyedDataSourceSeriesTopRated)
 
@@ -80,7 +78,7 @@ class SeriesViewModel(
 
 
         val homePageKeyedDataSourceSeriesPopular = PageKeyedDataSourceSeriesPopular(
-            seriesUseCase = seriesUseCase, seriesRepository = seriesRepository, application = application
+            seriesUseCase = seriesUseCase, seriesRepository = seriesRepository
         )
         val homeDataSourceFactorySeriesPopular = DataSourceFactorySeriesPopular(homePageKeyedDataSourceSeriesPopular)
 

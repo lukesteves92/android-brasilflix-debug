@@ -8,10 +8,13 @@ import com.grupo7.brasilflixapp.data.database.movies.allmovies.database.AllMovie
 import com.grupo7.brasilflixapp.data.database.favorites.database.FavoritesDatabase
 import com.grupo7.brasilflixapp.data.database.favorites.entity.Favorites
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.FIRST_PAGE
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class DetailRepository(
-    private val application: Application
-) : BaseRepository() {
+) : BaseRepository(), KoinComponent {
+
+    private val application: Application by inject()
 
     suspend fun getMovieById(movieId: Int): ResponseApi {
         return safeApiCall {

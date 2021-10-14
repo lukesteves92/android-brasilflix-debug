@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,9 +49,8 @@ class SplashFragment : Fragment() {
 
         viewModel.checarOnline().observe(viewLifecycleOwner, {
             if(it){
-                Handler().postDelayed({
-                    view?.post {
-//                        findNavController().navigate(R.id.action_splashFragment_to_inicial_nav)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    view.post {
                         startActivity(Intent(activity, MainActivity::class.java))
                     }
                     onDestroyView()
