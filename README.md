@@ -18,7 +18,3 @@ Devs:
 
 👨 Lucas Esteves A. Coelho
 
-👨 Tania Mara Alves Ferreira
-
-👨 Renan Cleber
-
