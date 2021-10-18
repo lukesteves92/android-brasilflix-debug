@@ -1,81 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.series.view.seriesFragment"
-    android:background="@drawable/gradiente">
+    android:background="@drawable/gradiente"
+    tools:context=".ui.fragments.series.view.seriesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageSeries"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ontheair"
-        app:layout_constraintBottom_toTopOf="@id/seriesRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/seriesRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageSeries"
-        app:layout_constraintBottom_toTopOf="@id/imageSeriesTopRated"
-        tools:itemCount="10"
-        tools:listitem="@layout/films" />
-
-    <ImageView
-        android:id="@+id/imageSeriesTopRated"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/top"
-        app:layout_constraintTop_toBottomOf="@id/seriesRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/seriesRecyclerViewTopRated"
-         />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/seriesRecyclerViewTopRated"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loadingLottieSeries"
+            android:layout_width="300dp"
+            android:layout_height="311dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageSeriesTopRated"
-            tools:itemCount="10"
-            tools:listitem="@layout/films" />
-
-        <ImageView
-            android:id="@+id/imageSeriesPopular"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/populares"
-            app:layout_constraintTop_toBottomOf="@id/seriesRecyclerViewTopRated"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/seriesRecyclerViewPopular"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loadingcard" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/seriesRecyclerViewPopular"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutRecycleMain"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageSeriesPopular"
-            tools:itemCount="10"
-            tools:listitem="@layout/films" />
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageSeries"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ontheair"
+                app:layout_constraintBottom_toTopOf="@id/seriesRecyclerView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/seriesRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toTopOf="@id/imageSeriesTopRated"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageSeries"
+                tools:itemCount="10"
+                tools:listitem="@layout/films" />
+
+            <ImageView
+                android:id="@+id/imageSeriesTopRated"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/top"
+                app:layout_constraintBottom_toTopOf="@+id/seriesRecyclerViewTopRated"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seriesRecyclerView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/seriesRecyclerViewTopRated"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageSeriesTopRated"
+                tools:itemCount="10"
+                tools:listitem="@layout/films" />
+
+            <ImageView
+                android:id="@+id/imageSeriesPopular"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/populares"
+                app:layout_constraintBottom_toTopOf="@+id/seriesRecyclerViewPopular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seriesRecyclerViewTopRated" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/seriesRecyclerViewPopular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageSeriesPopular"
+                tools:itemCount="10"
+                tools:listitem="@layout/films" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

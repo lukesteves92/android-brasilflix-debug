@@ -8,21 +8,21 @@
     android:elevation="5dp"
     android:padding="5dp"
     android:id="@+id/filmesContainer"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="30dp"
     android:background="@drawable/gradiente">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="220dp"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:background="@drawable/gradiente_externo">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fotoFilme"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="300dp"
             android:clickable="true"
             android:focusable="true"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

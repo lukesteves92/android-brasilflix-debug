@@ -123,5 +123,21 @@
     <string name="forgotPassword">Enviar</string>
     <string name="forgotPasswordsuccessfully">E-mail enviado com sucesso!</string>
     <string name="forgotPasswordfailure">Ocorreu um erro ao enviar o email!</string>
+    <string name="profileDetailsPassword">Alterar Senha</string>
+    <string name="profileDetailsPasswordSubtitle">Alteração de senha do perfil</string>
+    <string name="passwordRetype">Digite Novamente</string>
+    <string name="buttonResetPassword">Enviar</string>
+    <string name="passwordChangeSuccessFul">Senha alterada com sucesso!</string>
+    <string name="passwordChangeFail">Não foi possivel alterar a senha! Tentar novamente.</string>
+    <string name="passwordCodeReset">Digite o código</string>
+    <string name="buttonSendCodeReset">Enviar código via e-mail</string>
+    <string name="emailRetype">Digite Novamente</string>
+    <string name="emailReset">E-mail</string>
+    <string name="passwordResetText1">Enviaremos um link por e-mail para você resetar sua senha!</string>
+    <string name="tryagainPasswordReset">Tentar Novamente?</string>
+    <string name="emailResetPasswordDoesNotMatch">Ops! O e-mail informado difere do cadastrado!</string>
+    <string name="emailResetPasswordConnection">Ops! Houve algum problema na comunicação.</string>
+    <string name="confirmationEmailResetPassword">Enviamos um e-mail para reset de sua senha! OBS: Checar a caixa de SPAM.</string>
+    <string name="removeFavorites">Remover</string>
 
 </resources>

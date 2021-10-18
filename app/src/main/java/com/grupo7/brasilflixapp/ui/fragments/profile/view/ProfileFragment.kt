@@ -1,6 +1,7 @@
 package com.grupo7.brasilflixapp.ui.fragments.profile.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +23,8 @@ import com.grupo7.brasilflixapp.extensions.getUserID
 import com.grupo7.brasilflixapp.ui.model.profile.ItemProfile
 import com.grupo7.brasilflixapp.util.constants.Constants
 import com.grupo7.brasilflixapp.util.constants.Constants.Login.UserID
+import com.grupo7.brasilflixapp.util.constants.Constants.Logout.LOGIN_TYPE
+import com.grupo7.brasilflixapp.util.constants.Constants.Profile.GOOGLE_ACCOUNT_URL
 import com.grupo7.brasilflixapp.util.enumarators.ProfileItemActionEnum
 import com.grupo7.brasilflixapp.util.interfaces.IProfileItemClick
 import com.squareup.picasso.Picasso
@@ -45,7 +50,7 @@ class profileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.changePictureProfile?.setOnClickListener{
+        binding?.changePictureProfile?.setOnClickListener {
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
@@ -55,7 +60,13 @@ class profileFragment : Fragment() {
         loadProfileImageFromStorage()
 
 
+
+        binding?.cvProfileItemContainer?.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_passwordResetFragment)
+        }
+
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
@@ -88,10 +99,12 @@ class profileFragment : Fragment() {
         val storage = firebase.getReference("UserProfileImages")
         storage.child("${UserID}.jpeg").downloadUrl.addOnSuccessListener {
             Picasso.get()
-                    .load(it.toString())
-                    .error(R.drawable.nophoto)
-                    .into(binding?.pictureCardProfile)
+                .load(it.toString())
+                .error(R.drawable.nophoto)
+                .into(binding?.pictureCardProfile)
 
         }
     }
+
+
 }

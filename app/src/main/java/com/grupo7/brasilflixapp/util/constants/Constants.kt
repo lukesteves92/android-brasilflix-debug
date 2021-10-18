@@ -43,4 +43,8 @@ class Constants {
         lateinit var UserID: String
     }
 
+    object Profile{
+        const val GOOGLE_ACCOUNT_URL = "https://www.google.com/intl/pt-BR/account/about/"
+    }
+
 }

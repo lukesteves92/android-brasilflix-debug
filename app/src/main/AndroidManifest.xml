@@ -42,31 +42,40 @@
         android:theme="@style/Theme.BrasilFlixapp">
         <activity
             android:name=".ui.activity.profile.ProfileActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.activity.account.AccountActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.activity.changeEmail.ChangeEmailActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.activity.search.SearchActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.activity.myPreference.MyPreferenceActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.activity.preferences.PreferencesActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
-        <activity android:name=".ui.activity.home.HomeActivity" />
-        <activity android:name=".ui.activity.splash.SplashActivity">
+        <activity android:name=".ui.activity.home.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.main.MainActivity" />
+        <activity android:name=".ui.activity.main.MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

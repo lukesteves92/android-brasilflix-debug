@@ -1,25 +1,30 @@
 package com.grupo7.brasilflixapp.ui.fragments.series.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.ui.fragments.series.adapter.seriesAdapter
+import com.grupo7.brasilflixapp.base.BaseFragment
+import com.grupo7.brasilflixapp.data.api.util.Command
 import com.grupo7.brasilflixapp.databinding.FragmentSeriesBinding
+import com.grupo7.brasilflixapp.ui.fragments.series.adapter.seriesAdapter
 import com.grupo7.brasilflixapp.ui.fragments.series.adapter.popular.SeriesPopularAdapter
 import com.grupo7.brasilflixapp.ui.fragments.series.adapter.toprated.SeriesTopRatedAdapter
 import com.grupo7.brasilflixapp.ui.fragments.series.viewmodel.SeriesViewModel
 import com.grupo7.brasilflixapp.util.constants.Constants
 
 
-class seriesFragment : Fragment() {
+class seriesFragment : BaseFragment() {
 
     private var binding: FragmentSeriesBinding? = null
     private lateinit var viewModel: SeriesViewModel
@@ -48,12 +53,18 @@ class seriesFragment : Fragment() {
 
             viewModel.command = MutableLiveData()
 
-            setupObservablesSeries()
-            setupRecyclerViewSeries()
-            setupObservablesSeriesTopRated()
-            setupRecyclerViewSeriesTopRated()
-            setupObservablesSeriesPopular()
-            setupRecyclerViewSeriesPopular()
+            Handler(Looper.getMainLooper()).postDelayed({
+                view.post {
+                    binding?.layoutRecycleMain?.isVisible = true
+                    binding?.loadingLottieSeries?.isVisible = false
+                    setupObservablesSeries()
+                    setupRecyclerViewSeries()
+                    setupObservablesSeriesTopRated()
+                    setupRecyclerViewSeriesTopRated()
+                    setupObservablesSeriesPopular()
+                    setupRecyclerViewSeriesPopular()
+                }
+            }, 1000L)
 
         }
     }
@@ -74,6 +85,17 @@ class seriesFragment : Fragment() {
     private fun setupObservablesSeries() {
         viewModel.seriesPagedList?.observe(viewLifecycleOwner, {
             seriesAdapter.submitList(it)
+        })
+
+        viewModel.command.observe(viewLifecycleOwner, {
+            when (it) {
+                is Command.Loading -> {
+
+                }
+                is Command.Error -> {
+
+                }
+            }
         })
 
     }
@@ -106,6 +128,17 @@ class seriesFragment : Fragment() {
             seriesTopRatedAdapter.submitList(it)
         })
 
+        viewModel.command.observe(viewLifecycleOwner, {
+            when (it) {
+                is Command.Loading -> {
+
+                }
+                is Command.Error -> {
+
+                }
+            }
+        })
+
     }
 
     private fun setupRecyclerViewSeriesTopRated() {
@@ -136,6 +169,17 @@ class seriesFragment : Fragment() {
             seriesPopularAdapter.submitList(it)
         })
 
+        viewModel.command.observe(viewLifecycleOwner, {
+            when (it) {
+                is Command.Loading -> {
+
+                }
+                is Command.Error -> {
+
+                }
+            }
+        })
+
     }
 
     private fun setupRecyclerViewSeriesPopular() {
@@ -152,5 +196,7 @@ class seriesFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }
+
+    override var command: MutableLiveData<Command> = MutableLiveData()
 
 }

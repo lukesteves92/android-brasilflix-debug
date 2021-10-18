@@ -19,12 +19,14 @@
         android:layout_marginTop="70dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:background="@drawable/button_search"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:startIconDrawable="@drawable/search"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/button_search"
         app:queryHint="Pesquisar filmes / séries"
         />
 

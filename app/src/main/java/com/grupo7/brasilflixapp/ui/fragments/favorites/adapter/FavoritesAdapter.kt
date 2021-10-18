@@ -36,7 +36,7 @@ class FavoritesAdapter (
                     .load(films.poster_path)
                     .placeholder(R.drawable.films)
                     .into(fotoFilme)
-                filmeName.text = films.title
+//                filmeName.text = films.title
                 removeFavorite.setOnClickListener{
                     onClickListener(films)
                 }

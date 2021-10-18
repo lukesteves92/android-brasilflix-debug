@@ -71,8 +71,6 @@ class DetailFragment(
 
         binding?.ivMenu?.setOnClickListener {
             activity?.onBackPressed()
-
-
         }
 
         binding?.ivShare?.setOnClickListener {
@@ -128,6 +126,7 @@ class DetailFragment(
                         override fun onReady(youTubePlayer: YouTubePlayer) {
                             youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
                         }
+
                     })
                     youtubePlayerDetail.isFullScreen()
                 }
@@ -190,8 +189,11 @@ class DetailFragment(
 
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
+
 }

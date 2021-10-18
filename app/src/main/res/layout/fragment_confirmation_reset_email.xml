@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.confirmation.ConfirmationRegisterFragment"
+    tools:context=".ui.fragments.email.ConfirmationResetEmailFragment"
     android:paddingHorizontal="50dp"
     android:background="@drawable/gradiente_externo">
 
@@ -24,7 +24,7 @@
         android:id="@+id/tvText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/confirmation_register"
+        android:text="@string/confirmationEmailResetPassword"
         app:layout_constraintTop_toBottomOf="@id/ivLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +33,7 @@
         android:textStyle="bold"
         android:textAlignment="center"
         />
+
 
     <ImageView
         android:id="@+id/ivCheckEmail"
@@ -48,7 +49,7 @@
 
 
     <Button
-        android:id="@+id/btGoToLogin"
+        android:id="@+id/btGoToHome"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/ivCheckEmail"
@@ -59,8 +60,7 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:backgroundTint="@color/topRatedButton"
-        android:text="@string/back_to_login"
+        android:text="@string/voltar_para_a_home"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

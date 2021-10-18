@@ -54,6 +54,10 @@ class ForgotPasswordFragment : Fragment() {
             }
         }
 
+        binding?.backSearch?.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
     }
 
     private fun forgotPasswordFirebase(email: String) {

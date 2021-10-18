@@ -9,5 +9,23 @@
         android:id="@+id/profileFragment"
         android:name="com.grupo7.brasilflixapp.ui.fragments.profile.view.profileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_passwordResetFragment"
+            app:destination="@id/passwordResetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordResetFragment"
+        android:name="com.grupo7.brasilflixapp.ui.fragments.passwordreset.PasswordResetFragment"
+        android:label="fragment_password_reset"
+        tools:layout="@layout/fragment_password_reset" >
+        <action
+            android:id="@+id/action_passwordResetFragment_to_confirmationResetEmailFragment"
+            app:destination="@id/confirmationResetEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationResetEmailFragment"
+        android:name="com.grupo7.brasilflixapp.ui.fragments.email.ConfirmationResetEmailFragment"
+        android:label="fragment_confirmation_reset_email"
+        tools:layout="@layout/fragment_confirmation_reset_email" />
 </navigation>
