@@ -18,8 +18,6 @@ Devs:
 
 👨 Lucas Esteves A. Coelho
 
-👨 Tania Mara Alves Ferreira
-
 Tecnologia utilizadas: 
 
 <br> -> Kotlin </br>
