@@ -29,7 +29,7 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:backgroundColor="@color/topMenuHome"
+        app:backgroundColor="@color/bottomMenuHome"
         app:indicatorRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment"

@@ -40,7 +40,8 @@ class Constants {
     }
 
     object Login{
-        lateinit var UserID: String
+         lateinit var UserID: String
+         lateinit var UserName: String
     }
 
     object Profile{

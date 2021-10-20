@@ -14,25 +14,32 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.base.BaseFragment
 import com.grupo7.brasilflixapp.data.api.util.Command
 import com.grupo7.brasilflixapp.ui.activity.search.SearchActivity
 import com.grupo7.brasilflixapp.ui.fragments.home.adapter.filmsAdapter
 import com.grupo7.brasilflixapp.databinding.FragmentHomeBinding
-import com.grupo7.brasilflixapp.ui.activity.account.AccountActivity
-import com.grupo7.brasilflixapp.ui.activity.main.MainActivity
 import com.grupo7.brasilflixapp.ui.activity.profile.ProfileActivity
 import com.grupo7.brasilflixapp.ui.fragments.home.adapter.upcomingAdapter
 import com.grupo7.brasilflixapp.ui.fragments.home.viewmodel.HomeViewModel
 import com.grupo7.brasilflixapp.ui.fragments.favorites.adapter.popularAdapter
+import com.grupo7.brasilflixapp.util.constants.Constants
 import com.grupo7.brasilflixapp.util.constants.Constants.Home.KEY_BUNDLE_MOVIE_ID
+import com.grupo7.brasilflixapp.util.constants.Constants.Login.UserName
+import com.squareup.picasso.Picasso
 
 
 class HomeFragment : BaseFragment() {
     private var binding: FragmentHomeBinding? = null
     var fragments: List<Fragment>? = null
     private lateinit var viewModel: HomeViewModel
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,29 +54,10 @@ class HomeFragment : BaseFragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
     }
-
     // ------------- Configuração Top Bar -------------//
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding?.topAppBar?.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.SearchFragment -> {
-                    startActivity(Intent(activity, SearchActivity::class.java))
-                    true
-                }
-                R.id.profileFragment -> {
-                    startActivity(Intent(activity, ProfileActivity::class.java))
-                    true
-                }
-                R.id.accountFragment -> {
-                    startActivity(Intent(activity, AccountActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
 
         // ------------- Chamando ViewModel -------------//
 
@@ -91,6 +79,19 @@ class HomeFragment : BaseFragment() {
                 }
             }, 1000L)
         }
+
+        loadProfileImageFromStorageAndUserName()
+
+        binding?.userHomeText?.text = "Olá, $UserName"
+
+        binding?.searchHome?.setOnClickListener{
+            startActivity(Intent(activity, SearchActivity::class.java))
+        }
+
+        binding?.pictureProfileCard?.setOnClickListener{
+            startActivity(Intent(activity, ProfileActivity::class.java))
+        }
+
 
     }
 
@@ -218,6 +219,28 @@ class HomeFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    private fun loadProfileImageFromStorageAndUserName() {
+        val firebase = FirebaseStorage.getInstance()
+        val storage = firebase.getReference("UserProfileImages")
+        
+        try {
+            storage.child("${Constants.Login.UserID}.jpeg").downloadUrl.addOnSuccessListener {
+                Picasso.get()
+                    .load(it.toString())
+                    .placeholder(R.drawable.nophoto)
+                    .into(binding?.photoProfile)
+
+            }
+        } catch(e: Exception){
+            Picasso.get()
+                .load(R.drawable.nophoto)
+                .into(binding?.photoProfile)
+        }
+
+
+
     }
 
     override var command: MutableLiveData<Command> = MutableLiveData()

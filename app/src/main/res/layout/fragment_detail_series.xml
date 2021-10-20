@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.detail.seriedetail.view.DetailSeriesFragment"
-    android:background="@drawable/gradiente_externo">
+    android:background="@drawable/gradiente">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,7 +52,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvCard"
             android:layout_width="match_parent"
-            android:layout_height="176dp"
+            android:layout_height="200dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.changeemail.ChangeEmailFragment"
-    android:background="@drawable/gradiente_externo">
+    android:background="@drawable/gradiente">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -42,6 +42,7 @@
         android:id="@+id/tvDoNotStay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="@string/doNotStay"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
@@ -104,7 +105,7 @@
         android:paddingEnd="10dp"
         android:layout_marginTop="82dp"
         android:layout_marginStart="45dp"
-        android:backgroundTint="@color/topMenuHome"
+        app:backgroundTint="@color/button"
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/tiNewEmail"/>
@@ -118,7 +119,7 @@
         android:background="@drawable/button_default"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:backgroundTint="@color/topMenuHome"
+        app:backgroundTint="@color/button"
         app:layout_constraintTop_toTopOf="@+id/btReturn"
         app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

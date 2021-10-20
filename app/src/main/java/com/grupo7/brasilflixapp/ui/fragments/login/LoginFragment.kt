@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.registerForActivityResult
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -25,6 +26,7 @@ import com.grupo7.brasilflixapp.databinding.FragmentLoginBinding
 import com.grupo7.brasilflixapp.extensions.getUserID
 import com.grupo7.brasilflixapp.ui.activity.main.MainActivity
 import com.grupo7.brasilflixapp.util.constants.Constants.Login.UserID
+import com.grupo7.brasilflixapp.util.constants.Constants.Login.UserName
 import com.grupo7.brasilflixapp.util.constants.Constants.Logout.LOGIN_TYPE
 
 
@@ -42,8 +44,12 @@ class LoginFragment : Fragment() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            UserID = currentUser.uid.toString()
-            Log.i("testeID", "$UserID")
+            UserID = currentUser.uid
+            if(currentUser.displayName.isNullOrEmpty()){
+                UserName = currentUser.email.toString()
+            }else{
+                UserName = currentUser.displayName.toString()
+            }
             goToPreferences()
             Snackbar.make(
                 this.requireView(),
@@ -114,6 +120,7 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithEmail:success")
                     val currentUser = auth.currentUser
                     UserID = currentUser?.uid.toString()
+                    UserName = currentUser?.email.toString()
                     LOGIN_TYPE = 10
                     goToPreferences()
                     Snackbar.make(
@@ -159,6 +166,7 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     val currentUser = auth.currentUser
                     UserID = currentUser?.uid.toString()
+                    UserName = currentUser?.displayName.toString()
                     LOGIN_TYPE = 20
                     goToPreferences()
                 } else {

@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.myPreference.MyPreferenceActivity"
-    android:background="@drawable/gradiente_externo">
+    android:background="@drawable/gradiente">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

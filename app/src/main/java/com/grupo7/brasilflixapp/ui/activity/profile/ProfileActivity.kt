@@ -2,8 +2,6 @@ package com.grupo7.brasilflixapp.ui.activity.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.grupo7.brasilflixapp.R
-import com.grupo7.brasilflixapp.databinding.ActivityAccountBinding
 import com.grupo7.brasilflixapp.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {

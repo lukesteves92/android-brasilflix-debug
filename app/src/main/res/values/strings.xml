@@ -101,7 +101,7 @@
     <string name="profileDetails">Dados pessoais, e-mail e etc..</string>
     <string name="profile_config">Alterar foto e etc..</string>
     <string name="accountBar">Conta</string>
-    <string name="profileBar">Perfil</string>
+    <string name="profileBar">Perfil e mais</string>
     <string name="logoutAccount">Perfil deslogado</string>
     <string name="videoCardText">Video</string>
     <string name="watchVideoCard">Assistir</string>
@@ -123,7 +123,7 @@
     <string name="forgotPassword">Enviar</string>
     <string name="forgotPasswordsuccessfully">E-mail enviado com sucesso!</string>
     <string name="forgotPasswordfailure">Ocorreu um erro ao enviar o email!</string>
-    <string name="profileDetailsPassword">Alterar Senha</string>
+    <string name="profileDetailsPassword">Alterar senha</string>
     <string name="profileDetailsPasswordSubtitle">Alteração de senha do perfil</string>
     <string name="passwordRetype">Digite Novamente</string>
     <string name="buttonResetPassword">Enviar</string>
@@ -139,5 +139,6 @@
     <string name="emailResetPasswordConnection">Ops! Houve algum problema na comunicação.</string>
     <string name="confirmationEmailResetPassword">Enviamos um e-mail para reset de sua senha! OBS: Checar a caixa de SPAM.</string>
     <string name="removeFavorites">Remover</string>
+    <string name="welcomeUserHome">Olá, Lucas</string>
 
 </resources>

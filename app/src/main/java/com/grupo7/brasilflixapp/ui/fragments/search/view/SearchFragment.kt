@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -52,45 +53,54 @@ class SearchFragment : Fragment() {
             viewModel.command = MutableLiveData()
 
             binding?.boxMovie?.setOnCheckedChangeListener { buttonView, isChecked ->
-                binding?.searchField?.setOnQueryTextListener(object :
-                    androidx.appcompat.widget.SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        query?.let {
-                            viewModel.searchMovies(it)
+                if(isChecked) {
+                    binding?.boxSeries?.isVisible = false
+                    binding?.searchField?.setOnQueryTextListener(object :
+                        androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            query?.let {
+                                viewModel.searchMovies(it)
+                            }
+                            return true
                         }
-                        return true
-                    }
 
-                    override fun onQueryTextChange(query: String?): Boolean {
-                        query?.let {
-                            viewModel.searchMovies(it)
+                        override fun onQueryTextChange(query: String?): Boolean {
+                            query?.let {
+                                viewModel.searchMovies(it)
+                            }
+                            return true
                         }
-                        return true
-                    }
-                })
-                this.view?.hideKeyboard()
-
+                    })
+                    this.view?.hideKeyboard()
+                } else{
+                    binding?.boxSeries?.isVisible = true
+                }
             }
 
+
             binding?.boxSeries?.setOnCheckedChangeListener{ buttonView, isChecked ->
-                binding?.searchField?.setOnQueryTextListener(object :
-                    androidx.appcompat.widget.SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        query?.let {
-                            viewModel.searchSeries(it)
+                if(isChecked) {
+                    binding?.boxMovie?.isVisible = false
+                    binding?.searchField?.setOnQueryTextListener(object :
+                        androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            query?.let {
+                                viewModel.searchSeries(it)
+                            }
+                            return true
                         }
-                        return true
-                    }
 
-                    override fun onQueryTextChange(query: String?): Boolean {
-                        query?.let {
-                            viewModel.searchSeries(it)
+                        override fun onQueryTextChange(query: String?): Boolean {
+                            query?.let {
+                                viewModel.searchSeries(it)
+                            }
+                            return true
                         }
-                        return true
-                    }
-                })
-
-                this.view?.hideKeyboard()
+                    })
+                    this.view?.hideKeyboard()
+                } else{
+                    binding?.boxMovie?.isVisible = true
+                }
             }
 
 

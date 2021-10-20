@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/ivWatchImage"
-            android:layout_width="@dimen/trailer_card_img_width"
-            android:layout_height="@dimen/trailer_card_img_height"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:scaleType="fitCenter"
             android:src="@drawable/brflixlogo"
             app:layout_constraintBottom_toBottomOf="parent"

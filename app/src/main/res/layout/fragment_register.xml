@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     tools:context=".ui.fragments.register.RegisterFragment"
-    android:background="@drawable/gradiente_externo">
+    android:background="@drawable/gradiente">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -17,7 +17,7 @@
 
         <Button
             android:id="@+id/buttonCadastrar"
-            app:backgroundTint="@color/tabtextColorNEW"
+            app:backgroundTint="@color/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_senha"

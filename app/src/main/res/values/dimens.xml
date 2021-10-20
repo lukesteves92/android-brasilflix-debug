@@ -40,4 +40,5 @@
 
     <dimen name="custom_margin_top_background_detail">45dp</dimen>
     <dimen name="image_background_detail_height">230dp</dimen>
+    <dimen name="fontUserNameHome">20sp</dimen>
 </resources>

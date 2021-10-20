@@ -34,7 +34,7 @@ class DetailFragment(
     private val movieId: Int by lazy {
         arguments?.getInt(KEY_BUNDLE_MOVIE_ID) ?: -1
     }
-
+    private var imageMovie: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +67,7 @@ class DetailFragment(
 
             setupReviewsMovies()
             setupDetailMovie()
+
         }
 
         binding?.ivMenu?.setOnClickListener {
@@ -116,7 +117,7 @@ class DetailFragment(
         }
     }
 
-    private fun setupImageOrVideo(imageMovie: String) {
+    private fun setupImageOrVideo(imageMovie: String?) {
         detailViewModel.onSuccessMoviesVideos.observe(viewLifecycleOwner, {
             if (it.isNotEmpty()) {
                 val youtube = it.last()
@@ -126,8 +127,7 @@ class DetailFragment(
                         override fun onReady(youTubePlayer: YouTubePlayer) {
                             youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
                         }
-
-                    })
+                        })
                     youtubePlayerDetail.isFullScreen()
                 }
             } else {
@@ -149,7 +149,6 @@ class DetailFragment(
 
     }
     private fun setupDetailMovie() {
-
         detailViewModel.onSuccessMovieDbByIdFromDb.observe(viewLifecycleOwner, {
             it?.let { movie ->
                 binding?.let { bindingNonNull ->
@@ -188,8 +187,6 @@ class DetailFragment(
 
 
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

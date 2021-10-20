@@ -14,12 +14,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.grupo7.brasilflixapp.R
 import com.grupo7.brasilflixapp.databinding.FragmentProfileBinding
 import com.grupo7.brasilflixapp.extensions.getUserID
+import com.grupo7.brasilflixapp.ui.activity.main.MainActivity
 import com.grupo7.brasilflixapp.ui.model.profile.ItemProfile
 import com.grupo7.brasilflixapp.util.constants.Constants
 import com.grupo7.brasilflixapp.util.constants.Constants.Login.UserID
@@ -49,6 +54,17 @@ class profileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.buttonLogout?.setOnClickListener{
+            if(LOGIN_TYPE == 10) {
+                Firebase.auth.signOut()
+                startActivity(Intent(activity, MainActivity::class.java))
+            } else if (LOGIN_TYPE == 20){
+                Firebase.auth.signOut()
+                logoutGoogle()
+                startActivity(Intent(activity, MainActivity::class.java))
+            }
+        }
 
         binding?.changePictureProfile?.setOnClickListener {
             val intent = Intent()
@@ -104,6 +120,18 @@ class profileFragment : Fragment() {
                 .into(binding?.pictureCardProfile)
 
         }
+    }
+
+    private fun logoutGoogle() {
+        val gso = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        GoogleSignIn.getClient(this.requireActivity(), gso).signOut()
+
+
     }
 
 

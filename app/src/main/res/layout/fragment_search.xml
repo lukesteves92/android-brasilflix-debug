@@ -19,7 +19,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/button_search"
+        android:background="@drawable/gradiente_externo"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         app:startIconDrawable="@drawable/search"
@@ -37,6 +37,7 @@
             android:checked="false"
             android:layout_marginStart="10dp"
             android:text="@string/boxSearchMovie"
+            android:textColor="@color/exo_white"
             android:fontFamily="@font/rubik_bold"
             android:textSize="15sp"
             android:buttonTint="@color/boxSearch"
@@ -52,6 +53,7 @@
             android:checked="false"
             android:layout_marginEnd="10dp"
             android:text="@string/boxSearchSeries"
+            android:textColor="@color/exo_white"
             android:fontFamily="@font/rubik_bold"
             android:textSize="15sp"
             android:buttonTint="@color/boxSearch"
@@ -62,11 +64,13 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/boxMovie"
-        tools:itemCount="10"
-        tools:listitem="@layout/films" />
+            android:id="@+id/searchRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/boxMovie"
+            tools:itemCount="10"
+            tools:layout_editor_absoluteX="-68dp"
+            tools:listitem="@layout/films" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

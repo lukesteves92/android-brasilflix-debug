@@ -29,7 +29,7 @@ class DetailSeriesFragment : Fragment() {
 
     private var binding: FragmentDetailSeriesBinding? = null
     private lateinit var detailSeriesViewModel: DetailSeriesViewModel
-
+    private var imageSerie: String? = null
     private val serieId: Int by lazy {
         arguments?.getInt(Constants.Home.KEY_BUNDLE_SERIE_ID) ?: -1
     }
@@ -63,6 +63,7 @@ class DetailSeriesFragment : Fragment() {
             setupReviewsSeries()
 
             setupDetailSerie()
+
 
         }
 
@@ -111,7 +112,7 @@ class DetailSeriesFragment : Fragment() {
         }
     }
 
-    private fun setupImageOrVideo(imageSerie: String) {
+    private fun setupImageOrVideo(imageSerie: String?) {
         detailSeriesViewModel.onSuccessSeriesVideos.observe(viewLifecycleOwner, {
             if (it.isNotEmpty()) {
                 val youtube = it.last()
@@ -121,7 +122,7 @@ class DetailSeriesFragment : Fragment() {
                         override fun onReady(youTubePlayer: YouTubePlayer) {
                             youtube.key?.let { it1 -> youTubePlayer.loadVideo(it1, 0f) }
                         }
-                    })
+                        })
                     youtubePlayerDetail.isFullScreen()
                 }
 
