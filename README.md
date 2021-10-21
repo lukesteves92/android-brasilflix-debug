@@ -5,31 +5,31 @@
 
 # BrasilFlixapp - Ano 2021 [🔝](#welcome-badges-4-readmemd-profile) Current Version 1.3
 
-Projeto BrasilFlix
+### Projeto BrasilFlix
 
-Curso: Desenvolvimento Android
+### Dev
 
-Escola: Digital House
+* 👨 Lucas Esteves A. Coelho
 
-Linguagem: 📱 Kotlin
+### Language
+* Kotlin
 
+### Design Patterns
+ * MVVM
+ * Clean Architecture
 
-Devs: 
-
-👨 Lucas Esteves A. Coelho
-
-Tecnologia utilizadas: 
-
-<br> -> Kotlin </br>
-<br> -> MVVM com Clean Architecture </br>
-<br> -> Consumo de API (Coroutines + Retrofit) </br>
-<br> -> Okhttp </br>
-<br> -> Gson </br>
-<br> -> Glide & Picasso </br>
-<br> -> LiveData + ViewModel </br>
-<br> -> Jetpack Library (Navigation & etc..) </br>
-<br> -> Paging 2 </br>
-<br> -> Injeção de Dependência (Koin) </br>
-<br> -> Room com SQL </br>
-<br> -> Firebase (RealTime, Auth, Storage) </br>
-<br> -> Material Design Library for Layout </br>
+### Libs
+* Gson
+* Retrofit
+* Okhttp
+* Glide
+* Coroutines
+* LiveData
+* ViewModel
+* Navigation
+* Firebase
+* Lottie
+* Koin
+* Material Design
+* Jetpack
+* Youtube
